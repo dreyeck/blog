@@ -3,13 +3,14 @@ module Shared exposing (Data, Model, Msg(..), SharedMsg(..), template)
 import BackendTask exposing (BackendTask)
 import Effect exposing (Effect)
 import FatalError exposing (FatalError)
-import Html exposing (Html)
+import Html exposing (Html, text)
+import Html.Attributes exposing (href)
 import Html.Events
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
-import UrlPath exposing (UrlPath)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
+import UrlPath exposing (UrlPath)
 import View exposing (View)
 
 
@@ -106,8 +107,8 @@ view sharedData page model toMsg pageView =
                 ]
             , if model.showMenu then
                 Html.ul []
-                    [ Html.li [] [ Html.text "Menu item 1" ]
-                    , Html.li [] [ Html.text "Menu item 2" ]
+                    [ Html.li [] [ Html.a [ href "http://blog.ward.dojo.fed.wiki/assets/home/2023/how-we-begin.html" ] [ text "How We Begin" ] ]
+                    , Html.li [] [ Html.a [ href "http://blog.ward.dojo.fed.wiki/assets/home/2023/what-to-try-next.html" ] [ text "What to Try Next" ] ]
                     ]
 
               else
