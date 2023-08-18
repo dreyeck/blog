@@ -1,0 +1,1337 @@
+{
+  "title": "elm-pages v3",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "259a1affdbded1a5",
+      "text": "We discuss the new elm-pages v3 release and the new suite of features for full-stack server-side rendered Elm."
+    },
+    {
+      "type": "audio",
+      "id": "f83d83e62a12d096",
+      "text": "https://cdn.simplecast.com/audio/6a206baa-9c8e-4c25-9037-2b674204ba84/episodes/2f7f5e41-541c-438f-b1a0-6501adce93da/audio/0a77cf57-4f6a-43e8-aaf0-5693e5d9a651/default_tc.mp3\nElm Radio 86 [https://elm-radio.com/episode/elm-pages-v3/ podcast]"
+    },
+    {
+      "type": "paragraph",
+      "id": "0c3b32310ab101b0",
+      "text": "elm-pages is"
+    },
+    {
+      "type": "markdown",
+      "id": "b0d256fb111c7f1c",
+      "text": "1. [[Elm]] (it is an extension of Elm)\n2. a Single Page Application (SPA) in Elm, that extends the traditional Elm architecture [⇒ [[The Elm Architecture]]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "e8b7cac30552957e",
+      "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init. It takes your data from init and renders that to an HTML string, and then that is the inital response sent to the client. So the client has a fully render HTML view before the JavaScript takes over the page."
+    },
+    {
+      "type": "markdown",
+      "id": "3fee4c753078c051",
+      "text": "05:00 Your routes have something called data. This is an extentsion to the traditional Elm architecture: init, update, **view**."
+    },
+    {
+      "type": "paragraph",
+      "id": "2c52c8311a54b176",
+      "text": "08:03 In elm-pages v2 there was only 1 mode, which was rendering your pages at build time. It was a static site generator."
+    },
+    {
+      "type": "paragraph",
+      "id": "ffef4a8401ef0774",
+      "text": "08:13 elm-pages v3 is a hybrid framework."
+    },
+    {
+      "type": "pagefold",
+      "id": "e00ed4f6bc729d98",
+      "text": "~"
+    },
+    {
+      "type": "reference",
+      "id": "2f3184263d937e30",
+      "site": "wiki.ralfbarkow.ch",
+      "slug": "elm-pages",
+      "title": "elm-pages",
+      "text": "A statically typed site generator for Elm. [https://github.com/dillonkearns/elm-pages github], [https://elm-pages.com/ site], [https://elm-pages.com/docs docs], [https://elm-pages.com/blog/introducing-elm-pages#what-is-elm-pages-exactly? blog]"
+    },
+    {
+      "type": "reference",
+      "id": "14b51cecd9c10779",
+      "site": "code.dreyeck.ch",
+      "slug": "elm-pages-adapter",
+      "title": "Elm-Pages Adapter",
+      "text": "The idea of adapters is that they are responsible for turning the output of the [[elm-pages]] build into the right setup for a specific hosting provider. (i.e. adapting the output)"
+    },
+    {
+      "type": "reference",
+      "id": "2964d554abaf17e9",
+      "site": "wiki.ralfbarkow.ch",
+      "slug": "2023-07-26",
+      "title": "2023-07-26",
+      "text": "⇒ [[elm-pages-starter-express]] [https://github.com/blaix/elm-pages-starter-express github], [https://github.com/dillonkearns/elm-pages/discussions/378#discussioncomment-5930563 page] ⇒ [[2023-08-14]]"
+    },
+    {
+      "type": "code",
+      "id": "711603182631d76d",
+      "text": "lamdera reset\nnpm run build\nnpm start"
+    },
+    {
+      "type": "markdown",
+      "id": "fbd46dd053df6fed",
+      "text": "> start\n> node dist-server/server.mjs\n\n"
+    },
+    {
+      "type": "paragraph",
+      "id": "1c14124eb45f5eb0",
+      "text": "On our server we get an error message: listen EADDRINUSE: address already in use :::3000. The reason is that our wiki is configured to be available on this port. Therefore we have to use another port, e.g. 4040."
+    },
+    {
+      "type": "paragraph",
+      "id": "8334cf8f8d0d5a90",
+      "text": "dist-server/server.mj"
+    },
+    {
+      "type": "code",
+      "id": "4a40e1bbaf88fa46",
+      "text": "import express from \"express\";\nimport elmPagesMiddleware from \"./middleware.mjs\";\n\nconst app = express();\nconst port = 4040;\n\napp.use(express.static(\"dist\"));\napp.use(elmPagesMiddleware);\napp.listen(port, () => {\n  console.log(`Listening on port ${port}`);\n});\n"
+    },
+    {
+      "type": "code",
+      "id": "893f416b308df5ac",
+      "text": "$ npm start\n\n> start\n> node dist-server/server.mjs\n\nListening on port 4040"
+    },
+    {
+      "type": "image",
+      "id": "ccbf1082a70f3ffa",
+      "text": "elm-pages is running",
+      "size": "wide",
+      "width": 430,
+      "height": 176,
+      "url": "/assets/plugins/image/29916f7eed22a1cfa5a888ec48fcdbac.jpg"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "elm-pages v3",
+        "story": []
+      },
+      "date": 1691578806532
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "259a1affdbded1a5"
+      },
+      "id": "259a1affdbded1a5",
+      "type": "add",
+      "date": 1691578807750
+    },
+    {
+      "type": "edit",
+      "id": "259a1affdbded1a5",
+      "item": {
+        "type": "paragraph",
+        "id": "259a1affdbded1a5",
+        "text": "We discuss the new elm-pages v3 release and the new suite of features for full-stack server-side rendered Elm."
+      },
+      "date": 1691578809523
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "118f293a3ab77344"
+      },
+      "id": "118f293a3ab77344",
+      "type": "add",
+      "after": "259a1affdbded1a5",
+      "date": 1691578837079
+    },
+    {
+      "type": "remove",
+      "id": "118f293a3ab77344",
+      "date": 1691578840986
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "f83d83e62a12d096"
+      },
+      "id": "f83d83e62a12d096",
+      "type": "add",
+      "after": "259a1affdbded1a5",
+      "date": 1691578853875
+    },
+    {
+      "type": "edit",
+      "id": "f83d83e62a12d096",
+      "item": {
+        "type": "audio",
+        "id": "f83d83e62a12d096",
+        "text": "https://cdn.simplecast.com/audio/6a206baa-9c8e-4c25-9037-2b674204ba84/episodes/2f7f5e41-541c-438f-b1a0-6501adce93da/audio/0a77cf57-4f6a-43e8-aaf0-5693e5d9a651/default_tc.mp3"
+      },
+      "date": 1691578858248
+    },
+    {
+      "type": "edit",
+      "id": "f83d83e62a12d096",
+      "item": {
+        "type": "audio",
+        "id": "f83d83e62a12d096",
+        "text": "https://cdn.simplecast.com/audio/6a206baa-9c8e-4c25-9037-2b674204ba84/episodes/2f7f5e41-541c-438f-b1a0-6501adce93da/audio/0a77cf57-4f6a-43e8-aaf0-5693e5d9a651/default_tc.mp3\nElm Radio 86"
+      },
+      "date": 1691578907427
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "e00ed4f6bc729d98"
+      },
+      "id": "e00ed4f6bc729d98",
+      "type": "add",
+      "after": "f83d83e62a12d096",
+      "date": 1691665592435
+    },
+    {
+      "type": "edit",
+      "id": "e00ed4f6bc729d98",
+      "item": {
+        "type": "pagefold",
+        "id": "e00ed4f6bc729d98",
+        "text": "~"
+      },
+      "date": 1691665595598
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "2f3184263d937e30"
+      },
+      "id": "2f3184263d937e30",
+      "type": "add",
+      "after": "e00ed4f6bc729d98",
+      "date": 1691665597655
+    },
+    {
+      "type": "edit",
+      "id": "2f3184263d937e30",
+      "item": {
+        "type": "reference",
+        "id": "2f3184263d937e30",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "elm-pages",
+        "title": "elm-pages",
+        "text": "A statically typed site generator for Elm. [https://github.com/dillonkearns/elm-pages github], [https://elm-pages.com/ site], [https://elm-pages.com/docs docs], [https://elm-pages.com/blog/introducing-elm-pages#what-is-elm-pages-exactly? blog]"
+      },
+      "date": 1691665599274
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "14b51cecd9c10779"
+      },
+      "id": "14b51cecd9c10779",
+      "type": "add",
+      "after": "2f3184263d937e30",
+      "date": 1691665630214
+    },
+    {
+      "type": "edit",
+      "id": "14b51cecd9c10779",
+      "item": {
+        "type": "reference",
+        "id": "14b51cecd9c10779",
+        "site": "code.dreyeck.ch",
+        "slug": "elm-pages-adapter",
+        "title": "Elm-Pages Adapter",
+        "text": "The idea of adapters is that they are responsible for turning the output of the [[elm-pages]] build into the right setup for a specific hosting provider. (i.e. adapting the output)"
+      },
+      "date": 1691665655961
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "2964d554abaf17e9"
+      },
+      "id": "2964d554abaf17e9",
+      "type": "add",
+      "after": "14b51cecd9c10779",
+      "date": 1691665718705
+    },
+    {
+      "type": "edit",
+      "id": "2964d554abaf17e9",
+      "item": {
+        "type": "reference",
+        "id": "2964d554abaf17e9",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "2023-07-26",
+        "title": "2023-07-26",
+        "text": "⇒ [[elm-pages-starter-express]] [https://github.com/blaix/elm-pages-starter-express github], [https://github.com/dillonkearns/elm-pages/discussions/378#discussioncomment-5930563 page]"
+      },
+      "date": 1691665720959
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "711603182631d76d"
+      },
+      "id": "711603182631d76d",
+      "type": "add",
+      "after": "2964d554abaf17e9",
+      "date": 1691666110766
+    },
+    {
+      "type": "edit",
+      "id": "711603182631d76d",
+      "item": {
+        "type": "code",
+        "id": "711603182631d76d",
+        "text": "lamdera reset"
+      },
+      "date": 1691666157536
+    },
+    {
+      "type": "edit",
+      "id": "711603182631d76d",
+      "item": {
+        "type": "code",
+        "id": "711603182631d76d",
+        "text": "lamdera reset\nnpm run build"
+      },
+      "date": 1691666181419
+    },
+    {
+      "type": "edit",
+      "id": "711603182631d76d",
+      "item": {
+        "type": "code",
+        "id": "711603182631d76d",
+        "text": "lamdera reset\nnpm run build\nnpm start"
+      },
+      "date": 1691666246762
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "fbd46dd053df6fed"
+      },
+      "id": "fbd46dd053df6fed",
+      "type": "add",
+      "after": "711603182631d76d",
+      "date": 1691666278092
+    },
+    {
+      "type": "edit",
+      "id": "fbd46dd053df6fed",
+      "item": {
+        "type": "markdown",
+        "id": "fbd46dd053df6fed",
+        "text": "> start\n> node dist-server/server.mjs\n\nnode:events:491\n      throw er; // Unhandled 'error' event\n      ^\n\nError: listen EADDRINUSE: address already in use :::3000"
+      },
+      "date": 1691666280750
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "4a40e1bbaf88fa46"
+      },
+      "id": "4a40e1bbaf88fa46",
+      "type": "add",
+      "after": "fbd46dd053df6fed",
+      "date": 1691666608422
+    },
+    {
+      "type": "edit",
+      "id": "4a40e1bbaf88fa46",
+      "item": {
+        "type": "code",
+        "id": "4a40e1bbaf88fa46",
+        "text": "import express from \"express\";\nimport elmPagesMiddleware from \"./middleware.mjs\";\n\nconst app = express();\nconst port = 4040;\n\napp.use(express.static(\"dist\"));\napp.use(elmPagesMiddleware);\napp.listen(port, () => {\n  console.log(`Listening on port ${port}`);\n});\n"
+      },
+      "date": 1691666610620
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "1c14124eb45f5eb0"
+      },
+      "id": "1c14124eb45f5eb0",
+      "type": "add",
+      "after": "4a40e1bbaf88fa46",
+      "date": 1691666624326
+    },
+    {
+      "id": "1c14124eb45f5eb0",
+      "type": "move",
+      "order": [
+        "259a1affdbded1a5",
+        "f83d83e62a12d096",
+        "e00ed4f6bc729d98",
+        "2f3184263d937e30",
+        "14b51cecd9c10779",
+        "2964d554abaf17e9",
+        "711603182631d76d",
+        "fbd46dd053df6fed",
+        "1c14124eb45f5eb0",
+        "4a40e1bbaf88fa46"
+      ],
+      "date": 1691666625800
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "dist-server/server.mj"
+      },
+      "date": 1691666627075
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "893f416b308df5ac"
+      },
+      "id": "893f416b308df5ac",
+      "type": "add",
+      "after": "4a40e1bbaf88fa46",
+      "date": 1691666639550
+    },
+    {
+      "type": "edit",
+      "id": "893f416b308df5ac",
+      "item": {
+        "type": "code",
+        "id": "893f416b308df5ac",
+        "text": "$ npm start\n\n> start\n> node dist-server/server.mjs\n\nListening on port 4040"
+      },
+      "date": 1691666641183
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "6bb8e74a78c817bc"
+      },
+      "id": "6bb8e74a78c817bc",
+      "type": "add",
+      "after": "893f416b308df5ac",
+      "date": 1691667187125
+    },
+    {
+      "type": "edit",
+      "id": "6bb8e74a78c817bc",
+      "item": {
+        "type": "paragraph",
+        "id": "6bb8e74a78c817bc",
+        "text": "Note: Click on \"Open Menu\" does not work."
+      },
+      "date": 1691667207973
+    },
+    {
+      "type": "edit",
+      "id": "6bb8e74a78c817bc",
+      "item": {
+        "type": "paragraph",
+        "id": "6bb8e74a78c817bc",
+        "text": "Note: Clicking on \"Open Menu\" does not work."
+      },
+      "date": 1691667234650
+    },
+    {
+      "type": "edit",
+      "id": "6bb8e74a78c817bc",
+      "item": {
+        "type": "paragraph",
+        "id": "6bb8e74a78c817bc",
+        "text": "Note: Clicking on \"Open Menu\" does not work. (⇒ nginx.nix @dreyeck.ch)"
+      },
+      "date": 1691667318647
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "ccbf1082a70f3ffa"
+      },
+      "id": "ccbf1082a70f3ffa",
+      "type": "add",
+      "after": "6bb8e74a78c817bc",
+      "date": 1691667361854
+    },
+    {
+      "type": "edit",
+      "id": "ccbf1082a70f3ffa",
+      "item": {
+        "type": "image",
+        "id": "ccbf1082a70f3ffa",
+        "text": "elm-pages is running",
+        "size": "wide",
+        "width": 430,
+        "height": 176,
+        "url": "/assets/plugins/image/29916f7eed22a1cfa5a888ec48fcdbac.jpg"
+      },
+      "date": 1691667413525
+    },
+    {
+      "id": "6bb8e74a78c817bc",
+      "type": "move",
+      "order": [
+        "259a1affdbded1a5",
+        "f83d83e62a12d096",
+        "e00ed4f6bc729d98",
+        "2f3184263d937e30",
+        "14b51cecd9c10779",
+        "2964d554abaf17e9",
+        "711603182631d76d",
+        "fbd46dd053df6fed",
+        "1c14124eb45f5eb0",
+        "4a40e1bbaf88fa46",
+        "893f416b308df5ac",
+        "ccbf1082a70f3ffa",
+        "6bb8e74a78c817bc"
+      ],
+      "date": 1691667421502
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "0c3b32310ab101b0"
+      },
+      "id": "0c3b32310ab101b0",
+      "type": "add",
+      "after": "6bb8e74a78c817bc",
+      "date": 1692019220630
+    },
+    {
+      "id": "0c3b32310ab101b0",
+      "type": "move",
+      "order": [
+        "259a1affdbded1a5",
+        "f83d83e62a12d096",
+        "0c3b32310ab101b0",
+        "e00ed4f6bc729d98",
+        "2f3184263d937e30",
+        "14b51cecd9c10779",
+        "2964d554abaf17e9",
+        "711603182631d76d",
+        "fbd46dd053df6fed",
+        "1c14124eb45f5eb0",
+        "4a40e1bbaf88fa46",
+        "893f416b308df5ac",
+        "ccbf1082a70f3ffa",
+        "6bb8e74a78c817bc"
+      ],
+      "date": 1692019226784
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On the dreyeck.ch server we"
+      },
+      "date": 1692019288446
+    },
+    {
+      "type": "add",
+      "id": "8334cf8f8d0d5a90",
+      "item": {
+        "type": "paragraph",
+        "id": "8334cf8f8d0d5a90",
+        "text": "dist-server/server.mj"
+      },
+      "after": "1c14124eb45f5eb0",
+      "date": 1692019291522
+    },
+    {
+      "type": "edit",
+      "id": "fbd46dd053df6fed",
+      "item": {
+        "type": "markdown",
+        "id": "fbd46dd053df6fed",
+        "text": "> start\n> node dist-server/server.mjs\n\n\n      ^\n\nError: listen EADDRINUSE: address already in use :::3000"
+      },
+      "date": 1692019296539
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On the dreyeck.ch server we get an"
+      },
+      "date": 1692019319009
+    },
+    {
+      "type": "edit",
+      "id": "fbd46dd053df6fed",
+      "item": {
+        "type": "markdown",
+        "id": "fbd46dd053df6fed",
+        "text": "> start\n> node dist-server/server.mjs\n\n\n      ^\n\n"
+      },
+      "date": 1692019323352
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On the dreyeck.ch server we get an Error: listen EADDRINUSE: address already in use :::3000"
+      },
+      "date": 1692019325397
+    },
+    {
+      "type": "edit",
+      "id": "fbd46dd053df6fed",
+      "item": {
+        "type": "markdown",
+        "id": "fbd46dd053df6fed",
+        "text": "> start\n> node dist-server/server.mjs\n\n"
+      },
+      "date": 1692019329470
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On the dreyeck.ch server we get an Error: listen EADDRINUSE: address already in use :::3000. "
+      },
+      "date": 1692019336906
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On the dreyeck.ch server we get an error message: listen EADDRINUSE: address already in use :::3000. "
+      },
+      "date": 1692019368542
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On our server we get an error message: listen EADDRINUSE: address already in use :::3000. "
+      },
+      "date": 1692019395710
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On our server we get an error message: listen EADDRINUSE: address already in use :::3000. The reason for this is that our wiki is configured to be already available on this port."
+      },
+      "date": 1692019640338
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On our server we get an error message: listen EADDRINUSE: address already in use :::3000. The reason is that our wiki is configured to be available on this port."
+      },
+      "date": 1692019684813
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On our server we get an error message: listen EADDRINUSE: address already in use :::3000. The reason is that our wiki is configured to be available on this port. Therefore, we need to use a different port, e.g. 4040."
+      },
+      "date": 1692019705375
+    },
+    {
+      "type": "edit",
+      "id": "1c14124eb45f5eb0",
+      "item": {
+        "type": "paragraph",
+        "id": "1c14124eb45f5eb0",
+        "text": "On our server we get an error message: listen EADDRINUSE: address already in use :::3000. The reason is that our wiki is configured to be available on this port. Therefore we have to use another port, e.g. 4040."
+      },
+      "date": 1692019722434
+    },
+    {
+      "type": "edit",
+      "id": "0c3b32310ab101b0",
+      "item": {
+        "type": "paragraph",
+        "id": "0c3b32310ab101b0",
+        "text": "elm-pages is"
+      },
+      "date": 1692019757406
+    },
+    {
+      "type": "add",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "paragraph",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. Elm"
+      },
+      "after": "0c3b32310ab101b0",
+      "date": 1692019759352
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. Elm"
+      },
+      "date": 1692019761199
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]]"
+      },
+      "date": 1692019768507
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]], it is an extension of Elm."
+      },
+      "date": 1692019803435
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]], it is an extension of Elm.\n2. a SPA in Elm"
+      },
+      "date": 1692019848578
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]], it is an extension of Elm\n2. a Single Page Application (SPA) in Elm"
+      },
+      "date": 1692019921629
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]], it is an extension of Elm\n2. a Single Page Application (SPA) in Elm, that extends the traditional Elm Architecture"
+      },
+      "date": 1692019987014
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]], it is an extension of Elm\n2. a Single Page Application (SPA) in Elm, that extends [[The Elm Architecture]]"
+      },
+      "date": 1692020037093
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]], it is an extension of Elm\n2. a Single Page Application (SPA) in Elm, that extends the traditional Elm architecture [⇒ [[The Elm Architecture]]]"
+      },
+      "date": 1692020077797
+    },
+    {
+      "type": "add",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01"
+      },
+      "after": "0c3b32310ab101b0",
+      "date": 1692020200328
+    },
+    {
+      "id": "229f90a5f8e1c18e",
+      "type": "move",
+      "order": [
+        "259a1affdbded1a5",
+        "f83d83e62a12d096",
+        "0c3b32310ab101b0",
+        "b0d256fb111c7f1c",
+        "229f90a5f8e1c18e",
+        "e00ed4f6bc729d98",
+        "2f3184263d937e30",
+        "14b51cecd9c10779",
+        "2964d554abaf17e9",
+        "711603182631d76d",
+        "fbd46dd053df6fed",
+        "1c14124eb45f5eb0",
+        "8334cf8f8d0d5a90",
+        "4a40e1bbaf88fa46",
+        "893f416b308df5ac",
+        "ccbf1082a70f3ffa",
+        "6bb8e74a78c817bc"
+      ],
+      "date": 1692020201831
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, it runs init on the server."
+      },
+      "date": 1692020231744
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server."
+      },
+      "date": 1692020247116
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It acutally takes the Elm app you write"
+      },
+      "date": 1692020285735
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It acutally takes the Elm app you write and it runs it in 2 places."
+      },
+      "date": 1692020299021
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places."
+      },
+      "date": 1692020328273
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs it on the server "
+      },
+      "date": 1692020454235
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs it on the server and it runs it on the client, in the browser."
+      },
+      "date": 1692020469454
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser."
+      },
+      "date": 1692020500054
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications."
+      },
+      "date": 1692020529888
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one is running without a browser."
+      },
+      "date": 1692020565893
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one rus without a browser."
+      },
+      "date": 1692020615870
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one rus without a browser. (headless app)."
+      },
+      "date": 1692020637592
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (headless application)."
+      },
+      "date": 1692020681011
+    },
+    {
+      "type": "add",
+      "id": "3fee4c753078c051",
+      "item": {
+        "type": "paragraph",
+        "id": "3fee4c753078c051",
+        "text": "05:00 Your routes have something called Data."
+      },
+      "after": "229f90a5f8e1c18e",
+      "date": 1692020764891
+    },
+    {
+      "type": "edit",
+      "id": "3fee4c753078c051",
+      "item": {
+        "type": "paragraph",
+        "id": "3fee4c753078c051",
+        "text": "05:00 Your routes have something called data."
+      },
+      "date": 1692020788674
+    },
+    {
+      "type": "edit",
+      "id": "3fee4c753078c051",
+      "item": {
+        "type": "paragraph",
+        "id": "3fee4c753078c051",
+        "text": "05:00 Your routes have something called data. This is an extentsion to the "
+      },
+      "date": 1692020811224
+    },
+    {
+      "type": "edit",
+      "id": "3fee4c753078c051",
+      "item": {
+        "type": "paragraph",
+        "id": "3fee4c753078c051",
+        "text": "05:00 Your routes have something called data. This is an extentsion to the traditional Elm architecture: init, update, **view**."
+      },
+      "date": 1692020845739
+    },
+    {
+      "type": "edit",
+      "id": "3fee4c753078c051",
+      "item": {
+        "type": "markdown",
+        "id": "3fee4c753078c051",
+        "text": "05:00 Your routes have something called data. This is an extentsion to the traditional Elm architecture: init, update, **view**."
+      },
+      "date": 1692020847223
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (headless application). It runs your init "
+      },
+      "date": 1692020898141
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (headless application). It runs your init without any of the commands and renders your "
+      },
+      "date": 1692020918855
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (headless application). It runs your init without any of the commands from init and renders your "
+      },
+      "date": 1692020962417
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (headless application). It runs your init without any of the commands from init and renders your inital response"
+      },
+      "date": 1692020996664
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (headless application). It runs your init without any of the commands from init and renders your inital response. It takes the data from your init and renders that to an HTML string."
+      },
+      "date": 1692021024420
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (a headless application). It runs your init without any of the commands from init and renders your inital response. It takes the data from your init and renders that to an HTML string."
+      },
+      "date": 1692021054626
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. The server one runs without a browser (a headless application). It runs your init without any of the commands from init and renders your inital response. It takes the data from your init and renders that to an HTML string, and that is the inital response sent to the client."
+      },
+      "date": 1692021131029
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications."
+      },
+      "date": 1692021159581
+    },
+    {
+      "type": "add",
+      "id": "e8b7cac30552957e",
+      "item": {
+        "type": "paragraph",
+        "id": "e8b7cac30552957e",
+        "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init and renders your inital response. It takes the data from your init and renders that to an HTML string, and that is the inital response sent to the client."
+      },
+      "after": "229f90a5f8e1c18e",
+      "date": 1692021167917
+    },
+    {
+      "type": "edit",
+      "id": "e8b7cac30552957e",
+      "item": {
+        "type": "paragraph",
+        "id": "e8b7cac30552957e",
+        "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init. It takes the data from your init and renders that to an HTML string, and that is the inital response sent to the client."
+      },
+      "date": 1692021228300
+    },
+    {
+      "type": "edit",
+      "id": "e8b7cac30552957e",
+      "item": {
+        "type": "paragraph",
+        "id": "e8b7cac30552957e",
+        "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init. It takes the data from your init and renders that to an HTML string, and that is the inital response sent to the client. So, the client has a fully render HTML view before the JavaScript takes over the page."
+      },
+      "date": 1692021314088
+    },
+    {
+      "type": "edit",
+      "id": "e8b7cac30552957e",
+      "item": {
+        "type": "paragraph",
+        "id": "e8b7cac30552957e",
+        "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init. It takes the data from your init and renders that to an HTML string, and that is the inital response sent to the client. So the client has a fully render HTML view before the JavaScript takes over the page."
+      },
+      "date": 1692021328794
+    },
+    {
+      "type": "edit",
+      "id": "e8b7cac30552957e",
+      "item": {
+        "type": "paragraph",
+        "id": "e8b7cac30552957e",
+        "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init. It takes your data from init and renders that to an HTML string, and that is the inital response sent to the client. So the client has a fully render HTML view before the JavaScript takes over the page."
+      },
+      "date": 1692021354551
+    },
+    {
+      "type": "add",
+      "id": "2c52c8311a54b176",
+      "item": {
+        "type": "paragraph",
+        "id": "2c52c8311a54b176",
+        "text": "08:00"
+      },
+      "after": "e8b7cac30552957e",
+      "date": 1692022309956
+    },
+    {
+      "id": "2c52c8311a54b176",
+      "type": "move",
+      "order": [
+        "259a1affdbded1a5",
+        "f83d83e62a12d096",
+        "0c3b32310ab101b0",
+        "b0d256fb111c7f1c",
+        "229f90a5f8e1c18e",
+        "e8b7cac30552957e",
+        "3fee4c753078c051",
+        "2c52c8311a54b176",
+        "e00ed4f6bc729d98",
+        "2f3184263d937e30",
+        "14b51cecd9c10779",
+        "2964d554abaf17e9",
+        "711603182631d76d",
+        "fbd46dd053df6fed",
+        "1c14124eb45f5eb0",
+        "8334cf8f8d0d5a90",
+        "4a40e1bbaf88fa46",
+        "893f416b308df5ac",
+        "ccbf1082a70f3ffa",
+        "6bb8e74a78c817bc"
+      ],
+      "date": 1692022312131
+    },
+    {
+      "type": "edit",
+      "id": "2c52c8311a54b176",
+      "item": {
+        "type": "paragraph",
+        "id": "2c52c8311a54b176",
+        "text": "08:00 In elm-pages v2 there was only 1 mode"
+      },
+      "date": 1692022341665
+    },
+    {
+      "type": "edit",
+      "id": "2c52c8311a54b176",
+      "item": {
+        "type": "paragraph",
+        "id": "2c52c8311a54b176",
+        "text": "08:00 In elm-pages v2 there was only 1 mode, which was rendering your pages at build time."
+      },
+      "date": 1692022368386
+    },
+    {
+      "type": "edit",
+      "id": "2c52c8311a54b176",
+      "item": {
+        "type": "paragraph",
+        "id": "2c52c8311a54b176",
+        "text": "08:00 In elm-pages v2 there was only 1 mode, which was rendering your pages at build time. It was a static site generator."
+      },
+      "date": 1692022405681
+    },
+    {
+      "type": "add",
+      "id": "ffef4a8401ef0774",
+      "item": {
+        "type": "paragraph",
+        "id": "ffef4a8401ef0774",
+        "text": "08:13 "
+      },
+      "after": "2c52c8311a54b176",
+      "date": 1692022427101
+    },
+    {
+      "type": "edit",
+      "id": "ffef4a8401ef0774",
+      "item": {
+        "type": "paragraph",
+        "id": "ffef4a8401ef0774",
+        "text": "08:13 elm-pages v3 is a hybrid."
+      },
+      "date": 1692022438443
+    },
+    {
+      "type": "edit",
+      "id": "2c52c8311a54b176",
+      "item": {
+        "type": "paragraph",
+        "id": "2c52c8311a54b176",
+        "text": "08:04 In elm-pages v2 there was only 1 mode, which was rendering your pages at build time. It was a static site generator."
+      },
+      "date": 1692022454590
+    },
+    {
+      "type": "edit",
+      "id": "2c52c8311a54b176",
+      "item": {
+        "type": "paragraph",
+        "id": "2c52c8311a54b176",
+        "text": "08:03 In elm-pages v2 there was only 1 mode, which was rendering your pages at build time. It was a static site generator."
+      },
+      "date": 1692022465336
+    },
+    {
+      "type": "edit",
+      "id": "ffef4a8401ef0774",
+      "item": {
+        "type": "paragraph",
+        "id": "ffef4a8401ef0774",
+        "text": "08:13 elm-pages v3 is a hybrid framework."
+      },
+      "date": 1692022479215
+    },
+    {
+      "type": "remove",
+      "id": "6bb8e74a78c817bc",
+      "date": 1692022706375
+    },
+    {
+      "type": "edit",
+      "id": "2964d554abaf17e9",
+      "item": {
+        "type": "reference",
+        "id": "2964d554abaf17e9",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "2023-07-26",
+        "title": "2023-07-26",
+        "text": "⇒ [[elm-pages-starter-express]] [https://github.com/blaix/elm-pages-starter-express github], [https://github.com/dillonkearns/elm-pages/discussions/378#discussioncomment-5930563 page] ⇒ [[2023-08-14]]"
+      },
+      "date": 1692022797123
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. [[Smalltalk Class/Metaclass Kernel]]"
+      },
+      "date": 1692024418113
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, init is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. [⇒ [[Smalltalk Class/Metaclass Kernel]]]"
+      },
+      "date": 1692024427730
+    },
+    {
+      "type": "edit",
+      "id": "e8b7cac30552957e",
+      "item": {
+        "type": "paragraph",
+        "id": "e8b7cac30552957e",
+        "text": "The server one runs without a browser (a headless application). It runs your init without any of the commands from init. It takes your data from init and renders that to an HTML string, and then that is the inital response sent to the client. So the client has a fully render HTML view before the JavaScript takes over the page."
+      },
+      "date": 1692025280256
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]] (,"
+      },
+      "date": 1692025329931
+    },
+    {
+      "type": "edit",
+      "id": "b0d256fb111c7f1c",
+      "item": {
+        "type": "markdown",
+        "id": "b0d256fb111c7f1c",
+        "text": "1. [[Elm]] (it is an extension of Elm)\n2. a Single Page Application (SPA) in Elm, that extends the traditional Elm architecture [⇒ [[The Elm Architecture]]]"
+      },
+      "date": 1692025337896
+    },
+    {
+      "type": "edit",
+      "id": "f83d83e62a12d096",
+      "item": {
+        "type": "audio",
+        "id": "f83d83e62a12d096",
+        "text": "https://cdn.simplecast.com/audio/6a206baa-9c8e-4c25-9037-2b674204ba84/episodes/2f7f5e41-541c-438f-b1a0-6501adce93da/audio/0a77cf57-4f6a-43e8-aaf0-5693e5d9a651/default_tc.mp3\nElm Radio 86 [https://elm-radio.com/episode/elm-pages-v3/ podcast]"
+      },
+      "date": 1692029074091
+    },
+    {
+      "type": "edit",
+      "id": "229f90a5f8e1c18e",
+      "item": {
+        "type": "paragraph",
+        "id": "229f90a5f8e1c18e",
+        "text": "04:01 In elm-pages, the init function is executed on the server. It takes the Elm app you write and runs it in 2 places. It runs on the server and it runs on the client, in the browser. It runs it twice and it creates 2 applications. [⇒ [[Smalltalk Class/Metaclass Kernel]]]"
+      },
+      "date": 1692029208933
+    },
+    {
+      "id": "229f90a5f8e1c18e",
+      "type": "remove",
+      "removedTo": {
+        "page": "2023-08-14"
+      },
+      "date": 1692029510443
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1692086950719
+    }
+  ]
+}

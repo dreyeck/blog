@@ -1,0 +1,902 @@
+{
+  "title": "elm-pages-3-alpha-starter",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "618d518375c2fbc7",
+      "text": "This is a starter to try the elm-pages 3.0 alpha. [https://github.com/dreyeck/elm-pages-3-alpha-starter github]"
+    },
+    {
+      "type": "pagefold",
+      "id": "63eb1f37f009bb60",
+      "text": "~"
+    },
+    {
+      "type": "paragraph",
+      "id": "09e3a060953aa087",
+      "text": "Question for Dillion [https://elmlang.slack.com/archives/CNSNETV37/p1682671301861339 slack], at blog.dreyeck.ch I am experimenting with your elm-pages-3-alpha-starter.\nI have replaced the blog with a view route [https://github.com/dreyeck/elm-pages-3-alpha-starter/commit/5f90ce168f5c751f0a0ddb440c57a8014336a6cd commit]\nNow inspecting the page I see “elm-pages is up and running!”\nThe message is: Hello!\nbut then “This page could not be found.”\n(which you will see immediately without using the Debugger, Inspect)\nDo I need the said [[Elm-Pages Adapter]] or would it be more clever in my case to remove all netlify related parts of your code (redirects etc)? Would there be a starter for my Federated Wiki running on a NixOS server scenario? […]"
+    },
+    {
+      "type": "paragraph",
+      "id": "539a40ff461ec464",
+      "text": "By the way, I had to modify the generated [http://blog.dreyeck.ch/assets/home/index.html index.html]: replace the absolute path with the relative path to the .js and .css files. How could I adjust the build process accordingly?"
+    },
+    {
+      "type": "pagefold",
+      "id": "70969b78bfe694f9",
+      "text": "~"
+    },
+    {
+      "type": "paragraph",
+      "id": "e586d8b5522cc291",
+      "text": "blaix 1:52 PM via [https://elmlang.slack.com/archives/CNSNETV37/p1684324333003259 slack] @dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages?"
+    },
+    {
+      "type": "paragraph",
+      "id": "2803015acccaa071",
+      "text": "dillonkearns\n 6:41 PM\nThis is very cool \n@blaix\n, so glad you're finding it easy enough to build something now! It was tricky to wrangle it to find the simpler thing, but now that I've got it it feels really natural to just give a file with that simple render function interface.\nI started a GitHub Discussion thread about adapters. I think it would be great to discuss questions, implementations, and ideas over there as I'm sure people will want to explore a lot of different frameworks/hosts. [https://github.com/dillonkearns/elm-pages/discussions/378 page]. I would love it if people would chime in over there and share their ideas or what they've been able to build!"
+    },
+    {
+      "type": "paragraph",
+      "id": "f01dab79a6a50d73",
+      "text": "It looks like the SvelteKit Node adapter generates both (a file with a handler function, which I assume is a connect compliant middleware, as well as a full file that runs a server with that all wired in): [https://kit.svelte.dev/docs/adapter-node#custom-server page]"
+    },
+    {
+      "type": "pagefold",
+      "id": "f5775cd0f897e6c3",
+      "text": "~"
+    },
+    {
+      "type": "reference",
+      "id": "048155f004519c2c",
+      "site": "wiki.ralfbarkow.ch",
+      "slug": "elm-pages-v3",
+      "title": "elm-pages v3",
+      "text": "We discuss the new elm-pages v3 release and the new suite of features for full-stack server-side rendered Elm."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "elm-pages-3-alpha-starter",
+        "story": []
+      },
+      "date": 1682597314534
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "618d518375c2fbc7"
+      },
+      "id": "618d518375c2fbc7",
+      "type": "add",
+      "date": 1682597328749
+    },
+    {
+      "type": "edit",
+      "id": "618d518375c2fbc7",
+      "item": {
+        "type": "paragraph",
+        "id": "618d518375c2fbc7",
+        "text": "[https://github.com/dreyeck/elm-pages-3-alpha-starter github]"
+      },
+      "date": 1682597334471
+    },
+    {
+      "type": "edit",
+      "id": "618d518375c2fbc7",
+      "item": {
+        "type": "paragraph",
+        "id": "618d518375c2fbc7",
+        "text": "This is a starter to try the elm-pages 3.0 alpha.[https://github.com/dreyeck/elm-pages-3-alpha-starter github]"
+      },
+      "date": 1682597359730
+    },
+    {
+      "type": "edit",
+      "id": "618d518375c2fbc7",
+      "item": {
+        "type": "paragraph",
+        "id": "618d518375c2fbc7",
+        "text": "This is a starter to try the elm-pages 3.0 alpha. [https://github.com/dreyeck/elm-pages-3-alpha-starter github]"
+      },
+      "date": 1682597365100
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "54eed6e40e9e6741"
+      },
+      "id": "54eed6e40e9e6741",
+      "type": "add",
+      "after": "618d518375c2fbc7",
+      "date": 1682597382330
+    },
+    {
+      "type": "edit",
+      "id": "54eed6e40e9e6741",
+      "item": {
+        "type": "reference",
+        "id": "54eed6e40e9e6741",
+        "site": "blog.dreyeck.ch",
+        "slug": "hello",
+        "title": "hello",
+        "text": ""
+      },
+      "date": 1682597392907
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "07bcc9c0bdf94d3d"
+      },
+      "id": "07bcc9c0bdf94d3d",
+      "type": "add",
+      "after": "54eed6e40e9e6741",
+      "date": 1682597535893
+    },
+    {
+      "type": "edit",
+      "id": "07bcc9c0bdf94d3d",
+      "item": {
+        "type": "paragraph",
+        "id": "07bcc9c0bdf94d3d",
+        "text": "cd .wiki/\nmkdir blog.dreyeck.ch\n  503  cd blog.dreyeck.ch/\n\n  505  git clone git@github.com:dreyeck/elm-pages-3-alpha-starter.git\n  506  ls -Filas\n  507  mkdir assets\n  508  cd elm-pages-3-alpha-starter/\n  509  npm run build\n  510  npx elm-pages build\n  511  ls\n  512  npm insgtall\n  513  npm install\n  514  npx elm-pages build\n  515  cd ..\n  516  cd assets/\n  517  ln -s ../elm-pages-3-alpha-starter/dist home\n  518  ls -Filas\n  519  cd home\n  520  ls\n  521  cd ..\n  522  cd ..\n  523  cd ../hive.dreyeck.ch/\n  524  cd ../\n  525  cd blog.dreyeck.ch/\n  526  mkdir status\n  527  cd status/\n  528  ls\n  529  ls -Filas\n  530  cp ~/.wiki/hive.dreyeck.ch/status/owner.json ."
+      },
+      "date": 1682597560435
+    },
+    {
+      "type": "edit",
+      "id": "07bcc9c0bdf94d3d",
+      "item": {
+        "type": "paragraph",
+        "id": "07bcc9c0bdf94d3d",
+        "text": "cd .wiki/"
+      },
+      "date": 1682597710681
+    },
+    {
+      "type": "add",
+      "id": "9d5866218bf42135",
+      "item": {
+        "type": "paragraph",
+        "id": "9d5866218bf42135",
+        "text": "mkdir blog.dreyeck.ch\n"
+      },
+      "after": "07bcc9c0bdf94d3d",
+      "date": 1682597713452
+    },
+    {
+      "type": "add",
+      "id": "5c395fb0bb8ba37d",
+      "item": {
+        "type": "paragraph",
+        "id": "5c395fb0bb8ba37d",
+        "text": "cd blog.dreyeck.ch/"
+      },
+      "after": "9d5866218bf42135",
+      "date": 1682597724553
+    },
+    {
+      "type": "add",
+      "id": "6e5263f03198546e",
+      "item": {
+        "type": "paragraph",
+        "id": "6e5263f03198546e",
+        "text": "git clone git@github.com:dreyeck/elm-pages-3-alpha-starter.git"
+      },
+      "after": "5c395fb0bb8ba37d",
+      "date": 1682597737030
+    },
+    {
+      "type": "add",
+      "id": "645937511ba59cf3",
+      "item": {
+        "type": "paragraph",
+        "id": "645937511ba59cf3",
+        "text": "mkdir assets"
+      },
+      "after": "6e5263f03198546e",
+      "date": 1682597741823
+    },
+    {
+      "type": "add",
+      "id": "0c7c2bf479c89592",
+      "item": {
+        "type": "paragraph",
+        "id": "0c7c2bf479c89592",
+        "text": "cd elm-pages-3-alpha-starter/"
+      },
+      "after": "645937511ba59cf3",
+      "date": 1682597751452
+    },
+    {
+      "type": "add",
+      "id": "b9371ecd27c71dd8",
+      "item": {
+        "type": "paragraph",
+        "id": "b9371ecd27c71dd8",
+        "text": "npm install"
+      },
+      "after": "0c7c2bf479c89592",
+      "date": 1682597764000
+    },
+    {
+      "type": "add",
+      "id": "fe0b84fed1ddff46",
+      "item": {
+        "type": "paragraph",
+        "id": "fe0b84fed1ddff46",
+        "text": "npx elm-pages build\n  511  ls\n  512  npm insgtall\n  513  npm install\n  514  npx elm-pages build\n  515  cd ..\n  516  cd assets/\n  517  ln -s ../elm-pages-3-alpha-starter/dist home\n  518  ls -Filas\n  519  cd home\n  520  ls\n  521  cd ..\n  522  cd ..\n  523  cd ../hive.dreyeck.ch/\n  524  cd ../\n  525  cd blog.dreyeck.ch/\n  526  mkdir status\n  527  cd status/\n  528  ls\n  529  ls -Filas\n  530  cp ~/.wiki/hive.dreyeck.ch/status/owner.json ."
+      },
+      "after": "b9371ecd27c71dd8",
+      "date": 1682597767992
+    },
+    {
+      "type": "edit",
+      "id": "07bcc9c0bdf94d3d",
+      "item": {
+        "type": "paragraph",
+        "id": "07bcc9c0bdf94d3d",
+        "text": "cd ~/.wiki/"
+      },
+      "date": 1682597815387
+    },
+    {
+      "type": "edit",
+      "id": "fe0b84fed1ddff46",
+      "item": {
+        "type": "paragraph",
+        "id": "fe0b84fed1ddff46",
+        "text": "npx elm-pages build"
+      },
+      "date": 1682597839251
+    },
+    {
+      "type": "add",
+      "id": "47c3eca8b5eacc52",
+      "item": {
+        "type": "paragraph",
+        "id": "47c3eca8b5eacc52",
+        "text": "cd ../assets/"
+      },
+      "after": "fe0b84fed1ddff46",
+      "date": 1682597869670
+    },
+    {
+      "type": "add",
+      "id": "6b6b5721a2cf6a81",
+      "item": {
+        "type": "paragraph",
+        "id": "6b6b5721a2cf6a81",
+        "text": "ln -s ../elm-pages-3-alpha-starter/dist home"
+      },
+      "after": "47c3eca8b5eacc52",
+      "date": 1682597898976
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "70969b78bfe694f9"
+      },
+      "id": "70969b78bfe694f9",
+      "type": "add",
+      "after": "6b6b5721a2cf6a81",
+      "date": 1682599863165
+    },
+    {
+      "type": "edit",
+      "id": "70969b78bfe694f9",
+      "item": {
+        "type": "pagefold",
+        "id": "70969b78bfe694f9",
+        "text": "~"
+      },
+      "date": 1682599867036
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "5f5385c48c62fc3c"
+      },
+      "id": "5f5385c48c62fc3c",
+      "type": "add",
+      "after": "70969b78bfe694f9",
+      "date": 1682599868420
+    },
+    {
+      "type": "edit",
+      "id": "5f5385c48c62fc3c",
+      "item": {
+        "type": "paragraph",
+        "id": "5f5385c48c62fc3c",
+        "text": "If we enable the .js and .css files in the index.html, we get a Page not found error (\"This page could not be found.\") on blog.dreyeck.ch."
+      },
+      "date": 1682599869705
+    },
+    {
+      "type": "edit",
+      "id": "54eed6e40e9e6741",
+      "item": {
+        "type": "reference",
+        "id": "54eed6e40e9e6741",
+        "site": "blog.dreyeck.ch",
+        "slug": "hello",
+        "title": "hello",
+        "text": "Replace the blog with a view route [https://github.com/dreyeck/elm-pages-3-alpha-starter/commit/5f90ce168f5c751f0a0ddb440c57a8014336a6cd commit]"
+      },
+      "date": 1682671610003
+    },
+    {
+      "type": "edit",
+      "id": "6e5263f03198546e",
+      "item": {
+        "type": "paragraph",
+        "id": "6e5263f03198546e",
+        "text": "git clone git@github.com:dreyeck/elm-pages-3-alpha-starter.git [https://github.com/dreyeck/elm-pages-3-alpha-starter github]"
+      },
+      "date": 1682671634280
+    },
+    {
+      "type": "edit",
+      "id": "6e5263f03198546e",
+      "item": {
+        "type": "paragraph",
+        "id": "6e5263f03198546e",
+        "text": "git clone git@github.com:dreyeck/elm-pages-3-alpha-starter.git [forked from dillonkearns/elm-pages-3-alpha-starter]"
+      },
+      "date": 1682671664409
+    },
+    {
+      "type": "edit",
+      "id": "6e5263f03198546e",
+      "item": {
+        "type": "paragraph",
+        "id": "6e5263f03198546e",
+        "text": "git clone git@github.com:dreyeck/elm-pages-3-alpha-starter.git [forked from dillonkearns/elm-pages-3-alpha-starter [https://github.com/dillonkearns/elm-pages-3-alpha-starter github]]"
+      },
+      "date": 1682671680538
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "63eb1f37f009bb60"
+      },
+      "id": "63eb1f37f009bb60",
+      "type": "add",
+      "after": "5f5385c48c62fc3c",
+      "date": 1682671776055
+    },
+    {
+      "type": "edit",
+      "id": "63eb1f37f009bb60",
+      "item": {
+        "type": "pagefold",
+        "id": "63eb1f37f009bb60",
+        "text": "~"
+      },
+      "date": 1682671779673
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "09e3a060953aa087"
+      },
+      "id": "09e3a060953aa087",
+      "type": "add",
+      "after": "63eb1f37f009bb60",
+      "date": 1682671781619
+    },
+    {
+      "type": "edit",
+      "id": "09e3a060953aa087",
+      "item": {
+        "type": "paragraph",
+        "id": "09e3a060953aa087",
+        "text": "Question for Dillion"
+      },
+      "date": 1682671784226
+    },
+    {
+      "type": "edit",
+      "id": "09e3a060953aa087",
+      "item": {
+        "type": "paragraph",
+        "id": "09e3a060953aa087",
+        "text": "Question for Dillion [https://elmlang.slack.com/archives/CNSNETV37/p1682671301861339 slack]"
+      },
+      "date": 1682671799785
+    },
+    {
+      "type": "edit",
+      "id": "09e3a060953aa087",
+      "item": {
+        "type": "paragraph",
+        "id": "09e3a060953aa087",
+        "text": "Question for Dillion [https://elmlang.slack.com/archives/CNSNETV37/p1682671301861339 slack], at blog.dreyeck.ch I am experimenting with your elm-pages-3-alpha-starter.\nI have replaced the blog with a view route [commit]\nNow inspecting the page I see “elm-pages is up and running!”\nThe message is: Hello!\nbut then “This page could not be found.”\n(which you will see immediately without using the Debugger, Inspect)\nDo I need the said elm-pages adapter or would it be more clever in my case to remove all netlify related parts of your code (redirects etc)? Would there be a starter for my Federated Wiki running on a NixOS server scenario? […]"
+      },
+      "date": 1682671875836
+    },
+    {
+      "type": "edit",
+      "id": "09e3a060953aa087",
+      "item": {
+        "type": "paragraph",
+        "id": "09e3a060953aa087",
+        "text": "Question for Dillion [https://elmlang.slack.com/archives/CNSNETV37/p1682671301861339 slack], at blog.dreyeck.ch I am experimenting with your elm-pages-3-alpha-starter.\nI have replaced the blog with a view route [https://github.com/dreyeck/elm-pages-3-alpha-starter/commit/5f90ce168f5c751f0a0ddb440c57a8014336a6cd commit]\nNow inspecting the page I see “elm-pages is up and running!”\nThe message is: Hello!\nbut then “This page could not be found.”\n(which you will see immediately without using the Debugger, Inspect)\nDo I need the said elm-pages adapter or would it be more clever in my case to remove all netlify related parts of your code (redirects etc)? Would there be a starter for my Federated Wiki running on a NixOS server scenario? […]"
+      },
+      "date": 1682671907351
+    },
+    {
+      "type": "edit",
+      "id": "09e3a060953aa087",
+      "item": {
+        "type": "paragraph",
+        "id": "09e3a060953aa087",
+        "text": "Question for Dillion [https://elmlang.slack.com/archives/CNSNETV37/p1682671301861339 slack], at blog.dreyeck.ch I am experimenting with your elm-pages-3-alpha-starter.\nI have replaced the blog with a view route [https://github.com/dreyeck/elm-pages-3-alpha-starter/commit/5f90ce168f5c751f0a0ddb440c57a8014336a6cd commit]\nNow inspecting the page I see “elm-pages is up and running!”\nThe message is: Hello!\nbut then “This page could not be found.”\n(which you will see immediately without using the Debugger, Inspect)\nDo I need the said [[elm-pages adapter]] or would it be more clever in my case to remove all netlify related parts of your code (redirects etc)? Would there be a starter for my Federated Wiki running on a NixOS server scenario? […]"
+      },
+      "date": 1682671935200
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "539a40ff461ec464"
+      },
+      "id": "539a40ff461ec464",
+      "type": "add",
+      "after": "09e3a060953aa087",
+      "date": 1682672319057
+    },
+    {
+      "type": "edit",
+      "id": "539a40ff461ec464",
+      "item": {
+        "type": "paragraph",
+        "id": "539a40ff461ec464",
+        "text": "By the way, I had to modify the generated index.html: replace the absolute path with the relative path to the .js and .css files. How could I adjust the build process accordingly?"
+      },
+      "date": 1682672320367
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "7bccb56f7a3bffa5"
+      },
+      "id": "7bccb56f7a3bffa5",
+      "type": "add",
+      "after": "539a40ff461ec464",
+      "date": 1682672330743
+    },
+    {
+      "type": "edit",
+      "id": "7bccb56f7a3bffa5",
+      "item": {
+        "type": "assets",
+        "id": "7bccb56f7a3bffa5",
+        "text": "home"
+      },
+      "date": 1682672340057
+    },
+    {
+      "type": "edit",
+      "id": "539a40ff461ec464",
+      "item": {
+        "type": "paragraph",
+        "id": "539a40ff461ec464",
+        "text": "By the way, I had to modify the generated [http://blog.dreyeck.ch/assets/home/index.html index.html]: replace the absolute path with the relative path to the .js and .css files. How could I adjust the build process accordingly?"
+      },
+      "date": 1682672389826
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "f29ec020efe97b5f"
+      },
+      "id": "f29ec020efe97b5f",
+      "type": "add",
+      "after": "7bccb56f7a3bffa5",
+      "date": 1682672446031
+    },
+    {
+      "type": "edit",
+      "id": "f29ec020efe97b5f",
+      "item": {
+        "type": "reference",
+        "id": "f29ec020efe97b5f",
+        "site": "start.fed.wiki",
+        "slug": "custom-home-page",
+        "title": "Custom Home Page",
+        "text": "This site provides games to learn wiki."
+      },
+      "date": 1682672476466
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "0a7b61114fd36545"
+      },
+      "id": "0a7b61114fd36545",
+      "type": "add",
+      "after": "f29ec020efe97b5f",
+      "date": 1682672536065
+    },
+    {
+      "type": "edit",
+      "id": "0a7b61114fd36545",
+      "item": {
+        "type": "reference",
+        "id": "0a7b61114fd36545",
+        "site": "found.ward.bay.wiki.org",
+        "slug": "catalog-of-custom-home-pages",
+        "title": "Catalog of Custom Home Pages",
+        "text": "We have an asset convention for making [[Safe and Familiar Welcome]] pages. The server looks for index.html in the home asset. When there, it redirects to this to start browsing. We encourage this by offering examples to be forked and modified."
+      },
+      "date": 1682672539488
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "a940561ad26783f9"
+      },
+      "id": "a940561ad26783f9",
+      "type": "add",
+      "after": "0a7b61114fd36545",
+      "date": 1682672555387
+    },
+    {
+      "type": "edit",
+      "id": "a940561ad26783f9",
+      "item": {
+        "type": "reference",
+        "id": "a940561ad26783f9",
+        "site": "found.ward.bay.wiki.org",
+        "slug": "safe-and-familiar-welcome",
+        "title": "Safe and Familiar Welcome",
+        "text": "We could provide an \"index.html\" style template in the server that would present a more familiar welcome page before easing visitors into the new world of federated wiki."
+      },
+      "date": 1682672557875
+    },
+    {
+      "id": "a940561ad26783f9",
+      "type": "move",
+      "order": [
+        "618d518375c2fbc7",
+        "54eed6e40e9e6741",
+        "07bcc9c0bdf94d3d",
+        "9d5866218bf42135",
+        "5c395fb0bb8ba37d",
+        "6e5263f03198546e",
+        "645937511ba59cf3",
+        "0c7c2bf479c89592",
+        "b9371ecd27c71dd8",
+        "fe0b84fed1ddff46",
+        "47c3eca8b5eacc52",
+        "6b6b5721a2cf6a81",
+        "70969b78bfe694f9",
+        "5f5385c48c62fc3c",
+        "63eb1f37f009bb60",
+        "09e3a060953aa087",
+        "539a40ff461ec464",
+        "7bccb56f7a3bffa5",
+        "a940561ad26783f9",
+        "f29ec020efe97b5f",
+        "0a7b61114fd36545"
+      ],
+      "date": 1682672559691
+    },
+    {
+      "type": "remove",
+      "id": "54eed6e40e9e6741",
+      "date": 1692086066403
+    },
+    {
+      "type": "remove",
+      "id": "07bcc9c0bdf94d3d",
+      "date": 1692086071251
+    },
+    {
+      "type": "remove",
+      "id": "0c7c2bf479c89592",
+      "date": 1692086073126
+    },
+    {
+      "type": "remove",
+      "id": "9d5866218bf42135",
+      "date": 1692086075858
+    },
+    {
+      "type": "remove",
+      "id": "5c395fb0bb8ba37d",
+      "date": 1692086076931
+    },
+    {
+      "type": "remove",
+      "id": "6e5263f03198546e",
+      "date": 1692086078642
+    },
+    {
+      "type": "remove",
+      "id": "645937511ba59cf3",
+      "date": 1692086080362
+    },
+    {
+      "type": "remove",
+      "id": "b9371ecd27c71dd8",
+      "date": 1692086082726
+    },
+    {
+      "type": "remove",
+      "id": "fe0b84fed1ddff46",
+      "date": 1692086084839
+    },
+    {
+      "type": "remove",
+      "id": "47c3eca8b5eacc52",
+      "date": 1692086086798
+    },
+    {
+      "type": "remove",
+      "id": "6b6b5721a2cf6a81",
+      "date": 1692086091659
+    },
+    {
+      "type": "remove",
+      "id": "5f5385c48c62fc3c",
+      "date": 1692086113111
+    },
+    {
+      "id": "70969b78bfe694f9",
+      "type": "move",
+      "order": [
+        "618d518375c2fbc7",
+        "63eb1f37f009bb60",
+        "09e3a060953aa087",
+        "539a40ff461ec464",
+        "7bccb56f7a3bffa5",
+        "70969b78bfe694f9",
+        "a940561ad26783f9",
+        "f29ec020efe97b5f",
+        "0a7b61114fd36545"
+      ],
+      "date": 1692086247232
+    },
+    {
+      "type": "remove",
+      "id": "7bccb56f7a3bffa5",
+      "date": 1692086250286
+    },
+    {
+      "type": "remove",
+      "id": "a940561ad26783f9",
+      "date": 1692086258307
+    },
+    {
+      "type": "remove",
+      "id": "0a7b61114fd36545",
+      "date": 1692086259797
+    },
+    {
+      "type": "remove",
+      "id": "f29ec020efe97b5f",
+      "date": 1692086261503
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "f3dca79ed4cde479"
+      },
+      "id": "f3dca79ed4cde479",
+      "type": "add",
+      "after": "70969b78bfe694f9",
+      "date": 1692086262574
+    },
+    {
+      "type": "remove",
+      "id": "f3dca79ed4cde479",
+      "date": 1692086267416
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "e586d8b5522cc291"
+      },
+      "id": "e586d8b5522cc291",
+      "type": "add",
+      "after": "70969b78bfe694f9",
+      "date": 1692086289028
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix\n  1:52 PM\n@dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages? (edited) \n\n\ndillonkearns\n:palm_tree:  6:41 PM\nThis is very cool \n@blaix\n, so glad you're finding it easy enough to build something now! It was tricky to wrangle it to find the simpler thing, but now that I've got it it feels really natural to just give a file with that simple render function interface.\nI started a GitHub Discussion thread about adapters. I think it would be great to discuss questions, implementations, and ideas over there as I'm sure people will want to explore a lot of different frameworks/hosts. https://github.com/dillonkearns/elm-pages/discussions/378. I would love it if people would chime in over there and share their ideas or what they've been able to build!\n:+1:\n1\n\n6:44\nwere you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages?\nIt looks like the SvelteKit Node adapter generates both (a file with a handler function, which I assume is a connect compliant middleware, as well as a full file that runs a server with that all wired in): https://kit.svelte.dev/docs/adapter-node#custom-server (edited) \nkit.svelte.devkit.svelte.dev\nSvelteKit docs\nNode servers • SvelteKit documentation"
+      },
+      "date": 1692086291024
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix\n  1:52 PM\n@dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages? (edited) \n\n\ndillonkearns\n:palm_tree:  6:41 PM\nThis is very cool \n@blaix\n, so glad you're finding it easy enough to build something now! It was tricky to wrangle it to find the simpler thing, but now that I've got it it feels really natural to just give a file with that simple render function interface.\nI started a GitHub Discussion thread about adapters. I think it would be great to discuss questions, implementations, and ideas over there as I'm sure people will want to explore a lot of different frameworks/hosts. https://github.com/dillonkearns/elm-pages/discussions/378. I would love it if people would chime in over there and share their ideas or what they've been able to build!\n:+1:\n1\n\n6:44\nwere you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages?"
+      },
+      "date": 1692086323799
+    },
+    {
+      "type": "add",
+      "id": "f01dab79a6a50d73",
+      "item": {
+        "type": "paragraph",
+        "id": "f01dab79a6a50d73",
+        "text": "It looks like the SvelteKit Node adapter generates both (a file with a handler function, which I assume is a connect compliant middleware, as well as a full file that runs a server with that all wired in): https://kit.svelte.dev/docs/adapter-node#custom-server (edited) \nkit.svelte.devkit.svelte.dev\nSvelteKit docs\nNode servers • SvelteKit documentation"
+      },
+      "after": "e586d8b5522cc291",
+      "date": 1692086325545
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix\n  1:52 PM\n@dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages? (edited) \n\n\ndillonkearns\n:palm_tree:  6:41 PM\nThis is very cool \n@blaix\n, so glad you're finding it easy enough to build something now! It was tricky to wrangle it to find the simpler thing, but now that I've got it it feels really natural to just give a file with that simple render function interface.\nI started a GitHub Discussion thread about adapters. I think it would be great to discuss questions, implementations, and ideas over there as I'm sure people will want to explore a lot of different frameworks/hosts. https://github.com/dillonkearns/elm-pages/discussions/378. I would love it if people would chime in over there and share their ideas or what they've been able to build!"
+      },
+      "date": 1692086332399
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix\n  1:52 PM\n@dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages? (edited)"
+      },
+      "date": 1692086352345
+    },
+    {
+      "type": "add",
+      "id": "2803015acccaa071",
+      "item": {
+        "type": "paragraph",
+        "id": "2803015acccaa071",
+        "text": "dillonkearns\n 6:41 PM\nThis is very cool \n@blaix\n, so glad you're finding it easy enough to build something now! It was tricky to wrangle it to find the simpler thing, but now that I've got it it feels really natural to just give a file with that simple render function interface.\nI started a GitHub Discussion thread about adapters. I think it would be great to discuss questions, implementations, and ideas over there as I'm sure people will want to explore a lot of different frameworks/hosts. https://github.com/dillonkearns/elm-pages/discussions/378. I would love it if people would chime in over there and share their ideas or what they've been able to build!"
+      },
+      "after": "e586d8b5522cc291",
+      "date": 1692086355948
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix\n  1:52 PM\n@dillonkearns via [https://elmlang.slack.com/archives/CNSNETV37/p1684324333003259 slack]\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages? (edited)"
+      },
+      "date": 1692086439718
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix 1:52 PM via [https://elmlang.slack.com/archives/CNSNETV37/p1684324333003259 slack] @dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages? (edited)"
+      },
+      "date": 1692086460027
+    },
+    {
+      "type": "edit",
+      "id": "e586d8b5522cc291",
+      "item": {
+        "type": "paragraph",
+        "id": "e586d8b5522cc291",
+        "text": "blaix 1:52 PM via [https://elmlang.slack.com/archives/CNSNETV37/p1684324333003259 slack] @dillonkearns\n were you picturing the adapter generating that server.js file? And if we wanted to share something like this would you like a PR to elm pages or people publishing standalone packages?"
+      },
+      "date": 1692086472795
+    },
+    {
+      "type": "edit",
+      "id": "2803015acccaa071",
+      "item": {
+        "type": "paragraph",
+        "id": "2803015acccaa071",
+        "text": "dillonkearns\n 6:41 PM\nThis is very cool \n@blaix\n, so glad you're finding it easy enough to build something now! It was tricky to wrangle it to find the simpler thing, but now that I've got it it feels really natural to just give a file with that simple render function interface.\nI started a GitHub Discussion thread about adapters. I think it would be great to discuss questions, implementations, and ideas over there as I'm sure people will want to explore a lot of different frameworks/hosts. [https://github.com/dillonkearns/elm-pages/discussions/378 page]. I would love it if people would chime in over there and share their ideas or what they've been able to build!"
+      },
+      "date": 1692086516832
+    },
+    {
+      "type": "edit",
+      "id": "f01dab79a6a50d73",
+      "item": {
+        "type": "paragraph",
+        "id": "f01dab79a6a50d73",
+        "text": "It looks like the SvelteKit Node adapter generates both (a file with a handler function, which I assume is a connect compliant middleware, as well as a full file that runs a server with that all wired in): [https://kit.svelte.dev/docs/adapter-node#custom-server page]\nkit.svelte.devkit.svelte.dev\nSvelteKit docs\nNode servers • SvelteKit documentation"
+      },
+      "date": 1692086542337
+    },
+    {
+      "type": "edit",
+      "id": "f01dab79a6a50d73",
+      "item": {
+        "type": "paragraph",
+        "id": "f01dab79a6a50d73",
+        "text": "It looks like the SvelteKit Node adapter generates both (a file with a handler function, which I assume is a connect compliant middleware, as well as a full file that runs a server with that all wired in): [https://kit.svelte.dev/docs/adapter-node#custom-server page]"
+      },
+      "date": 1692086560927
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "048155f004519c2c"
+      },
+      "id": "048155f004519c2c",
+      "type": "add",
+      "after": "f01dab79a6a50d73",
+      "date": 1692086766959
+    },
+    {
+      "type": "edit",
+      "id": "048155f004519c2c",
+      "item": {
+        "type": "reference",
+        "id": "048155f004519c2c",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "elm-pages-v3",
+        "title": "elm-pages v3",
+        "text": "We discuss the new elm-pages v3 release and the new suite of features for full-stack server-side rendered Elm."
+      },
+      "date": 1692086781625
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "f5775cd0f897e6c3"
+      },
+      "id": "f5775cd0f897e6c3",
+      "type": "add",
+      "after": "048155f004519c2c",
+      "date": 1692086792903
+    },
+    {
+      "id": "f5775cd0f897e6c3",
+      "type": "move",
+      "order": [
+        "618d518375c2fbc7",
+        "63eb1f37f009bb60",
+        "09e3a060953aa087",
+        "539a40ff461ec464",
+        "70969b78bfe694f9",
+        "e586d8b5522cc291",
+        "2803015acccaa071",
+        "f01dab79a6a50d73",
+        "f5775cd0f897e6c3",
+        "048155f004519c2c"
+      ],
+      "date": 1692086795336
+    },
+    {
+      "type": "edit",
+      "id": "f5775cd0f897e6c3",
+      "item": {
+        "type": "pagefold",
+        "id": "f5775cd0f897e6c3",
+        "text": "~"
+      },
+      "date": 1692086798016
+    },
+    {
+      "type": "edit",
+      "id": "09e3a060953aa087",
+      "item": {
+        "type": "paragraph",
+        "id": "09e3a060953aa087",
+        "text": "Question for Dillion [https://elmlang.slack.com/archives/CNSNETV37/p1682671301861339 slack], at blog.dreyeck.ch I am experimenting with your elm-pages-3-alpha-starter.\nI have replaced the blog with a view route [https://github.com/dreyeck/elm-pages-3-alpha-starter/commit/5f90ce168f5c751f0a0ddb440c57a8014336a6cd commit]\nNow inspecting the page I see “elm-pages is up and running!”\nThe message is: Hello!\nbut then “This page could not be found.”\n(which you will see immediately without using the Debugger, Inspect)\nDo I need the said [[Elm-Pages Adapter]] or would it be more clever in my case to remove all netlify related parts of your code (redirects etc)? Would there be a starter for my Federated Wiki running on a NixOS server scenario? […]"
+      },
+      "date": 1692086882624
+    }
+  ]
+}
