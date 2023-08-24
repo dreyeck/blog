@@ -1,9 +1,10 @@
-module Route.View.Slug_ exposing (ActionData, Data, Model, Msg, RouteParams, route)
+module Route.View.Slug_.SPLAT__ exposing (Model, Msg, RouteParams, route, Data, ActionData)
 
-{-| 
+{-|
+
 @docs Model, Msg, RouteParams, route, Data, ActionData
--}
 
+-}
 
 import BackendTask
 import Effect
@@ -29,7 +30,7 @@ type Msg
 
 
 type alias RouteParams =
-    { slug : String }
+    { slug : String, splat : List String }
 
 
 route : RouteBuilder.StatefulRoute RouteParams Data ActionData Model Msg
@@ -63,8 +64,7 @@ update app shared msg model =
             ( model, Effect.none )
 
 
-subscriptions :
-    RouteParams -> UrlPath.UrlPath -> Shared.Model -> Model -> Sub Msg
+subscriptions : RouteParams -> UrlPath.UrlPath -> Shared.Model -> Model -> Sub Msg
 subscriptions routeParams path shared model =
     Sub.none
 
@@ -96,7 +96,9 @@ view :
     -> Model
     -> View.View (PagesMsg.PagesMsg Msg)
 view app shared model =
-    { title = "View.Slug_", body = [ Html.h2 [] [ Html.text "New Page" ] ] }
+    { title = "View.Slug_.SPLAT__"
+    , body = [ Html.h2 [] [ Html.text "New Page" ] ]
+    }
 
 
 action :
