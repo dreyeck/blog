@@ -90,6 +90,16 @@ head app =
     []
 
 
+getSlug : RouteBuilder.App Data ActionData RouteParams -> String
+getSlug app =
+    app.routeParams.slug
+
+
+getSplat : RouteBuilder.App Data ActionData RouteParams -> String
+getSplat app =
+    String.join ", " app.routeParams.splat
+
+
 view :
     RouteBuilder.App Data ActionData RouteParams
     -> Shared.Model
@@ -97,7 +107,7 @@ view :
     -> View.View (PagesMsg.PagesMsg Msg)
 view app shared model =
     { title = "View.Slug_.SPLAT__"
-    , body = [ Html.h2 [] [ Html.text ("slug: " ++ Debug.toString app.routeParams.slug ++ ", splat: " ++ Debug.toString app.routeParams.splat) ] ]
+    , body = [ Html.h2 [] [ Html.text ("slug: " ++ getSlug app ++ ", splat: " ++ getSplat app) ] ]
     }
 
 
