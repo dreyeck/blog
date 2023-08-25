@@ -95,6 +95,12 @@ getSlug app =
     app.routeParams.slug
 
 
+{-| The splat data in RouteParams for an optional splat
+are List String rather than (String, List String)
+to represent the fact that optional splat routes could match 0 segments.
+See Optional Splat Routes <https://wiki.ralfbarkow.ch/view/optional-splat-routes>
+and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
+-}
 getSplat : RouteBuilder.App Data ActionData RouteParams -> String
 getSplat app =
     String.join ", " app.routeParams.splat
