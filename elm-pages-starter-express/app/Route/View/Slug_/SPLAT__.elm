@@ -97,7 +97,7 @@ view :
     -> View.View (PagesMsg.PagesMsg Msg)
 view app shared model =
     { title = "View.Slug_.SPLAT__"
-    , body = [ Html.h2 [] [ Html.text "New Page" ] ]
+    , body = [ Html.h2 [] [ Html.text ("slug: " ++ Debug.toString app.routeParams.slug ++ ", splat: " ++ Debug.toString app.routeParams.splat) ] ]
     }
 
 
