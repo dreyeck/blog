@@ -90,8 +90,8 @@ head app =
     []
 
 
-getSlug : RouteBuilder.App Data ActionData RouteParams -> String
-getSlug app =
+slug : RouteBuilder.App Data ActionData RouteParams -> String
+slug app =
     app.routeParams.slug
 
 
@@ -101,8 +101,8 @@ to represent the fact that optional splat routes could match 0 segments.
 See Optional Splat Routes <https://wiki.ralfbarkow.ch/view/optional-splat-routes>
 and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
 -}
-getSplat : RouteBuilder.App Data ActionData RouteParams -> String
-getSplat app =
+splat : RouteBuilder.App Data ActionData RouteParams -> String
+splat app =
     String.join ", " app.routeParams.splat
 
 
@@ -113,7 +113,7 @@ view :
     -> View.View (PagesMsg.PagesMsg Msg)
 view app shared model =
     { title = "View.Slug_.SPLAT__"
-    , body = [ Html.h2 [] [ Html.text ("slug: " ++ getSlug app ++ ", splat: " ++ getSplat app) ] ]
+    , body = [ Html.h2 [] [ Html.text ("slug: " ++ slug app ++ ", splat: " ++ splat app) ] ]
     }
 
 
