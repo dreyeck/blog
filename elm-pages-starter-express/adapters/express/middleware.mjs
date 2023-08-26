@@ -20,7 +20,7 @@ export default async (req, res, next) => {
 };
 
 const reqToElmPagesJson = (req) => {
-  const url = `${req.protocol}://${req.host}${req.originalUrl}`;
+  const url = `${req.protocol}://${req.hostname}${req.originalUrl}`;
   return {
     method: req.method,
     headers: req.headers,
