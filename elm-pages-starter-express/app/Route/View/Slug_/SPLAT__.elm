@@ -7,11 +7,14 @@ module Route.View.Slug_.SPLAT__ exposing (Model, Msg, RouteParams, route, Data, 
 -}
 
 import BackendTask
+import BackendTask.Custom
 import Effect
 import ErrorPage
 import FatalError
 import Head
 import Html
+import Json.Decode as Decode
+import Json.Encode as Encode
 import PagesMsg
 import RouteBuilder
 import Server.Request
@@ -70,7 +73,7 @@ subscriptions routeParams path shared model =
 
 
 type alias Data =
-    {}
+    { hello : String }
 
 
 type alias ActionData =
@@ -82,7 +85,12 @@ data :
     -> Server.Request.Request
     -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response Data ErrorPage.ErrorPage)
 data routeParams request =
-    BackendTask.succeed (Server.Response.render {})
+    BackendTask.Custom.run "hello"
+        Encode.null
+        Decode.string
+        |> BackendTask.allowFatal
+        |> BackendTask.map
+            (\hello -> Server.Response.render { hello = hello })
 
 
 head : RouteBuilder.App Data ActionData RouteParams -> List Head.Tag
@@ -113,7 +121,7 @@ view :
     -> View.View (PagesMsg.PagesMsg Msg)
 view app shared model =
     { title = "View.Slug_.SPLAT__"
-    , body = [ Html.h2 [] [ Html.text ("slug: " ++ slug app ++ ", splat: " ++ splat app) ] ]
+    , body = [ Html.h2 [] [ Html.text ("hello: " ++ app.data.hello ++ " slug: " ++ slug app ++ ", splat: " ++ splat app) ] ]
     }
 
 
