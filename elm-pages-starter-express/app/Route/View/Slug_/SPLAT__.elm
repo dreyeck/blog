@@ -86,7 +86,8 @@ data :
     -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response Data ErrorPage.ErrorPage)
 data routeParams request =
     BackendTask.Custom.run "hello"
-        Encode.null
+        -- Encode parameter name for hello(name)
+        (Encode.string routeParams.slug)
         Decode.string
         |> BackendTask.allowFatal
         |> BackendTask.map
@@ -121,7 +122,7 @@ view :
     -> View.View (PagesMsg.PagesMsg Msg)
 view app shared model =
     { title = "View.Slug_.SPLAT__"
-    , body = [ Html.h2 [] [ Html.text ("hello: " ++ app.data.hello ++ " slug: " ++ slug app ++ ", splat: " ++ splat app) ] ]
+    , body = [ Html.h2 [] [ Html.text (app.data.hello ++ ", splat: " ++ splat app) ] ]
     }
 
 
