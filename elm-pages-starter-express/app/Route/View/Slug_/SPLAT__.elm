@@ -22,6 +22,7 @@ import Server.Response
 import Shared
 import UrlPath
 import View exposing (View)
+import Wiki
 
 
 type alias Model =
@@ -73,7 +74,7 @@ subscriptions routeParams path shared model =
 
 
 type alias Data =
-    { title : String }
+    Wiki.Page
 
 
 type alias ActionData =
@@ -87,10 +88,16 @@ data :
 data routeParams request =
     "../pages/"
         ++ routeParams.slug
-        |> File.jsonFile (Decode.field "title" Decode.string)
+        |> File.jsonFile Wiki.pageDecoder
         |> BackendTask.allowFatal
         |> BackendTask.map
-            (\title -> Server.Response.render { title = title })
+            (\page ->
+                Server.Response.render
+                    { title = page.title
+                    , story = page.story
+                    , journal = page.journal
+                    }
+            )
 
 
 head : App Data ActionData RouteParams -> List Head.Tag
