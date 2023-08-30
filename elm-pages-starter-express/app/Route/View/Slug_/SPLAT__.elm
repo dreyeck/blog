@@ -6,22 +6,22 @@ module Route.View.Slug_.SPLAT__ exposing (Model, Msg, RouteParams, route, Data, 
 
 -}
 
-import BackendTask
-import BackendTask.Custom
+import BackendTask exposing (BackendTask)
+import BackendTask.File as File
 import Effect
 import ErrorPage
-import FatalError
+import FatalError exposing (FatalError)
 import Head
 import Html
 import Json.Decode as Decode
 import Json.Encode as Encode
-import PagesMsg
-import RouteBuilder
+import PagesMsg exposing (PagesMsg)
+import RouteBuilder exposing (App, StatefulRoute)
 import Server.Request
 import Server.Response
 import Shared
 import UrlPath
-import View
+import View exposing (View)
 
 
 type alias Model =
@@ -36,7 +36,7 @@ type alias RouteParams =
     { slug : String, splat : List String }
 
 
-route : RouteBuilder.StatefulRoute RouteParams Data ActionData Model Msg
+route : StatefulRoute RouteParams Data ActionData Model Msg
 route =
     RouteBuilder.serverRender { data = data, action = action, head = head }
         |> RouteBuilder.buildWithLocalState
@@ -48,7 +48,7 @@ route =
 
 
 init :
-    RouteBuilder.App Data ActionData RouteParams
+    App Data ActionData RouteParams
     -> Shared.Model
     -> ( Model, Effect.Effect Msg )
 init app shared =
@@ -56,7 +56,7 @@ init app shared =
 
 
 update :
-    RouteBuilder.App Data ActionData RouteParams
+    App Data ActionData RouteParams
     -> Shared.Model
     -> Msg
     -> Model
@@ -73,7 +73,7 @@ subscriptions routeParams path shared model =
 
 
 type alias Data =
-    { hello : String }
+    { title : String }
 
 
 type alias ActionData =
@@ -85,21 +85,42 @@ data :
     -> Server.Request.Request
     -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response Data ErrorPage.ErrorPage)
 data routeParams request =
-    BackendTask.Custom.run "hello"
-        -- Encode parameter name for hello(name)
-        (Encode.string routeParams.slug)
-        Decode.string
+    "../pages/"
+        ++ routeParams.slug
+        |> File.jsonFile (Decode.field "title" Decode.string)
         |> BackendTask.allowFatal
         |> BackendTask.map
-            (\hello -> Server.Response.render { hello = hello })
+            (\title -> Server.Response.render { title = title })
 
 
-head : RouteBuilder.App Data ActionData RouteParams -> List Head.Tag
+head : App Data ActionData RouteParams -> List Head.Tag
 head app =
     []
 
 
-slug : RouteBuilder.App Data ActionData RouteParams -> String
+view :
+    App Data ActionData RouteParams
+    -> Shared.Model
+    -> Model
+    -> View.View (PagesMsg.PagesMsg Msg)
+view app shared model =
+    { title = "View.Slug_.SPLAT__"
+    , body =
+        [ Html.h2 [] [ Html.text app.data.title ]
+        , Html.p [] [ Html.text ("splat: " ++ splat app) ]
+        ]
+    }
+
+
+action :
+    RouteParams
+    -> Server.Request.Request
+    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
+action routeParams request =
+    BackendTask.succeed (Server.Response.render {})
+
+
+slug : App Data ActionData RouteParams -> String
 slug app =
     app.routeParams.slug
 
@@ -110,25 +131,6 @@ to represent the fact that optional splat routes could match 0 segments.
 See Optional Splat Routes <https://wiki.ralfbarkow.ch/view/optional-splat-routes>
 and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
 -}
-splat : RouteBuilder.App Data ActionData RouteParams -> String
+splat : App Data ActionData RouteParams -> String
 splat app =
     String.join ", " app.routeParams.splat
-
-
-view :
-    RouteBuilder.App Data ActionData RouteParams
-    -> Shared.Model
-    -> Model
-    -> View.View (PagesMsg.PagesMsg Msg)
-view app shared model =
-    { title = "View.Slug_.SPLAT__"
-    , body = [ Html.h2 [] [ Html.text (app.data.hello ++ ", splat: " ++ splat app) ] ]
-    }
-
-
-action :
-    RouteParams
-    -> Server.Request.Request
-    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
-action routeParams request =
-    BackendTask.succeed (Server.Response.render {})
