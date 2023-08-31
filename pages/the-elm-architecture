@@ -1,0 +1,494 @@
+{
+  "title": "The Elm Architecture",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "7733fb4500b7d0c9",
+      "text": "is a simple [[Pattern]] for architecting webapps. The core idea is that your code is built around a [[Model]] of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github], [https://guide.elm-lang.org/architecture/ page]\n\n"
+    },
+    {
+      "type": "markdown",
+      "id": "54f22b20291c31a4",
+      "text": "> To learn more about this, read [[The Official Guide]] [https://guide.elm-lang.org/ site] and check out [https://guide.elm-lang.org/architecture/ this section] which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+    },
+    {
+      "type": "code",
+      "id": "ce715466c661ef0f",
+      "text": "import Html exposing (..) \n\n-- MODEL \ntype alias Model = { ... } \n\n-- UPDATE \ntype Msg = Reset | ... \n\nupdate : Msg -> Model -> Model \nupdate msg model = \n  case msg of \n    Reset -> ... \n    ... \n \n-- VIEW \nview : Model -> Html Msg \nview model = \n  ..."
+    },
+    {
+      "type": "paragraph",
+      "id": "e362c7e582a696ce",
+      "text": "User input, like clicking a button or entering text, will call an update function, which updates the state and then is rendered back to a user with a view function. Instead of rendering HTML it is also possible to execute commands or [[Create Subscription]]s. These methods can be used to make HTTP requests or listen for WebSocket messages."
+    },
+    {
+      "type": "pagefold",
+      "id": "fcfc15c764cf24b9",
+      "text": "~"
+    },
+    {
+      "type": "paragraph",
+      "id": "d0cb0a067a1d91b4",
+      "text": "[[Alex Berg]], The Elm Architecture is the wrong abstraction for the web. [https://gist.github.com/chexxor/23ccf35add7dbdd33ecdd26888663140#the-elm-architecture-is-the-wrong-abstraction-for-the-web page]"
+    },
+    {
+      "type": "markdown",
+      "id": "e7b8f0bc2ca647df",
+      "text": "* how to handle links and URLs"
+    },
+    {
+      "type": "paragraph",
+      "id": "002ef966a099670e",
+      "text": "⇒ [[The Elm-Pages Architecture]]"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "The Elm Architecture",
+        "story": []
+      },
+      "date": 1637824172683
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "7733fb4500b7d0c9"
+      },
+      "id": "7733fb4500b7d0c9",
+      "type": "add",
+      "date": 1637824200245
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "The Elm Architecture is a simple pattern for architecting webapps. The core idea is that your code is built around a Model of your application state, a way to update your model, and a way to view your model.\n\nTo learn more about this, read the the official guide and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through."
+      },
+      "date": 1637824203202
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "The Elm Architecture is a simple pattern for architecting webapps. The core idea is that your code is built around a Model of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]\n\nTo learn more about this, read the the official guide and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through."
+      },
+      "date": 1637824228455
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "The Elm Architecture is a simple [[pattern]] for architecting webapps. The core idea is that your code is built around a Model of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]\n\nTo learn more about this, read the the official guide and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through."
+      },
+      "date": 1637824275582
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "The Elm Architecture is a simple [[pattern]] for architecting webapps. The core idea is that your code is built around a [[Model]] of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]\n\nTo learn more about this, read the the official guide and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through."
+      },
+      "date": 1637824616272
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "37509fc4b1b92cc0"
+      },
+      "id": "37509fc4b1b92cc0",
+      "type": "add",
+      "after": "7733fb4500b7d0c9",
+      "date": 1637824652043
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "The Elm Architecture is a simple [[pattern]] for architecting webapps. The core idea is that your code is built around a [[Model]] of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]\n\n"
+      },
+      "date": 1637824653218
+    },
+    {
+      "type": "remove",
+      "id": "37509fc4b1b92cc0",
+      "date": 1637824653877
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "54f22b20291c31a4"
+      },
+      "id": "54f22b20291c31a4",
+      "type": "add",
+      "after": "7733fb4500b7d0c9",
+      "date": 1637824656105
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read the the official guide and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through."
+      },
+      "date": 1637824660208
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read the [https://guide.elm-lang.org/ the official guide] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through."
+      },
+      "date": 1637824696600
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": " is a simple [[pattern]] for architecting webapps. The core idea is that your code is built around a [[Model]] of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]\n\n"
+      },
+      "date": 1684860867787
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "is a simple [[Pattern]] for architecting webapps. The core idea is that your code is built around a [[Model]] of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]\n\n"
+      },
+      "date": 1684860874368
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "ce715466c661ef0f"
+      },
+      "id": "ce715466c661ef0f",
+      "type": "add",
+      "after": "54f22b20291c31a4",
+      "date": 1684860938654
+    },
+    {
+      "type": "edit",
+      "id": "ce715466c661ef0f",
+      "item": {
+        "type": "code",
+        "id": "ce715466c661ef0f",
+        "text": "import Html exposing (..) \n2 \n3 -- MODEL 4 type alias Model = { ... } 5 6 -- UPDATE 7 type Msg = Reset | ... 8 9 update : Msg -> Model -> Model 10 update msg model = 11 case msg of 12 Reset -> ... 13 ... 14 15 -- VIEW 16 view : Model -> Html Msg 17 view model = 18 ..."
+      },
+      "date": 1684860950975
+    },
+    {
+      "type": "edit",
+      "id": "ce715466c661ef0f",
+      "item": {
+        "type": "code",
+        "id": "ce715466c661ef0f",
+        "text": "import Html exposing (..) \n\n -- MODEL \n4 type alias Model = { ... } 5 6 -- UPDATE 7 type Msg = Reset | ... 8 9 update : Msg -> Model -> Model 10 update msg model = 11 case msg of 12 Reset -> ... 13 ... 14 15 -- VIEW 16 view : Model -> Html Msg 17 view model = 18 ..."
+      },
+      "date": 1684860967987
+    },
+    {
+      "type": "edit",
+      "id": "ce715466c661ef0f",
+      "item": {
+        "type": "code",
+        "id": "ce715466c661ef0f",
+        "text": "import Html exposing (..) \n\n-- MODEL \ntype alias Model = { ... } \n\n-- UPDATE \ntype Msg = Reset | ... \n\nupdate : Msg -> Model -> Model \nupdate msg model = \n case msg of 12 Reset -> ... 13 ... 14 15 -- VIEW 16 view : Model -> Html Msg 17 view model = 18 ..."
+      },
+      "date": 1684861017772
+    },
+    {
+      "type": "edit",
+      "id": "ce715466c661ef0f",
+      "item": {
+        "type": "code",
+        "id": "ce715466c661ef0f",
+        "text": "import Html exposing (..) \n\n-- MODEL \ntype alias Model = { ... } \n\n-- UPDATE \ntype Msg = Reset | ... \n\nupdate : Msg -> Model -> Model \nupdate msg model = \n  case msg of \n12 Reset -> ... 13 ... 14 15 -- VIEW 16 view : Model -> Html Msg 17 view model = 18 ..."
+      },
+      "date": 1684861030499
+    },
+    {
+      "type": "edit",
+      "id": "ce715466c661ef0f",
+      "item": {
+        "type": "code",
+        "id": "ce715466c661ef0f",
+        "text": "import Html exposing (..) \n\n-- MODEL \ntype alias Model = { ... } \n\n-- UPDATE \ntype Msg = Reset | ... \n\nupdate : Msg -> Model -> Model \nupdate msg model = \n  case msg of \n    Reset -> ... \n... 14 15 -- VIEW 16 view : Model -> Html Msg 17 view model = 18 ..."
+      },
+      "date": 1684861047915
+    },
+    {
+      "type": "edit",
+      "id": "ce715466c661ef0f",
+      "item": {
+        "type": "code",
+        "id": "ce715466c661ef0f",
+        "text": "import Html exposing (..) \n\n-- MODEL \ntype alias Model = { ... } \n\n-- UPDATE \ntype Msg = Reset | ... \n\nupdate : Msg -> Model -> Model \nupdate msg model = \n  case msg of \n    Reset -> ... \n    ... \n \n-- VIEW \nview : Model -> Html Msg \nview model = \n  ..."
+      },
+      "date": 1684861088100
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "e362c7e582a696ce"
+      },
+      "id": "e362c7e582a696ce",
+      "type": "add",
+      "after": "ce715466c661ef0f",
+      "date": 1684861128607
+    },
+    {
+      "type": "edit",
+      "id": "e362c7e582a696ce",
+      "item": {
+        "type": "paragraph",
+        "id": "e362c7e582a696ce",
+        "text": "User input, like clicking a button or entering text, will call an update function, which updates the state and then is rendered back to a user with a view function. Instead of rendering HTML it is also possible to execute commands or create subscriptions. These methods can be used to make HTTP requests or listen for WebSocket messages."
+      },
+      "date": 1684861130123
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read the [https://guide.elm-lang.org/ the official guide] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684861855270
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1684905765722
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [https://guide.elm-lang.org/ the official guide] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684905774141
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [https://guide.elm-lang.org/ [[The official Guide]]] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684905800132
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [The official Guide]] [https://guide.elm-lang.org/ [site] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684905812979
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [[The official Guide]] [https://guide.elm-lang.org/ [site] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684905821210
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [[The official Guide]] [https://guide.elm-lang.org/ site] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684905825821
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [[The Official Guide]] [https://guide.elm-lang.org/ site] and check out this section which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684905833102
+    },
+    {
+      "type": "fork",
+      "site": "elm.dreyeck.ch",
+      "date": 1684905877627
+    },
+    {
+      "type": "edit",
+      "id": "54f22b20291c31a4",
+      "item": {
+        "type": "markdown",
+        "id": "54f22b20291c31a4",
+        "text": "> To learn more about this, read [[The Official Guide]] [https://guide.elm-lang.org/ site] and check out [https://guide.elm-lang.org/architecture/ this section] which is all about The Elm Architecture. This repo is a collection of all the examples in that section, so you can follow along and compile things on your computer as you read through. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github]"
+      },
+      "date": 1684906048488
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "fcfc15c764cf24b9"
+      },
+      "id": "fcfc15c764cf24b9",
+      "type": "add",
+      "after": "e362c7e582a696ce",
+      "date": 1692021517523
+    },
+    {
+      "type": "edit",
+      "id": "fcfc15c764cf24b9",
+      "item": {
+        "type": "pagefold",
+        "id": "fcfc15c764cf24b9",
+        "text": "~"
+      },
+      "date": 1692021521108
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "d0cb0a067a1d91b4"
+      },
+      "id": "d0cb0a067a1d91b4",
+      "type": "add",
+      "after": "fcfc15c764cf24b9",
+      "date": 1692021523164
+    },
+    {
+      "type": "edit",
+      "id": "d0cb0a067a1d91b4",
+      "item": {
+        "type": "paragraph",
+        "id": "d0cb0a067a1d91b4",
+        "text": "The Elm Architecture is the wrong abstraction for the web"
+      },
+      "date": 1692021525209
+    },
+    {
+      "type": "edit",
+      "id": "d0cb0a067a1d91b4",
+      "item": {
+        "type": "paragraph",
+        "id": "d0cb0a067a1d91b4",
+        "text": "The Elm Architecture is the wrong abstraction for the web [https://gist.github.com/chexxor/23ccf35add7dbdd33ecdd26888663140#the-elm-architecture-is-the-wrong-abstraction-for-the-web page]"
+      },
+      "date": 1692021533793
+    },
+    {
+      "type": "edit",
+      "id": "d0cb0a067a1d91b4",
+      "item": {
+        "type": "paragraph",
+        "id": "d0cb0a067a1d91b4",
+        "text": "[[Alex Berg]], The Elm Architecture is the wrong abstraction for the web [https://gist.github.com/chexxor/23ccf35add7dbdd33ecdd26888663140#the-elm-architecture-is-the-wrong-abstraction-for-the-web page]"
+      },
+      "date": 1692021562222
+    },
+    {
+      "type": "edit",
+      "id": "7733fb4500b7d0c9",
+      "item": {
+        "type": "paragraph",
+        "id": "7733fb4500b7d0c9",
+        "text": "is a simple [[Pattern]] for architecting webapps. The core idea is that your code is built around a [[Model]] of your application state, a way to update your model, and a way to view your model. [https://github.com/evancz/elm-architecture-tutorial/#the-elm-architecture github], [https://guide.elm-lang.org/architecture/ page]\n\n"
+      },
+      "date": 1692021970525
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "e7b8f0bc2ca647df"
+      },
+      "id": "e7b8f0bc2ca647df",
+      "type": "add",
+      "after": "d0cb0a067a1d91b4",
+      "date": 1692022092943
+    },
+    {
+      "type": "edit",
+      "id": "e7b8f0bc2ca647df",
+      "item": {
+        "type": "markdown",
+        "id": "e7b8f0bc2ca647df",
+        "text": "* how to handle links and URLs"
+      },
+      "date": 1692022096815
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "002ef966a099670e"
+      },
+      "id": "002ef966a099670e",
+      "type": "add",
+      "after": "e7b8f0bc2ca647df",
+      "date": 1692941376223
+    },
+    {
+      "type": "edit",
+      "id": "002ef966a099670e",
+      "item": {
+        "type": "paragraph",
+        "id": "002ef966a099670e",
+        "text": "⇒ [[The Elm-Pages Architecture]]"
+      },
+      "date": 1692941387356
+    },
+    {
+      "type": "edit",
+      "id": "e362c7e582a696ce",
+      "item": {
+        "type": "paragraph",
+        "id": "e362c7e582a696ce",
+        "text": "User input, like clicking a button or entering text, will call an update function, which updates the state and then is rendered back to a user with a view function. Instead of rendering HTML it is also possible to execute commands or [[Create Subscription]]s. These methods can be used to make HTTP requests or listen for WebSocket messages."
+      },
+      "date": 1692941632005
+    },
+    {
+      "type": "edit",
+      "id": "d0cb0a067a1d91b4",
+      "item": {
+        "type": "paragraph",
+        "id": "d0cb0a067a1d91b4",
+        "text": "[[Alex Berg]], The Elm Architecture is the wrong abstraction for the web. [https://gist.github.com/chexxor/23ccf35add7dbdd33ecdd26888663140#the-elm-architecture-is-the-wrong-abstraction-for-the-web page]"
+      },
+      "date": 1692941650556
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1692942647621
+    }
+  ]
+}

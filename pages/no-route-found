@@ -1,0 +1,1901 @@
+{
+  "title": "No Route Found",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "dcba86b92cd4f00d",
+      "text": "You define Routes by adding Route Modules to the app/Route/ folder. [https://elm-pages.com/docs/what-is-elm-pages page] ⇐ [[Find Route]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "68a317e234098b54",
+      "text": "How to define Routes for [[Lineup]]s?"
+    },
+    {
+      "type": "reference",
+      "id": "ec1a829ea019e15c",
+      "site": "glossary.asia.wiki.org",
+      "slug": "lineup",
+      "title": "Lineup",
+      "text": "The lineup is the list of wiki pages currently displayed within one tab, in order, with duplication possible."
+    },
+    {
+      "type": "paragraph",
+      "id": "918a1ba155e4b201",
+      "text": "See fedwiki/wiki-client/lib/lineup.coffee [https://github.com/fedwiki/wiki-client/blob/c892b0dd0c5efb593a4eed8833266b047571fbeb/lib/lineup.coffee#L1-L5 code]: The lineup represents a sequence of pages with possible duplication. We maintain the lineup in parallel with the DOM list of .page elements. Eventually lineup will play a more central role managing calculations and display updates."
+    },
+    {
+      "type": "paragraph",
+      "id": "45d6e99e1948007b",
+      "text": "Example lineup:"
+    },
+    {
+      "type": "code",
+      "id": "06169784fe45a92d",
+      "text": "/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture"
+    },
+    {
+      "type": "markdown",
+      "id": "88e1b0b44dd48edd",
+      "text": "No route found for /view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture Did you mean to go to one of these routes:\n * /blog/:slug\n * /view/:slug\n * /greet\n * /hello\n * /index"
+    },
+    {
+      "type": "paragraph",
+      "id": "77b38ab901621926",
+      "text": "Compare our Route.View.Slug_ module with the Route.Blog.Slug_ sample module. ⇐ [[Find Route]] ⇒ [[Splat Routes]] ⇒ [[Optional Splat Routes]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "81a8794067ef312f",
+      "text": "Issue with only catch-all routing #397  [https://github.com/dillonkearns/elm-pages/issues/397 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690413642388379?thread_ts=1690383176.913499&cid=CNSNETV37 post]"
+    },
+    {
+      "type": "code",
+      "id": "70973ace7c651260",
+      "text": "npx elm-pages@latest run AddRoute View.Slug_.SPLAT__"
+    },
+    {
+      "type": "paragraph",
+      "id": "6feb463bf35f61c0",
+      "text": "⇒ [[The Elm-Pages Architecture]] ⇒ [[RouteParams]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "d09657fd25b02674",
+      "text": "Debugger (Inspect) [https://github.com/dreyeck/blog/commit/e1955b5d5942d5be5af145a18a6ef50ea9869dd0 commit] – replace View.Slug_ with View.Slug_.SPLAT__"
+    },
+    {
+      "type": "paragraph",
+      "id": "75288aacb8757f9f",
+      "text": "rename elm-pages-starter-express/app/Route/View/{Slug_.elm => Slug_/SPLAT__.elm}"
+    },
+    {
+      "type": "image",
+      "id": "3bfce16962c01e9b",
+      "text": "RouteParams",
+      "size": "wide",
+      "width": 430,
+      "height": 158,
+      "url": "/assets/plugins/image/54ebacdeca91f5f7623c25e8396b266a.jpg"
+    },
+    {
+      "type": "paragraph",
+      "id": "5aa5aec34c0c0d08",
+      "text": "Watch expressions: routeParams"
+    },
+    {
+      "type": "paragraph",
+      "id": "8c49dd900895f19c",
+      "text": "15785 and 15786 (breakpoints)"
+    },
+    {
+      "type": "paragraph",
+      "id": "8c8f5f6dc8465b25",
+      "text": "[http://blog.dreyeck.ch/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture blog.dreyeck.ch] (http) – with example lineup."
+    },
+    {
+      "type": "pagefold",
+      "id": "6b534f15676ef2cd",
+      "text": "~"
+    },
+    {
+      "type": "paragraph",
+      "id": "12576896c433dba1",
+      "text": "Deciding Between Server-Rendered and Pre-Rendered Routes [https://elm-pages.com/docs/what-is-elm-pages#deciding-between-server-rendered-and-pre-rendered-routes page]"
+    },
+    {
+      "type": "paragraph",
+      "id": "f3ed59b7079408ef",
+      "text": "remote pages, e.g. https://web.archive.org/web/20230823220515/https://elm-pages.com/"
+    },
+    {
+      "type": "paragraph",
+      "id": "92fc1e2830cbfe9a",
+      "text": "Inspect your pages BackendTask. [https://elmlang.slack.com/archives/CNSNETV37/p1690473527640309?thread_ts=1690471742.604279&cid=CNSNETV37 post], [https://github.com/dillonkearns/elm-pages/issues/398 github]"
+    },
+    {
+      "type": "paragraph",
+      "id": "bcc5aaa9a5913758",
+      "text": "Data, ActionData"
+    },
+    {
+      "type": "paragraph",
+      "id": "a568b313080c368e",
+      "text": "StatelessRoute vs StatefulRoute"
+    },
+    {
+      "type": "paragraph",
+      "id": "4c1e9f20d7a62039",
+      "text": "Miller Columns in ES6 Modules JavaScript [https://github.com/brettz9/miller-columns github]"
+    },
+    {
+      "type": "paragraph",
+      "id": "c14264409a260b96",
+      "text": "Unable to start examples #395 [https://github.com/dillonkearns/elm-pages/issues/395 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690229730357239?thread_ts=1690226045.364939&cid=CNSNETV37 post]"
+    },
+    {
+      "type": "graphviz",
+      "id": "a5b58a4d5ae8bd1c",
+      "text": "DOT FROM lambda-browsing",
+      "dot": "strict digraph {rankdir=LR\n\n\n\n\n\n\nnode [style=filled fillcolor=lightyellow penwidth=3 color=black fontname=\"Helvetica\"]\n\"No\nRoute\nFound\"\nnode [style=filled fillcolor=lightblue]\n\"No\nRoute\nFound\" -> \"The\nElm-Pages\nArchitecture\"\n\"No\nRoute\nFound\" -> \"RouteParams\"\nnode [style=filled fillcolor=white]\n\"The\nElm-Pages\nArchitecture\"\nnode [style=filled fillcolor=white]\n\"RouteParams\"\n\"RouteParams\" -> \"Dynamic\nSegments\"\nnode [style=filled fillcolor=white penwidth=3 color=black]\n\"No\nRoute\nFound\" -> \"Find\nRoute\"\n\"No\nRoute\nFound\" -> \"Lineup\"\n\"No\nRoute\nFound\" -> \"Find\nRoute\"\n\"No\nRoute\nFound\" -> \"Splat\nRoutes\"\n\"No\nRoute\nFound\" -> \"Optional\nSplat\nRoutes\"\n\"No\nRoute\nFound\" -> \"The\nElm-Pages\nArchitecture\"\n\"No\nRoute\nFound\" -> \"RouteParams\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Find\nRoute\"\n\"Find\nRoute\" -> \"File-Based\nRouting\"\n\"Find\nRoute\" -> \"Dynamic\nSegments\"\n\"Find\nRoute\" -> \"RouteParams\"\n\"Find\nRoute\" -> \"Scaffolding\na\nRoute\nModule\"\n\"Find\nRoute\" -> \"Splat\nRoutes\"\n\"Find\nRoute\" -> \"No\nRoute\nFound\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Lineup\"\n\"Lineup\" -> \"Page\nPlace\nClues\"\n\"Lineup\" -> \"Eric\nDobbs\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Find\nRoute\"\n\"Find\nRoute\" -> \"File-Based\nRouting\"\n\"Find\nRoute\" -> \"Dynamic\nSegments\"\n\"Find\nRoute\" -> \"RouteParams\"\n\"Find\nRoute\" -> \"Scaffolding\na\nRoute\nModule\"\n\"Find\nRoute\" -> \"Splat\nRoutes\"\n\"Find\nRoute\" -> \"No\nRoute\nFound\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Splat\nRoutes\"\n\"Splat\nRoutes\" -> \"Optional\nSplat\nRoutes\"\n\"Splat\nRoutes\" -> \"File-Based\nRouting\"\n\"Splat\nRoutes\" -> \"RouteParams\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Optional\nSplat\nRoutes\"\n\"Optional\nSplat\nRoutes\" -> \"Splat\nRoutes\"\n\"Optional\nSplat\nRoutes\" -> \"File-Based\nRouting\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"The\nElm-Pages\nArchitecture\"\n\"The\nElm-Pages\nArchitecture\" -> \"elm-pages\"\n\"The\nElm-Pages\nArchitecture\" -> \"Dwight\nDoane\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"RouteParams\"\n\"RouteParams\" -> \"elm-pages\"\n\"RouteParams\" -> \"Elm\"\n\"RouteParams\" -> \"Dynamic\nSegments\"\nnode [style=\"filled,rounded,dotted\" fillcolor=white]\nedge [style=dotted]\n\"No\nRoute\nFound\"\n\"Find\nRoute\" -> \"No\nRoute\nFound\"\n\"2023-08-24\" -> \"No\nRoute\nFound\"}",
+      "svg": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<!-- Generated by graphviz version 8.0.5 (0)\n -->\n<!-- Pages: 1 -->\n<svg width=\"894pt\" height=\"672pt\"\n viewBox=\"0.00 0.00 893.90 671.71\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<g id=\"graph0\" class=\"graph\" transform=\"scale(1 1) rotate(0) translate(4 667.71)\">\n<polygon fill=\"white\" stroke=\"none\" points=\"-4,4 -4,-667.71 889.9,-667.71 889.9,4 -4,4\"/>\n<!-- No\nRoute\nFound -->\n<g id=\"node1\" class=\"node\">\n<title>No\nRoute\nFound</title>\n<ellipse fill=\"lightyellow\" stroke=\"black\" stroke-width=\"3\" cx=\"196.25\" cy=\"-329.3\" rx=\"39.38\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"196.25\" y=\"-341.9\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">No</text>\n<text text-anchor=\"middle\" x=\"196.25\" y=\"-325.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n<text text-anchor=\"middle\" x=\"196.25\" y=\"-308.3\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Found</text>\n</g>\n<!-- The\nElm&#45;Pages\nArchitecture -->\n<g id=\"node2\" class=\"node\">\n<title>The\nElm&#45;Pages\nArchitecture</title>\n<ellipse fill=\"lightblue\" stroke=\"black\" stroke-width=\"3\" cx=\"335.77\" cy=\"-608.3\" rx=\"64.13\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"335.77\" y=\"-620.9\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">The</text>\n<text text-anchor=\"middle\" x=\"335.77\" y=\"-604.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Elm&#45;Pages</text>\n<text text-anchor=\"middle\" x=\"335.77\" y=\"-587.3\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Architecture</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;The\nElm&#45;Pages\nArchitecture -->\n<g id=\"edge1\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;The\nElm&#45;Pages\nArchitecture</title>\n<path fill=\"none\" stroke=\"black\" d=\"M204.22,-371.04C213.61,-418.36 233.71,-496.33 271.63,-553.3 275.34,-558.85 279.74,-564.19 284.48,-569.2\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"281.58,-571.24 291.14,-575.8 286.5,-566.27 281.58,-571.24\"/>\n</g>\n<!-- RouteParams -->\n<g id=\"node3\" class=\"node\">\n<title>RouteParams</title>\n<ellipse fill=\"lightblue\" stroke=\"black\" stroke-width=\"3\" cx=\"662.56\" cy=\"-501.3\" rx=\"70.08\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"662.56\" y=\"-497.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">RouteParams</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;RouteParams -->\n<g id=\"edge2\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M224.37,-359.96C265.16,-403.49 347.04,-481.28 435.9,-511.3 488.52,-529.07 552,-524.12 598.21,-516.14\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"598.76,-519.41 607.97,-514.17 597.51,-512.53 598.76,-519.41\"/>\n</g>\n<!-- Find\nRoute -->\n<g id=\"node5\" class=\"node\">\n<title>Find\nRoute</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"335.77\" cy=\"-329.3\" rx=\"37.73\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"335.77\" y=\"-333.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Find</text>\n<text text-anchor=\"middle\" x=\"335.77\" y=\"-316.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Find\nRoute -->\n<g id=\"edge4\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Find\nRoute</title>\n<path fill=\"none\" stroke=\"black\" d=\"M236.66,-323.12C252.41,-322.46 270.7,-322.37 287.19,-322.84\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"286.59,-326.36 296.72,-323.23 286.85,-319.36 286.59,-326.36\"/>\n</g>\n<!-- Lineup -->\n<g id=\"node6\" class=\"node\">\n<title>Lineup</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"335.77\" cy=\"-130.3\" rx=\"40.04\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"335.77\" y=\"-126.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Lineup</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Lineup -->\n<g id=\"edge5\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Lineup</title>\n<path fill=\"none\" stroke=\"black\" d=\"M209.76,-289.11C221.7,-255.46 242.24,-207.57 271.63,-173.3 279.16,-164.52 288.88,-156.74 298.42,-150.29\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"299.9,-152.86 306.44,-144.52 296.13,-146.96 299.9,-152.86\"/>\n</g>\n<!-- Splat\nRoutes -->\n<g id=\"node7\" class=\"node\">\n<title>Splat\nRoutes</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"496.19\" cy=\"-244.3\" rx=\"42.68\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-248.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Splat</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-231.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Routes</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Splat\nRoutes -->\n<g id=\"edge6\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M231.97,-309.15C244.19,-302.71 258.24,-296.03 271.63,-291.3 328.41,-271.23 396.47,-258.43 442.47,-251.34\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"442.72,-254.69 452.09,-249.74 441.68,-247.77 442.72,-254.69\"/>\n</g>\n<!-- Optional\nSplat\nRoutes -->\n<g id=\"node8\" class=\"node\">\n<title>Optional\nSplat\nRoutes</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"662.56\" cy=\"-194.3\" rx=\"48.19\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"662.56\" y=\"-206.9\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Optional</text>\n<text text-anchor=\"middle\" x=\"662.56\" y=\"-190.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Splat</text>\n<text text-anchor=\"middle\" x=\"662.56\" y=\"-173.3\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Routes</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Optional\nSplat\nRoutes -->\n<g id=\"edge7\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Optional\nSplat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M223.02,-297.17C236.2,-282.58 253.31,-266.19 271.63,-255.3 375.56,-193.51 521.47,-187.92 602.11,-190.41\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"601.93,-193.94 612.05,-190.81 602.18,-186.94 601.93,-193.94\"/>\n</g>\n<!-- elm&#45;pages -->\n<g id=\"node13\" class=\"node\">\n<title>elm&#45;pages</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"827.27\" cy=\"-566.3\" rx=\"56.12\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"827.27\" y=\"-562.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">elm&#45;pages</text>\n</g>\n<!-- The\nElm&#45;Pages\nArchitecture&#45;&gt;elm&#45;pages -->\n<g id=\"edge21\" class=\"edge\">\n<title>The\nElm&#45;Pages\nArchitecture&#45;&gt;elm&#45;pages</title>\n<path fill=\"none\" stroke=\"black\" d=\"M400.18,-600.2C412.04,-598.8 424.34,-597.44 435.9,-596.3 550.25,-584.99 683.8,-575.53 761.33,-570.41\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"761.15,-573.87 770.89,-569.72 760.69,-566.88 761.15,-573.87\"/>\n</g>\n<!-- Dwight\nDoane -->\n<g id=\"node14\" class=\"node\">\n<title>Dwight\nDoane</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"496.19\" cy=\"-634.3\" rx=\"41.57\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-638.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Dwight</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-621.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Doane</text>\n</g>\n<!-- The\nElm&#45;Pages\nArchitecture&#45;&gt;Dwight\nDoane -->\n<g id=\"edge22\" class=\"edge\">\n<title>The\nElm&#45;Pages\nArchitecture&#45;&gt;Dwight\nDoane</title>\n<path fill=\"none\" stroke=\"black\" d=\"M399.38,-618.57C414.41,-621.04 430.26,-623.64 444.66,-626\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"443.91,-629.59 454.35,-627.76 445.05,-622.68 443.91,-629.59\"/>\n</g>\n<!-- Dynamic\nSegments -->\n<g id=\"node4\" class=\"node\">\n<title>Dynamic\nSegments</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"827.27\" cy=\"-388.3\" rx=\"55.89\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"827.27\" y=\"-392.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Dynamic</text>\n<text text-anchor=\"middle\" x=\"827.27\" y=\"-375.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Segments</text>\n</g>\n<!-- RouteParams&#45;&gt;Dynamic\nSegments -->\n<g id=\"edge3\" class=\"edge\">\n<title>RouteParams&#45;&gt;Dynamic\nSegments</title>\n<path fill=\"none\" stroke=\"black\" d=\"M689.34,-483.39C714.36,-466.02 752.79,-439.33 782.58,-418.64\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"784.31,-421 790.53,-412.43 780.32,-415.26 784.31,-421\"/>\n</g>\n<!-- RouteParams&#45;&gt;elm&#45;pages -->\n<g id=\"edge23\" class=\"edge\">\n<title>RouteParams&#45;&gt;elm&#45;pages</title>\n<path fill=\"none\" stroke=\"black\" d=\"M703.37,-517.2C726.83,-526.57 756.59,-538.46 780.95,-548.19\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"779.44,-551.76 790.03,-552.22 782.04,-545.26 779.44,-551.76\"/>\n</g>\n<!-- Elm -->\n<g id=\"node15\" class=\"node\">\n<title>Elm</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"827.27\" cy=\"-501.3\" rx=\"27.67\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"827.27\" y=\"-497.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Elm</text>\n</g>\n<!-- RouteParams&#45;&gt;Elm -->\n<g id=\"edge24\" class=\"edge\">\n<title>RouteParams&#45;&gt;Elm</title>\n<path fill=\"none\" stroke=\"black\" d=\"M733.98,-501.3C752.82,-501.3 772.46,-501.3 788.76,-501.3\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"788.45,-504.8 798.45,-501.3 788.45,-497.8 788.45,-504.8\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;No\nRoute\nFound -->\n<g id=\"edge13\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;No\nRoute\nFound</title>\n<path fill=\"none\" stroke=\"black\" d=\"M297.72,-335.36C282.23,-336.08 263.99,-336.23 247.33,-335.82\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"247.77,-332.3 237.66,-335.47 247.54,-339.29 247.77,-332.3\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;RouteParams -->\n<g id=\"edge10\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M346.7,-358.86C360.51,-394.86 389.2,-454.31 435.9,-482.3 481.32,-509.52 541.42,-513.36 588.18,-510.88\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"588.4,-514.31 598.15,-510.17 587.95,-507.32 588.4,-514.31\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;Dynamic\nSegments -->\n<g id=\"edge9\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;Dynamic\nSegments</title>\n<path fill=\"none\" stroke=\"black\" d=\"M374.36,-333.83C457.29,-343.82 656.73,-367.86 760.72,-380.39\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"760.04,-383.96 770.39,-381.68 760.88,-377.01 760.04,-383.96\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;Splat\nRoutes -->\n<g id=\"edge12\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M368.45,-312.3C392.25,-299.53 425.14,-281.88 451.46,-267.76\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"452.67,-270.55 459.82,-262.74 449.36,-264.38 452.67,-270.55\"/>\n</g>\n<!-- File&#45;Based\nRouting -->\n<g id=\"node9\" class=\"node\">\n<title>File&#45;Based\nRouting</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"827.27\" cy=\"-263.3\" rx=\"58.63\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"827.27\" y=\"-267.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">File&#45;Based</text>\n<text text-anchor=\"middle\" x=\"827.27\" y=\"-250.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Routing</text>\n</g>\n<!-- Find\nRoute&#45;&gt;File&#45;Based\nRouting -->\n<g id=\"edge8\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;File&#45;Based\nRouting</title>\n<path fill=\"none\" stroke=\"black\" d=\"M374.36,-324.23C456.96,-313.09 655.17,-286.36 759.49,-272.3\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"759.76,-275.66 769.2,-270.85 758.83,-268.72 759.76,-275.66\"/>\n</g>\n<!-- Scaffolding\na\nRoute\nModule -->\n<g id=\"node10\" class=\"node\">\n<title>Scaffolding\na\nRoute\nModule</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"496.19\" cy=\"-420.3\" rx=\"60.29\" ry=\"53.17\"/>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-441.3\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Scaffolding</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-424.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">a</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-407.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-390.9\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Module</text>\n</g>\n<!-- Find\nRoute&#45;&gt;Scaffolding\na\nRoute\nModule -->\n<g id=\"edge11\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;Scaffolding\na\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" d=\"M367.69,-347.06C387,-358.15 412.5,-372.8 435.62,-386.08\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"433.61,-389.53 444.02,-391.48 437.09,-383.46 433.61,-389.53\"/>\n</g>\n<!-- Page\nPlace\nClues -->\n<g id=\"node11\" class=\"node\">\n<title>Page\nPlace\nClues</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"496.19\" cy=\"-41.3\" rx=\"36.62\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-53.9\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Page</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-37.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Place</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-20.3\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Clues</text>\n</g>\n<!-- Lineup&#45;&gt;Page\nPlace\nClues -->\n<g id=\"edge14\" class=\"edge\">\n<title>Lineup&#45;&gt;Page\nPlace\nClues</title>\n<path fill=\"none\" stroke=\"black\" d=\"M362.93,-115.6C387.56,-101.76 424.87,-80.8 453.59,-64.67\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"454.96,-67.35 461.97,-59.4 451.53,-61.25 454.96,-67.35\"/>\n</g>\n<!-- Eric\nDobbs -->\n<g id=\"node12\" class=\"node\">\n<title>Eric\nDobbs</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"496.19\" cy=\"-130.3\" rx=\"39.93\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-134.5\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Eric</text>\n<text text-anchor=\"middle\" x=\"496.19\" y=\"-117.7\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Dobbs</text>\n</g>\n<!-- Lineup&#45;&gt;Eric\nDobbs -->\n<g id=\"edge15\" class=\"edge\">\n<title>Lineup&#45;&gt;Eric\nDobbs</title>\n<path fill=\"none\" stroke=\"black\" d=\"M377.15,-130.3C397.86,-130.3 423.26,-130.3 445.19,-130.3\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"444.97,-133.8 454.97,-130.3 444.97,-126.8 444.97,-133.8\"/>\n</g>\n<!-- Splat\nRoutes&#45;&gt;RouteParams -->\n<g id=\"edge18\" class=\"edge\">\n<title>Splat\nRoutes&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M514.78,-271.8C546.23,-320.96 611.76,-423.42 643.52,-473.09\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"641.07,-474.75 649.41,-481.29 646.97,-470.98 641.07,-474.75\"/>\n</g>\n<!-- Splat\nRoutes&#45;&gt;Optional\nSplat\nRoutes -->\n<g id=\"edge16\" class=\"edge\">\n<title>Splat\nRoutes&#45;&gt;Optional\nSplat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M533.26,-227.62C553.83,-220.31 580.1,-212.06 603.51,-205.47\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"604.32,-208.6 613.03,-202.57 602.46,-201.85 604.32,-208.6\"/>\n</g>\n<!-- Splat\nRoutes&#45;&gt;File&#45;Based\nRouting -->\n<g id=\"edge17\" class=\"edge\">\n<title>Splat\nRoutes&#45;&gt;File&#45;Based\nRouting</title>\n<path fill=\"none\" stroke=\"black\" d=\"M540.21,-246.78C595.58,-249.98 692.43,-255.57 757.93,-259.35\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"757.38,-262.88 767.56,-259.96 757.78,-255.89 757.38,-262.88\"/>\n</g>\n<!-- Optional\nSplat\nRoutes&#45;&gt;Splat\nRoutes -->\n<g id=\"edge19\" class=\"edge\">\n<title>Optional\nSplat\nRoutes&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M618.3,-213.48C597.27,-220.73 571.8,-228.58 549.66,-234.68\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"548.84,-231.54 540.1,-237.52 550.66,-238.3 548.84,-231.54\"/>\n</g>\n<!-- Optional\nSplat\nRoutes&#45;&gt;File&#45;Based\nRouting -->\n<g id=\"edge20\" class=\"edge\">\n<title>Optional\nSplat\nRoutes&#45;&gt;File&#45;Based\nRouting</title>\n<path fill=\"none\" stroke=\"black\" d=\"M707.17,-212.79C726.99,-221.19 750.65,-231.22 771.64,-240.13\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"770.13,-243.71 780.7,-244.39 772.86,-237.27 770.13,-243.71\"/>\n</g>\n<!-- 2023&#45;08&#45;24 -->\n<g id=\"node16\" class=\"node\">\n<title>2023&#45;08&#45;24</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-329.3\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-325.1\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;08&#45;24</text>\n</g>\n<!-- 2023&#45;08&#45;24&#45;&gt;No\nRoute\nFound -->\n<g id=\"edge25\" class=\"edge\">\n<title>2023&#45;08&#45;24&#45;&gt;No\nRoute\nFound</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M121.3,-329.3C129.06,-329.3 136.95,-329.3 144.54,-329.3\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"144.4,-332.8 154.4,-329.3 144.4,-325.8 144.4,-332.8\"/>\n</g>\n</g>\n</svg>\n"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "No Route Found",
+        "story": []
+      },
+      "date": 1692857651668
+    },
+    {
+      "id": "77b38ab901621926",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "77b38ab901621926",
+        "text": "Compare our Route.View.Slug_ module with the Route.Blog.Slug_ sample module."
+      },
+      "attribution": {
+        "page": "2023-08-24"
+      },
+      "date": 1692857658179
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "bcc5aaa9a5913758"
+      },
+      "id": "bcc5aaa9a5913758",
+      "type": "add",
+      "after": "77b38ab901621926",
+      "date": 1692872529313
+    },
+    {
+      "type": "edit",
+      "id": "bcc5aaa9a5913758",
+      "item": {
+        "type": "paragraph",
+        "id": "bcc5aaa9a5913758",
+        "text": "ActionData"
+      },
+      "date": 1692872533797
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "6feb463bf35f61c0",
+        "text": "⇒ [[The Elm-Pages Architecture]]"
+      },
+      "id": "6feb463bf35f61c0",
+      "type": "add",
+      "after": "bcc5aaa9a5913758",
+      "date": 1692872626655
+    },
+    {
+      "type": "edit",
+      "id": "6feb463bf35f61c0",
+      "item": {
+        "type": "paragraph",
+        "id": "6feb463bf35f61c0",
+        "text": "⇒ [[The Elm-Pages Architecture]]"
+      },
+      "date": 1692872630687
+    },
+    {
+      "type": "edit",
+      "id": "bcc5aaa9a5913758",
+      "item": {
+        "type": "paragraph",
+        "id": "bcc5aaa9a5913758",
+        "text": "Data, ActionData"
+      },
+      "date": 1692873502984
+    },
+    {
+      "type": "edit",
+      "id": "6feb463bf35f61c0",
+      "item": {
+        "type": "paragraph",
+        "id": "6feb463bf35f61c0",
+        "text": "⇒ [[The Elm-Pages Architecture]]"
+      },
+      "date": 1692873521627
+    },
+    {
+      "type": "add",
+      "id": "a568b313080c368e",
+      "item": {
+        "type": "paragraph",
+        "id": "a568b313080c368e",
+        "text": "StatelessRoute vs "
+      },
+      "after": "bcc5aaa9a5913758",
+      "date": 1692873946932
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "c14264409a260b96",
+        "text": "Unable to start examples #395 [https://github.com/dillonkearns/elm-pages/issues/395 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690229730357239?thread_ts=1690226045.364939&cid=CNSNETV37 post]"
+      },
+      "id": "c14264409a260b96",
+      "type": "add",
+      "after": "6feb463bf35f61c0",
+      "date": 1692875264680
+    },
+    {
+      "type": "edit",
+      "id": "c14264409a260b96",
+      "item": {
+        "type": "paragraph",
+        "id": "c14264409a260b96",
+        "text": "Unable to start examples #395 [https://github.com/dillonkearns/elm-pages/issues/395 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690229730357239?thread_ts=1690226045.364939&cid=CNSNETV37 post]"
+      },
+      "date": 1692875268919
+    },
+    {
+      "type": "edit",
+      "id": "c14264409a260b96",
+      "item": {
+        "type": "paragraph",
+        "id": "c14264409a260b96",
+        "text": "Unable to start examples #395 [https://github.com/dillonkearns/elm-pages/issues/395 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690229730357239?thread_ts=1690226045.364939&cid=CNSNETV37 post]"
+      },
+      "date": 1692875284259
+    },
+    {
+      "type": "edit",
+      "id": "c14264409a260b96",
+      "item": {
+        "type": "paragraph",
+        "id": "c14264409a260b96",
+        "text": "Unable to start examples #395 [https://github.com/dillonkearns/elm-pages/issues/395 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690229730357239?thread_ts=1690226045.364939&cid=CNSNETV37 post]"
+      },
+      "date": 1692875465552
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "4c1e9f20d7a62039",
+        "text": "Miller Columns in ES6 Modules JavaScript [https://github.com/brettz9/miller-columns github]"
+      },
+      "id": "4c1e9f20d7a62039",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692875695395
+    },
+    {
+      "type": "edit",
+      "id": "4c1e9f20d7a62039",
+      "item": {
+        "type": "paragraph",
+        "id": "4c1e9f20d7a62039",
+        "text": "Miller Columns in ES6 Modules JavaScript [https://github.com/brettz9/miller-columns github]"
+      },
+      "date": 1692875698737
+    },
+    {
+      "type": "edit",
+      "id": "4c1e9f20d7a62039",
+      "item": {
+        "type": "paragraph",
+        "id": "4c1e9f20d7a62039",
+        "text": "Miller Columns in ES6 Modules JavaScript [https://github.com/brettz9/miller-columns github]"
+      },
+      "date": 1692875709009
+    },
+    {
+      "item": {
+        "type": "code",
+        "id": "06169784fe45a92d",
+        "text": "/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture"
+      },
+      "id": "06169784fe45a92d",
+      "type": "add",
+      "after": "4c1e9f20d7a62039",
+      "date": 1692875765514
+    },
+    {
+      "type": "edit",
+      "id": "06169784fe45a92d",
+      "item": {
+        "type": "code",
+        "id": "06169784fe45a92d",
+        "text": "/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture"
+      },
+      "date": 1692875767474
+    },
+    {
+      "item": {
+        "type": "pagefold",
+        "id": "6b534f15676ef2cd",
+        "text": "~"
+      },
+      "id": "6b534f15676ef2cd",
+      "type": "add",
+      "after": "06169784fe45a92d",
+      "date": 1692875813246
+    },
+    {
+      "type": "edit",
+      "id": "6b534f15676ef2cd",
+      "item": {
+        "type": "pagefold",
+        "id": "6b534f15676ef2cd",
+        "text": "~"
+      },
+      "date": 1692875816614
+    },
+    {
+      "id": "c14264409a260b96",
+      "type": "move",
+      "order": [
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "06169784fe45a92d",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692875819208
+    },
+    {
+      "id": "06169784fe45a92d",
+      "type": "move",
+      "order": [
+        "77b38ab901621926",
+        "06169784fe45a92d",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692875839066
+    },
+    {
+      "type": "edit",
+      "id": "06169784fe45a92d",
+      "item": {
+        "type": "code",
+        "id": "06169784fe45a92d",
+        "text": "/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture"
+      },
+      "date": 1692875849888
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "dcba86b92cd4f00d",
+        "text": "You define Routes by adding Route Modules to the app/Route/ folder. [https://elm-pages.com/docs/what-is-elm-pages page] ⇐ [[Find Route]]"
+      },
+      "id": "dcba86b92cd4f00d",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692876099551
+    },
+    {
+      "id": "dcba86b92cd4f00d",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "06169784fe45a92d",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692876101492
+    },
+    {
+      "type": "edit",
+      "id": "dcba86b92cd4f00d",
+      "item": {
+        "type": "paragraph",
+        "id": "dcba86b92cd4f00d",
+        "text": "You define Routes by adding Route Modules to the app/Route/ folder. [https://elm-pages.com/docs/what-is-elm-pages page] ⇐ [[Find Route]]"
+      },
+      "date": 1692876105400
+    },
+    {
+      "type": "edit",
+      "id": "dcba86b92cd4f00d",
+      "item": {
+        "type": "paragraph",
+        "id": "dcba86b92cd4f00d",
+        "text": "You define Routes by adding Route Modules to the app/Route/ folder. [https://elm-pages.com/docs/what-is-elm-pages page] ⇐ [[Find Route]]"
+      },
+      "date": 1692876118088
+    },
+    {
+      "type": "edit",
+      "id": "dcba86b92cd4f00d",
+      "item": {
+        "type": "paragraph",
+        "id": "dcba86b92cd4f00d",
+        "text": "You define Routes by adding Route Modules to the app/Route/ folder. [https://elm-pages.com/docs/what-is-elm-pages page] ⇐ [[Find Route]]"
+      },
+      "date": 1692876194388
+    },
+    {
+      "type": "edit",
+      "id": "dcba86b92cd4f00d",
+      "item": {
+        "type": "paragraph",
+        "id": "dcba86b92cd4f00d",
+        "text": "You define Routes by adding Route Modules to the app/Route/ folder. [https://elm-pages.com/docs/what-is-elm-pages page] ⇐ [[Find Route]]"
+      },
+      "date": 1692876219624
+    },
+    {
+      "type": "add",
+      "id": "68a317e234098b54",
+      "item": {
+        "type": "paragraph",
+        "id": "68a317e234098b54",
+        "text": "Route for"
+      },
+      "after": "77b38ab901621926",
+      "date": 1692876362936
+    },
+    {
+      "type": "add",
+      "id": "e557e54d21f4b323",
+      "item": {
+        "type": "paragraph",
+        "id": "e557e54d21f4b323",
+        "text": "?"
+      },
+      "after": "68a317e234098b54",
+      "date": 1692876367165
+    },
+    {
+      "id": "e557e54d21f4b323",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692876369350
+    },
+    {
+      "id": "77b38ab901621926",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692876392979
+    },
+    {
+      "type": "add",
+      "id": "918a1ba155e4b201",
+      "item": {
+        "type": "paragraph",
+        "id": "918a1ba155e4b201",
+        "text": "fedwiki/wiki-client/lib/lineup.coffee"
+      },
+      "after": "e557e54d21f4b323",
+      "date": 1692876580658
+    },
+    {
+      "type": "add",
+      "item": {
+        "type": "reference",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "lineup",
+        "title": "Lineup",
+        "text": "The lineup is the list of wiki pages currently displayed within one tab, in order, with duplication possible."
+      },
+      "after": "918a1ba155e4b201",
+      "date": 1692876767346
+    },
+    {
+      "id": "77b38ab901621926",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "undefined",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692876774494,
+      "error": {
+        "type": "error",
+        "msg": "Internal Server Error",
+        "response": "Server Ignoring move. Try reload."
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692876780501
+    },
+    {
+      "item": {
+        "type": "image",
+        "id": "552e38a50538ffc8",
+        "source": "https://wiki.ralfbarkow.ch/proxy/js.ward.asia.wiki.org/favicon.png",
+        "text": "Remote image [https://wiki.ralfbarkow.ch/proxy/js.ward.asia.wiki.org/favicon.png source]",
+        "size": "thumbnail",
+        "width": 183,
+        "height": 183,
+        "url": "/assets/plugins/image/be0fb50cd7766f18b4d09a6f04aa20d8.jpg"
+      },
+      "id": "552e38a50538ffc8",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692876816316
+    },
+    {
+      "type": "edit",
+      "id": "552e38a50538ffc8",
+      "item": {
+        "type": "image",
+        "id": "552e38a50538ffc8",
+        "source": "https://wiki.ralfbarkow.ch/proxy/js.ward.asia.wiki.org/favicon.png",
+        "text": "Remote image [https://wiki.ralfbarkow.ch/proxy/js.ward.asia.wiki.org/favicon.png source]",
+        "size": "thumbnail",
+        "width": 183,
+        "height": 183,
+        "url": "/assets/plugins/image/be0fb50cd7766f18b4d09a6f04aa20d8.jpg"
+      },
+      "date": 1692876822008
+    },
+    {
+      "item": {
+        "type": "reference",
+        "id": "dfa179efd665512f",
+        "site": "js.ward.asia.wiki.org",
+        "slug": "read-sources-from-lineup",
+        "title": "Read Sources from Lineup",
+        "text": "The Frame plugin replies with source data from other plugins in the lineup. In this example we look for \"marker-source\" offered by the Map plugin and a few others."
+      },
+      "id": "dfa179efd665512f",
+      "type": "add",
+      "after": "552e38a50538ffc8",
+      "date": 1692876830065
+    },
+    {
+      "type": "edit",
+      "id": "dfa179efd665512f",
+      "item": {
+        "type": "reference",
+        "id": "dfa179efd665512f",
+        "site": "js.ward.asia.wiki.org",
+        "slug": "read-sources-from-lineup",
+        "title": "Read Sources from Lineup",
+        "text": "The Frame plugin replies with source data from other plugins in the lineup. In this example we look for \"marker-source\" offered by the Map plugin and a few others."
+      },
+      "date": 1692876833330
+    },
+    {
+      "type": "remove",
+      "id": "552e38a50538ffc8",
+      "date": 1692876836568
+    },
+    {
+      "id": "dfa179efd665512f",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "undefined",
+        "dfa179efd665512f",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692876845359,
+      "error": {
+        "type": "error",
+        "msg": "Internal Server Error",
+        "response": "Server Ignoring move. Try reload."
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692876850026
+    },
+    {
+      "id": "dfa179efd665512f",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "dfa179efd665512f",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "undefined",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692876874785,
+      "error": {
+        "type": "error",
+        "msg": "Internal Server Error",
+        "response": "Server Ignoring move. Try reload."
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692876888063
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "2925907e71ad50bf"
+      },
+      "id": "2925907e71ad50bf",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692877494050
+    },
+    {
+      "id": "dfa179efd665512f",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "undefined",
+        "dfa179efd665512f",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96",
+        "2925907e71ad50bf"
+      ],
+      "date": 1692877514283,
+      "error": {
+        "type": "error",
+        "msg": "Internal Server Error",
+        "response": "Server Ignoring move. Try reload."
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692877517682
+    },
+    {
+      "id": "dfa179efd665512f",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "undefined",
+        "dfa179efd665512f",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96",
+        "2925907e71ad50bf"
+      ],
+      "date": 1692877555399,
+      "error": {
+        "type": "error",
+        "msg": "Internal Server Error",
+        "response": "Server Ignoring move. Try reload."
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692877570751
+    },
+    {
+      "type": "remove",
+      "id": "dfa179efd665512f",
+      "date": 1692877595738
+    },
+    {
+      "id": "2925907e71ad50bf",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "undefined",
+        "2925907e71ad50bf",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692877600849,
+      "error": {
+        "type": "error",
+        "msg": "Internal Server Error",
+        "response": "Server Ignoring move. Try reload."
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692877612769
+    },
+    {
+      "type": "remove",
+      "id": "2925907e71ad50bf",
+      "date": 1692877655227
+    },
+    {
+      "type": "fork",
+      "date": 1692877692100
+    },
+    {
+      "type": "remove",
+      "date": 1692877784781
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "ec1a829ea019e15c"
+      },
+      "id": "ec1a829ea019e15c",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692877786979
+    },
+    {
+      "type": "edit",
+      "id": "ec1a829ea019e15c",
+      "item": {
+        "type": "reference",
+        "id": "ec1a829ea019e15c",
+        "site": "glossary.asia.wiki.org",
+        "slug": "lineup",
+        "title": "Lineup",
+        "text": "The lineup is the list of wiki pages currently displayed within one tab, in order, with duplication possible."
+      },
+      "date": 1692877790275
+    },
+    {
+      "id": "ec1a829ea019e15c",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "e557e54d21f4b323",
+        "918a1ba155e4b201",
+        "ec1a829ea019e15c",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692877874619
+    },
+    {
+      "type": "edit",
+      "id": "68a317e234098b54",
+      "item": {
+        "type": "paragraph",
+        "id": "68a317e234098b54",
+        "text": "Route for a [[Lineup]]?"
+      },
+      "date": 1692877913521
+    },
+    {
+      "type": "remove",
+      "id": "e557e54d21f4b323",
+      "date": 1692877918138
+    },
+    {
+      "type": "edit",
+      "id": "68a317e234098b54",
+      "item": {
+        "type": "paragraph",
+        "id": "68a317e234098b54",
+        "text": "Route for [[Lineup]]s?"
+      },
+      "date": 1692878496361
+    },
+    {
+      "id": "918a1ba155e4b201",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692878511142
+    },
+    {
+      "type": "edit",
+      "id": "68a317e234098b54",
+      "item": {
+        "type": "paragraph",
+        "id": "68a317e234098b54",
+        "text": "How to define Routes for [[Lineup]]s?"
+      },
+      "date": 1692878567901
+    },
+    {
+      "id": "ec1a829ea019e15c",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "918a1ba155e4b201",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692878585624
+    },
+    {
+      "id": "bcc5aaa9a5913758",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "918a1ba155e4b201",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692878606112
+    },
+    {
+      "id": "a568b313080c368e",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "918a1ba155e4b201",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "c14264409a260b96"
+      ],
+      "date": 1692878608874
+    },
+    {
+      "type": "edit",
+      "id": "a568b313080c368e",
+      "item": {
+        "type": "paragraph",
+        "id": "a568b313080c368e",
+        "text": "StatelessRoute vs StatefulRoute"
+      },
+      "date": 1692878638742
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "12576896c433dba1"
+      },
+      "id": "12576896c433dba1",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692878760216
+    },
+    {
+      "id": "12576896c433dba1",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "918a1ba155e4b201",
+        "6feb463bf35f61c0",
+        "4c1e9f20d7a62039",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "c14264409a260b96"
+      ],
+      "date": 1692878763017
+    },
+    {
+      "type": "edit",
+      "id": "12576896c433dba1",
+      "item": {
+        "type": "paragraph",
+        "id": "12576896c433dba1",
+        "text": "Deciding Between Server-Rendered and Pre-Rendered Routes"
+      },
+      "date": 1692878765752
+    },
+    {
+      "id": "4c1e9f20d7a62039",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "06169784fe45a92d",
+        "918a1ba155e4b201",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692878769217
+    },
+    {
+      "type": "edit",
+      "id": "12576896c433dba1",
+      "item": {
+        "type": "paragraph",
+        "id": "12576896c433dba1",
+        "text": "Deciding Between Server-Rendered and Pre-Rendered Routes [https://elm-pages.com/docs/what-is-elm-pages#deciding-between-server-rendered-and-pre-rendered-routes page]"
+      },
+      "date": 1692878787185
+    },
+    {
+      "type": "edit",
+      "id": "918a1ba155e4b201",
+      "item": {
+        "type": "paragraph",
+        "id": "918a1ba155e4b201",
+        "text": "fedwiki/wiki-client/lib/lineup.coffee: The lineup represents a sequence of pages with possible duplication. We maintain the lineup in parallel with the DOM list of .page elements. Eventually lineup will play a more central role managing calculations and display updates."
+      },
+      "date": 1692878955416
+    },
+    {
+      "type": "edit",
+      "id": "918a1ba155e4b201",
+      "item": {
+        "type": "paragraph",
+        "id": "918a1ba155e4b201",
+        "text": "fedwiki/wiki-client/lib/lineup.coffee [https://github.com/fedwiki/wiki-client/blob/c892b0dd0c5efb593a4eed8833266b047571fbeb/lib/lineup.coffee#L1-L5 code]: The lineup represents a sequence of pages with possible duplication. We maintain the lineup in parallel with the DOM list of .page elements. Eventually lineup will play a more central role managing calculations and display updates."
+      },
+      "date": 1692879062830
+    },
+    {
+      "type": "add",
+      "id": "45d6e99e1948007b",
+      "item": {
+        "type": "paragraph",
+        "id": "45d6e99e1948007b",
+        "text": "Example lineup:"
+      },
+      "after": "68a317e234098b54",
+      "date": 1692879089565
+    },
+    {
+      "id": "918a1ba155e4b201",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692879099385
+    },
+    {
+      "type": "edit",
+      "id": "918a1ba155e4b201",
+      "item": {
+        "type": "paragraph",
+        "id": "918a1ba155e4b201",
+        "text": "See fedwiki/wiki-client/lib/lineup.coffee [https://github.com/fedwiki/wiki-client/blob/c892b0dd0c5efb593a4eed8833266b047571fbeb/lib/lineup.coffee#L1-L5 code]: The lineup represents a sequence of pages with possible duplication. We maintain the lineup in parallel with the DOM list of .page elements. Eventually lineup will play a more central role managing calculations and display updates."
+      },
+      "date": 1692879109869
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "88e1b0b44dd48edd"
+      },
+      "id": "88e1b0b44dd48edd",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692879172940
+    },
+    {
+      "id": "88e1b0b44dd48edd",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "ec1a829ea019e15c",
+        "68a317e234098b54",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692879176292
+    },
+    {
+      "type": "edit",
+      "id": "88e1b0b44dd48edd",
+      "item": {
+        "type": "markdown",
+        "id": "88e1b0b44dd48edd",
+        "text": "No route found for /view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture Did you mean to go to one of these routes:\n\n    /blog/:slug\n    /view/:slug\n    /greet\n    /hello\n    /index"
+      },
+      "date": 1692879178572
+    },
+    {
+      "type": "edit",
+      "id": "88e1b0b44dd48edd",
+      "item": {
+        "type": "markdown",
+        "id": "88e1b0b44dd48edd",
+        "text": "No route found for /view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture Did you mean to go to one of these routes:\n * /blog/:slug\n * /view/:slug\n * /greet\n * /hello\n * /index"
+      },
+      "date": 1692879209960
+    },
+    {
+      "id": "ec1a829ea019e15c",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692879242223
+    },
+    {
+      "id": "77b38ab901621926",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692879246908
+    },
+    {
+      "id": "bcc5aaa9a5913758",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "a568b313080c368e",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692879255540
+    },
+    {
+      "id": "a568b313080c368e",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692879260574
+    },
+    {
+      "id": "6feb463bf35f61c0",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "6feb463bf35f61c0",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692884780448
+    },
+    {
+      "type": "edit",
+      "id": "6feb463bf35f61c0",
+      "item": {
+        "type": "paragraph",
+        "id": "6feb463bf35f61c0",
+        "text": "⇒ [[The Elm-Pages Architecture]] ⇒ [[RouteParams]]"
+      },
+      "date": 1692884793520
+    },
+    {
+      "id": "bcc5aaa9a5913758",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "6feb463bf35f61c0",
+        "a568b313080c368e",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "bcc5aaa9a5913758",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692884811529
+    },
+    {
+      "id": "a568b313080c368e",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96"
+      ],
+      "date": 1692884813276
+    },
+    {
+      "type": "edit",
+      "id": "77b38ab901621926",
+      "item": {
+        "type": "paragraph",
+        "id": "77b38ab901621926",
+        "text": "Compare our Route.View.Slug_ module with the Route.Blog.Slug_ sample module. ⇐ [[Find Route]]"
+      },
+      "date": 1692884853471
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "a5b58a4d5ae8bd1c"
+      },
+      "id": "a5b58a4d5ae8bd1c",
+      "type": "add",
+      "after": "c14264409a260b96",
+      "date": 1692884857082
+    },
+    {
+      "type": "edit",
+      "id": "a5b58a4d5ae8bd1c",
+      "item": {
+        "type": "graphviz",
+        "id": "a5b58a4d5ae8bd1c",
+        "text": "DOT FROM lambda-browsing"
+      },
+      "date": 1692884863878
+    },
+    {
+      "id": "f3ed59b7079408ef",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "f3ed59b7079408ef",
+        "text": "remote pages"
+      },
+      "after": "12576896c433dba1",
+      "attribution": {
+        "page": "Lineup"
+      },
+      "date": 1692885042090
+    },
+    {
+      "type": "edit",
+      "id": "f3ed59b7079408ef",
+      "item": {
+        "type": "paragraph",
+        "id": "f3ed59b7079408ef",
+        "text": "remote pages, e.g. https://web.archive.org/web/20230823220515/https://elm-pages.com/"
+      },
+      "date": 1692885125796
+    },
+    {
+      "type": "edit",
+      "id": "77b38ab901621926",
+      "item": {
+        "type": "paragraph",
+        "id": "77b38ab901621926",
+        "text": "Compare our Route.View.Slug_ module with the Route.Blog.Slug_ sample module. ⇐ [[Find Route]] ⇒ [[Splat Routes]] ⇒ [[Optional Splat Routes]]"
+      },
+      "date": 1692894389512
+    },
+    {
+      "id": "70973ace7c651260",
+      "type": "add",
+      "item": {
+        "type": "code",
+        "id": "70973ace7c651260",
+        "text": "npx elm-pages run script/src/AddRoute.elm View.Slug_/SPLAT__.elm"
+      },
+      "after": "77b38ab901621926",
+      "attribution": {
+        "page": "Find Route"
+      },
+      "date": 1692894409264
+    },
+    {
+      "type": "edit",
+      "id": "70973ace7c651260",
+      "item": {
+        "type": "code",
+        "id": "70973ace7c651260",
+        "text": "npx elm-pages run script/src/AddRoute.elm View.Slug_/SPLAT__.elm"
+      },
+      "date": 1692894433559
+    },
+    {
+      "type": "edit",
+      "id": "77b38ab901621926",
+      "item": {
+        "type": "paragraph",
+        "id": "77b38ab901621926",
+        "text": "Compare our Route.View.Slug_ module with the Route.Blog.Slug_ sample module. ⇐ [[Find Route]] ⇒ [[Splat Routes]] ⇒ [[Optional Splat Routes]]"
+      },
+      "date": 1692894460633
+    },
+    {
+      "type": "edit",
+      "id": "70973ace7c651260",
+      "item": {
+        "type": "code",
+        "id": "70973ace7c651260",
+        "text": "npx elm-pages run script/src/AddRoute.elm View.Slug_/SPLAT__.elm"
+      },
+      "date": 1692894472378
+    },
+    {
+      "item": {
+        "type": "markdown",
+        "id": "4f1c9837b739687d",
+        "text": "Installing dependencies from elm.codegen.json\nnode:internal/process/promises:289\n            triggerUncaughtException(err, true /* fromPromise */);\n            ^\n\nAggregateError\n    at internalConnectMultiple (node:net:1114:18)\n    at afterConnectMultiple (node:net:1667:5) {\n  code: 'ETIMEDOUT',\n  [errors]: [\n    Error: connect ETIMEDOUT 76.76.21.164:443\n        at createConnectionError (node:net:1634:14)\n        at Timeout.internalConnectMultipleTimeout (node:net:1685:38)\n        at listOnTimeout (node:internal/timers:575:11)\n        at process.processTimers (node:internal/timers:514:7) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.164',\n      port: 443\n    },\n    Error: connect ETIMEDOUT 76.76.21.123:443\n        at createConnectionError (node:net:1634:14)\n        at afterConnectMultiple (node:net:1664:40) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.123',\n      port: 443\n    }\n  ]\n}\n\nNode.js v20.5.1"
+      },
+      "id": "4f1c9837b739687d",
+      "type": "add",
+      "after": "a5b58a4d5ae8bd1c",
+      "date": 1692894523130
+    },
+    {
+      "type": "edit",
+      "id": "4f1c9837b739687d",
+      "item": {
+        "type": "markdown",
+        "id": "4f1c9837b739687d",
+        "text": "Installing dependencies from elm.codegen.json\nnode:internal/process/promises:289\n            triggerUncaughtException(err, true /* fromPromise */);\n            ^\n\nAggregateError\n    at internalConnectMultiple (node:net:1114:18)\n    at afterConnectMultiple (node:net:1667:5) {\n  code: 'ETIMEDOUT',\n  [errors]: [\n    Error: connect ETIMEDOUT 76.76.21.164:443\n        at createConnectionError (node:net:1634:14)\n        at Timeout.internalConnectMultipleTimeout (node:net:1685:38)\n        at listOnTimeout (node:internal/timers:575:11)\n        at process.processTimers (node:internal/timers:514:7) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.164',\n      port: 443\n    },\n    Error: connect ETIMEDOUT 76.76.21.123:443\n        at createConnectionError (node:net:1634:14)\n        at afterConnectMultiple (node:net:1664:40) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.123',\n      port: 443\n    }\n  ]\n}\n\nNode.js v20.5.1"
+      },
+      "date": 1692894525736
+    },
+    {
+      "id": "4f1c9837b739687d",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "70973ace7c651260",
+        "4f1c9837b739687d",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "f3ed59b7079408ef",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96",
+        "a5b58a4d5ae8bd1c"
+      ],
+      "date": 1692894532272
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "81a8794067ef312f",
+        "text": "Issue with only catch-all routing #397  [https://github.com/dillonkearns/elm-pages/issues/397 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690413642388379?thread_ts=1690383176.913499&cid=CNSNETV37 post]"
+      },
+      "id": "81a8794067ef312f",
+      "type": "add",
+      "after": "a5b58a4d5ae8bd1c",
+      "date": 1692894992505
+    },
+    {
+      "type": "edit",
+      "id": "81a8794067ef312f",
+      "item": {
+        "type": "paragraph",
+        "id": "81a8794067ef312f",
+        "text": "Issue with only catch-all routing #397  [https://github.com/dillonkearns/elm-pages/issues/397 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690413642388379?thread_ts=1690383176.913499&cid=CNSNETV37 post]"
+      },
+      "date": 1692894996171
+    },
+    {
+      "id": "81a8794067ef312f",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "70973ace7c651260",
+        "4f1c9837b739687d",
+        "81a8794067ef312f",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "f3ed59b7079408ef",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96",
+        "a5b58a4d5ae8bd1c"
+      ],
+      "date": 1692894999794
+    },
+    {
+      "type": "edit",
+      "id": "81a8794067ef312f",
+      "item": {
+        "type": "paragraph",
+        "id": "81a8794067ef312f",
+        "text": "Issue with only catch-all routing #397  [https://github.com/dillonkearns/elm-pages/issues/397 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690413642388379?thread_ts=1690383176.913499&cid=CNSNETV37 post]"
+      },
+      "date": 1692895052239
+    },
+    {
+      "type": "edit",
+      "id": "81a8794067ef312f",
+      "item": {
+        "type": "paragraph",
+        "id": "81a8794067ef312f",
+        "text": "Issue with only catch-all routing #397  [https://github.com/dillonkearns/elm-pages/issues/397 github], [https://elmlang.slack.com/archives/CNSNETV37/p1690413642388379?thread_ts=1690383176.913499&cid=CNSNETV37 post]"
+      },
+      "date": 1692895114232
+    },
+    {
+      "type": "edit",
+      "id": "4f1c9837b739687d",
+      "item": {
+        "type": "markdown",
+        "id": "4f1c9837b739687d",
+        "text": "Installing dependencies from elm.codegen.json\nnode:internal/process/promises:289\n            triggerUncaughtException(err, true /* fromPromise */);\n            ^\n\nAggregateError\n    at internalConnectMultiple (node:net:1114:18)\n    at afterConnectMultiple (node:net:1667:5) {\n  code: 'ETIMEDOUT',\n  [errors]: [\n    Error: connect ETIMEDOUT 76.76.21.164:443\n        at createConnectionError (node:net:1634:14)\n        at Timeout.internalConnectMultipleTimeout (node:net:1685:38)\n        at listOnTimeout (node:internal/timers:575:11)\n        at process.processTimers (node:internal/timers:514:7) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.164',\n      port: 443\n    },\n    Error: connect ETIMEDOUT 76.76.21.123:443\n        at createConnectionError (node:net:1634:14)\n        at afterConnectMultiple (node:net:1664:40) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.123',\n      port: 443\n    }\n  ]\n}\n\nNode.js v20.5.1"
+      },
+      "date": 1692895771319,
+      "error": {
+        "type": "error",
+        "msg": ""
+      }
+    },
+    {
+      "type": "fork",
+      "date": 1692895795274,
+      "error": {
+        "type": "error",
+        "msg": ""
+      }
+    },
+    {
+      "type": "edit",
+      "id": "4f1c9837b739687d",
+      "item": {
+        "type": "markdown",
+        "id": "4f1c9837b739687d",
+        "text": "Installing dependencies from elm.codegen.json\nnode:internal/process/promises:289\n            triggerUncaughtException(err, true /* fromPromise */);\n            ^\n\nAggregateError\n    at internalConnectMultiple (node:net:1114:18)\n    at afterConnectMultiple (node:net:1667:5) {\n  code: 'ETIMEDOUT',\n  [errors]: [\n    Error: connect ETIMEDOUT 76.76.21.164:443\n        at createConnectionError (node:net:1634:14)\n        at Timeout.internalConnectMultipleTimeout (node:net:1685:38)\n        at listOnTimeout (node:internal/timers:575:11)\n        at process.processTimers (node:internal/timers:514:7) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.164',\n      port: 443\n    },\n    Error: connect ETIMEDOUT 76.76.21.123:443\n        at createConnectionError (node:net:1634:14)\n        at afterConnectMultiple (node:net:1664:40) {\n      errno: -60,\n      code: 'ETIMEDOUT',\n      syscall: 'connect',\n      address: '76.76.21.123',\n      port: 443\n    }\n  ]\n}\n\nNode.js v20.5.1"
+      },
+      "date": 1692895780462,
+      "error": {
+        "type": "error",
+        "msg": ""
+      }
+    },
+    {
+      "type": "edit",
+      "id": "4f1c9837b739687d",
+      "item": {
+        "type": "markdown",
+        "id": "4f1c9837b739687d",
+        "text": "-- Invalid CLI arguments --------------- \nValidation errors:\n\nInvalid `--module` option.\nMust be of form /^[A-Z][a-zA-Z0-9_]*(\\.([A-Z][a-zA-Z0-9_]*))*$/"
+      },
+      "date": 1692896083283
+    },
+    {
+      "type": "fork",
+      "date": 1692896087907
+    },
+    {
+      "id": "81a8794067ef312f",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "81a8794067ef312f",
+        "70973ace7c651260",
+        "4f1c9837b739687d",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "f3ed59b7079408ef",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96",
+        "a5b58a4d5ae8bd1c"
+      ],
+      "date": 1692896127424
+    },
+    {
+      "type": "edit",
+      "id": "70973ace7c651260",
+      "item": {
+        "type": "code",
+        "id": "70973ace7c651260",
+        "text": "npx elm-pages run script/src/AddRoute.elm View.Slug_/SPLAT__"
+      },
+      "date": 1692896702472
+    },
+    {
+      "type": "edit",
+      "id": "70973ace7c651260",
+      "item": {
+        "type": "code",
+        "id": "70973ace7c651260",
+        "text": "npx elm-pages@latest run AddRoute View.Slug_/SPLAT__"
+      },
+      "date": 1692896763277
+    },
+    {
+      "type": "remove",
+      "id": "4f1c9837b739687d",
+      "date": 1692896774860
+    },
+    {
+      "type": "edit",
+      "id": "70973ace7c651260",
+      "item": {
+        "type": "code",
+        "id": "70973ace7c651260",
+        "text": "npx elm-pages@latest run AddRoute View.Slug_.SPLAT__"
+      },
+      "date": 1692896812586
+    },
+    {
+      "type": "add",
+      "id": "92fc1e2830cbfe9a",
+      "item": {
+        "type": "paragraph",
+        "id": "92fc1e2830cbfe9a",
+        "text": "Inspect your pages BackendTask. [https://elmlang.slack.com/archives/CNSNETV37/p1690473527640309?thread_ts=1690471742.604279&cid=CNSNETV37 post], [https://github.com/dillonkearns/elm-pages/issues/398 github]"
+      },
+      "after": "6feb463bf35f61c0",
+      "date": 1692900134188
+    },
+    {
+      "type": "edit",
+      "id": "92fc1e2830cbfe9a",
+      "item": {
+        "type": "paragraph",
+        "id": "92fc1e2830cbfe9a",
+        "text": "Inspect your pages BackendTask. [https://elmlang.slack.com/archives/CNSNETV37/p1690473527640309?thread_ts=1690471742.604279&cid=CNSNETV37 post], [https://github.com/dillonkearns/elm-pages/issues/398 github]"
+      },
+      "date": 1692900166565
+    },
+    {
+      "type": "edit",
+      "id": "92fc1e2830cbfe9a",
+      "item": {
+        "type": "paragraph",
+        "id": "92fc1e2830cbfe9a",
+        "text": "Inspect your pages BackendTask. [https://elmlang.slack.com/archives/CNSNETV37/p1690473527640309?thread_ts=1690471742.604279&cid=CNSNETV37 post], [https://github.com/dillonkearns/elm-pages/issues/398 github]"
+      },
+      "date": 1692900629597
+    },
+    {
+      "id": "92fc1e2830cbfe9a",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "81a8794067ef312f",
+        "70973ace7c651260",
+        "6feb463bf35f61c0",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "f3ed59b7079408ef",
+        "92fc1e2830cbfe9a",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96",
+        "a5b58a4d5ae8bd1c"
+      ],
+      "date": 1692908460775
+    },
+    {
+      "type": "add",
+      "id": "d09657fd25b02674",
+      "item": {
+        "type": "paragraph",
+        "id": "d09657fd25b02674",
+        "text": "Debugger (Inspect)"
+      },
+      "after": "6feb463bf35f61c0",
+      "date": 1692908476452
+    },
+    {
+      "type": "add",
+      "id": "5aa5aec34c0c0d08",
+      "item": {
+        "type": "paragraph",
+        "id": "5aa5aec34c0c0d08",
+        "text": "Watch expressions"
+      },
+      "after": "d09657fd25b02674",
+      "date": 1692908493016
+    },
+    {
+      "type": "edit",
+      "id": "d09657fd25b02674",
+      "item": {
+        "type": "paragraph",
+        "id": "d09657fd25b02674",
+        "text": "Debugger (Inspect)"
+      },
+      "date": 1692908497099
+    },
+    {
+      "item": {
+        "type": "image",
+        "id": "3bfce16962c01e9b",
+        "text": "RouteParams",
+        "size": "wide",
+        "width": 430,
+        "height": 158,
+        "url": "/assets/plugins/image/54ebacdeca91f5f7623c25e8396b266a.jpg"
+      },
+      "id": "3bfce16962c01e9b",
+      "type": "add",
+      "after": "a5b58a4d5ae8bd1c",
+      "date": 1692908874856
+    },
+    {
+      "type": "edit",
+      "id": "3bfce16962c01e9b",
+      "item": {
+        "type": "image",
+        "id": "3bfce16962c01e9b",
+        "text": "RouteParams",
+        "size": "wide",
+        "width": 430,
+        "height": 158,
+        "url": "/assets/plugins/image/54ebacdeca91f5f7623c25e8396b266a.jpg"
+      },
+      "date": 1692908897134
+    },
+    {
+      "id": "3bfce16962c01e9b",
+      "type": "move",
+      "order": [
+        "dcba86b92cd4f00d",
+        "68a317e234098b54",
+        "ec1a829ea019e15c",
+        "918a1ba155e4b201",
+        "45d6e99e1948007b",
+        "06169784fe45a92d",
+        "88e1b0b44dd48edd",
+        "77b38ab901621926",
+        "81a8794067ef312f",
+        "70973ace7c651260",
+        "6feb463bf35f61c0",
+        "d09657fd25b02674",
+        "3bfce16962c01e9b",
+        "5aa5aec34c0c0d08",
+        "6b534f15676ef2cd",
+        "12576896c433dba1",
+        "f3ed59b7079408ef",
+        "92fc1e2830cbfe9a",
+        "bcc5aaa9a5913758",
+        "a568b313080c368e",
+        "4c1e9f20d7a62039",
+        "c14264409a260b96",
+        "a5b58a4d5ae8bd1c"
+      ],
+      "date": 1692908913703
+    },
+    {
+      "type": "fork",
+      "date": 1692908922291
+    },
+    {
+      "type": "edit",
+      "id": "d09657fd25b02674",
+      "item": {
+        "type": "paragraph",
+        "id": "d09657fd25b02674",
+        "text": "Debugger (Inspect) [https://github.com/dreyeck/blog/commit/e1955b5d5942d5be5af145a18a6ef50ea9869dd0 commit]"
+      },
+      "date": 1692909317090
+    },
+    {
+      "type": "edit",
+      "id": "d09657fd25b02674",
+      "item": {
+        "type": "paragraph",
+        "id": "d09657fd25b02674",
+        "text": "Debugger (Inspect) [https://github.com/dreyeck/blog/commit/e1955b5d5942d5be5af145a18a6ef50ea9869dd0 commit] – replace View.Slug_ with View.Slug_.SPLAT__"
+      },
+      "date": 1692909329726
+    },
+    {
+      "type": "edit",
+      "id": "5aa5aec34c0c0d08",
+      "item": {
+        "type": "paragraph",
+        "id": "5aa5aec34c0c0d08",
+        "text": "Watch expressions: routeParams"
+      },
+      "date": 1692909370048
+    },
+    {
+      "type": "add",
+      "id": "75288aacb8757f9f",
+      "item": {
+        "type": "paragraph",
+        "id": "75288aacb8757f9f",
+        "text": "rename elm-pages-starter-express/app/Route/View/{Slug_.elm => Slug_/SPLAT__.elm}"
+      },
+      "after": "d09657fd25b02674",
+      "date": 1692909432118
+    },
+    {
+      "type": "add",
+      "id": "8c8f5f6dc8465b25",
+      "item": {
+        "type": "paragraph",
+        "id": "8c8f5f6dc8465b25",
+        "text": "/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture"
+      },
+      "after": "5aa5aec34c0c0d08",
+      "date": 1692909504583
+    },
+    {
+      "type": "edit",
+      "id": "8c8f5f6dc8465b25",
+      "item": {
+        "type": "paragraph",
+        "id": "8c8f5f6dc8465b25",
+        "text": "[http://blog.dreyeck.ch/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture blog.dreyeck.ch] (http)"
+      },
+      "date": 1692909552942
+    },
+    {
+      "type": "edit",
+      "id": "8c8f5f6dc8465b25",
+      "item": {
+        "type": "paragraph",
+        "id": "8c8f5f6dc8465b25",
+        "text": "[http://blog.dreyeck.ch/view/welcome-visitors/view/no-route-found/view/the-elm-pages-architecture blog.dreyeck.ch] (http) – with example lineup."
+      },
+      "date": 1692909596352
+    },
+    {
+      "type": "add",
+      "id": "8c49dd900895f19c",
+      "item": {
+        "type": "paragraph",
+        "id": "8c49dd900895f19c",
+        "text": "15785 and 15786 (breakpoints)"
+      },
+      "after": "5aa5aec34c0c0d08",
+      "date": 1692910379774
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1692942929063
+    }
+  ]
+}

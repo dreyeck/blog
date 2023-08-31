@@ -1,0 +1,805 @@
+{
+  "title": "Form",
+  "story": [
+    {
+      "type": "markdown",
+      "id": "149253df1c6ee31c",
+      "text": "The introduction of a [[Distinction]] is first of all the introduction of a *form*. "
+    },
+    {
+      "type": "paragraph",
+      "id": "adb0db32625a2e00",
+      "text": "A form is the distinction of an [[Inside]] (of the distinguished) from an [[Outside]] (of the thing). So the introduction of any distinction is itself a distinction. "
+    },
+    {
+      "type": "paragraph",
+      "id": "a0ba7fceb00b5ef4",
+      "text": "As a form, the symbol of X marks the difference of two sides: X and non-X. [⇒ [[Binate]]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "6a6de1adfbf36cba",
+      "text": "X is, in the terminology of [[George Spencer Brown]], the [[Inside]] of the form and non-X the [[Outside]]. "
+    },
+    {
+      "type": "paragraph",
+      "id": "d17b413d51cdfb54",
+      "text": "For the form to [[cross]] from one side to the other, the system takes [[Time]] – whether it moves something from the status of X to the status of non-X or vice versa."
+    },
+    {
+      "type": "paragraph",
+      "id": "f17a21ea02b9febf",
+      "text": "In any case the form exists only as a two-sided form and the one side not without the other. And in any case both designations, the positive and the negative, are results of internal operations of the system and are related to internal states. "
+    },
+    {
+      "type": "paragraph",
+      "id": "9d1cc5376dbc54df",
+      "text": "As with all symbols, a diabolical counter-case runs along."
+    },
+    {
+      "type": "paragraph",
+      "id": "bf79668b67ad1552",
+      "text": "LUHMANN, Niklas, 1995 (1993). [[Das Recht der Gesellschaft]].   Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf], p. 104.\n"
+    },
+    {
+      "type": "pagefold",
+      "id": "e529a3eb72e7da62",
+      "text": "~"
+    },
+    {
+      "type": "markdown",
+      "id": "e71c4de37c84d2c6",
+      "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our [[Intention]]s. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\n\n"
+    },
+    {
+      "type": "markdown",
+      "id": "6b036eb7a4e31507",
+      "text": "And also not about the [[Whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". **The concept of form is explicitly set against such a [[Holographic New Age Mysticism]].** "
+    },
+    {
+      "type": "pagefold",
+      "id": "ed1517bff0715135",
+      "text": "~"
+    },
+    {
+      "type": "markdown",
+      "id": "7d514df0434cb851",
+      "text": "# [[DisplayMedium]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "ce4214e4db4e9005",
+      "text": "Class Form"
+    },
+    {
+      "type": "markdown",
+      "id": "3fc66687860bf770",
+      "text": "A rectangular array of pixels, used for holding images.  All pictures, including character images are Forms.  The depth of a Form is how many bits are used to specify the color at each pixel.  The actual bits are held in a Bitmap, whose internal structure is different at each depth.  Class Color allows you to deal with colors without knowing how they are actually encoded inside a Bitmap.\n\t  The supported depths (in bits) are 1, 2, 4, 8, 16, and 32.  The number of actual colors at these depths are: 2, 4, 16, 256, 32768, and 16 million.\n\tForms are indexed starting at 0 instead of 1; thus, the top-left pixel of a Form has coordinates 0@0.\n\tForms are combined using [[BitBlt]].  See the comment in class BitBlt.  Forms that repeat many times to fill a large destination are InfiniteForms.\n\n\tcolorAt: x@y\t\tReturns the abstract Color at this location\n\tdisplayAt: x@y\t\tshows this form on the screen\n\tdisplayOn: aMedium at: x@y\tshows this form in a Window, a Form, or other DisplayMedium\n\tfillColor: aColor\t\tSet all the pixels to the color.\n\tedit\t\tlaunch an editor to change the bits of this form.\n\tpixelValueAt: x@y\tThe encoded color.  The encoding depends on the depth.\n"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Form",
+        "story": []
+      },
+      "date": 1638704748081
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "2800e5b21a5039cf"
+      },
+      "id": "2800e5b21a5039cf",
+      "type": "add",
+      "date": 1638704768205
+    },
+    {
+      "type": "edit",
+      "id": "2800e5b21a5039cf",
+      "item": {
+        "type": "reference",
+        "id": "2800e5b21a5039cf",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "hand-drawn-graphs",
+        "title": "Hand Drawn Graphs",
+        "text": "Here we examine the utility of hand drawn graphs in concept and wiki navigation and comprehension."
+      },
+      "date": 1638704770231
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "d08e60dc3c6e0f36"
+      },
+      "id": "d08e60dc3c6e0f36",
+      "type": "add",
+      "after": "2800e5b21a5039cf",
+      "date": 1638704779933
+    },
+    {
+      "type": "edit",
+      "id": "d08e60dc3c6e0f36",
+      "item": {
+        "type": "reference",
+        "id": "d08e60dc3c6e0f36",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "the-humane-interface",
+        "title": "The Humane Interface",
+        "text": "The problem"
+      },
+      "date": 1638704782024
+    },
+    {
+      "id": "e71c4de37c84d2c6",
+      "type": "add",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**Niklas Luhmann**: Here, I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our intentions. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\nAnd also not about the [[whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". The concept of [[form]] is explicitly set against such a [[holographic New Age mysticism]]. "
+      },
+      "date": 1645125909636
+    },
+    {
+      "type": "remove",
+      "id": "2800e5b21a5039cf",
+      "date": 1645126022096
+    },
+    {
+      "type": "remove",
+      "id": "d08e60dc3c6e0f36",
+      "date": 1645126023266
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "c72ee47a0398d682",
+        "text": ""
+      },
+      "id": "c72ee47a0398d682",
+      "type": "add",
+      "after": "e71c4de37c84d2c6",
+      "date": 1645126029483
+    },
+    {
+      "type": "edit",
+      "id": "c72ee47a0398d682",
+      "item": {
+        "type": "paragraph",
+        "id": "c72ee47a0398d682",
+        "text": ""
+      },
+      "date": 1645126039329
+    },
+    {
+      "type": "remove",
+      "id": "c72ee47a0398d682",
+      "date": 1645126065142
+    },
+    {
+      "type": "edit",
+      "id": "e71c4de37c84d2c6",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our intentions. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\nAnd also not about the [[whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". The concept of [[form]] is explicitly set against such a [[holographic New Age mysticism]]. "
+      },
+      "date": 1645126085006
+    },
+    {
+      "type": "edit",
+      "id": "e71c4de37c84d2c6",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our intentions. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\nAnd also not about the [[whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". The concept of [[form]] is explicitly set against such a [[holographic New Age mysticism]]. "
+      },
+      "date": 1645126104866
+    },
+    {
+      "type": "fork",
+      "date": 1645126106444
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "ed1517bff0715135"
+      },
+      "id": "ed1517bff0715135",
+      "type": "add",
+      "after": "e71c4de37c84d2c6",
+      "date": 1649361062845
+    },
+    {
+      "type": "edit",
+      "id": "ed1517bff0715135",
+      "item": {
+        "type": "pagefold",
+        "id": "ed1517bff0715135",
+        "text": "~"
+      },
+      "date": 1649361066747
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "7d514df0434cb851"
+      },
+      "id": "7d514df0434cb851",
+      "type": "add",
+      "after": "ed1517bff0715135",
+      "date": 1655491191497
+    },
+    {
+      "type": "edit",
+      "id": "7d514df0434cb851",
+      "item": {
+        "type": "markdown",
+        "id": "7d514df0434cb851",
+        "text": "# "
+      },
+      "date": 1655491196453
+    },
+    {
+      "type": "edit",
+      "id": "7d514df0434cb851",
+      "item": {
+        "type": "markdown",
+        "id": "7d514df0434cb851",
+        "text": "# DisplayMedium"
+      },
+      "date": 1655491204866
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "ce4214e4db4e9005"
+      },
+      "id": "ce4214e4db4e9005",
+      "type": "add",
+      "after": "7d514df0434cb851",
+      "date": 1655491210226
+    },
+    {
+      "type": "edit",
+      "id": "ce4214e4db4e9005",
+      "item": {
+        "type": "paragraph",
+        "id": "ce4214e4db4e9005",
+        "text": "Class Form"
+      },
+      "date": 1655491214361
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "3fc66687860bf770"
+      },
+      "id": "3fc66687860bf770",
+      "type": "add",
+      "after": "ce4214e4db4e9005",
+      "date": 1655491222029
+    },
+    {
+      "type": "edit",
+      "id": "3fc66687860bf770",
+      "item": {
+        "type": "markdown",
+        "id": "3fc66687860bf770",
+        "text": "A rectangular array of pixels, used for holding images.  All pictures, including character images are Forms.  The depth of a Form is how many bits are used to specify the color at each pixel.  The actual bits are held in a Bitmap, whose internal structure is different at each depth.  Class Color allows you to deal with colors without knowing how they are actually encoded inside a Bitmap.\n\t  The supported depths (in bits) are 1, 2, 4, 8, 16, and 32.  The number of actual colors at these depths are: 2, 4, 16, 256, 32768, and 16 million.\n\tForms are indexed starting at 0 instead of 1; thus, the top-left pixel of a Form has coordinates 0@0.\n\tForms are combined using BitBlt.  See the comment in class BitBlt.  Forms that repeat many times to fill a large destination are InfiniteForms.\n\n\tcolorAt: x@y\t\tReturns the abstract Color at this location\n\tdisplayAt: x@y\t\tshows this form on the screen\n\tdisplayOn: aMedium at: x@y\tshows this form in a Window, a Form, or other DisplayMedium\n\tfillColor: aColor\t\tSet all the pixels to the color.\n\tedit\t\tlaunch an editor to change the bits of this form.\n\tpixelValueAt: x@y\tThe encoded color.  The encoding depends on the depth.\n"
+      },
+      "date": 1655491224739
+    },
+    {
+      "type": "edit",
+      "id": "3fc66687860bf770",
+      "item": {
+        "type": "markdown",
+        "id": "3fc66687860bf770",
+        "text": "A rectangular array of pixels, used for holding images.  All pictures, including character images are Forms.  The depth of a Form is how many bits are used to specify the color at each pixel.  The actual bits are held in a Bitmap, whose internal structure is different at each depth.  Class Color allows you to deal with colors without knowing how they are actually encoded inside a Bitmap.\n\t  The supported depths (in bits) are 1, 2, 4, 8, 16, and 32.  The number of actual colors at these depths are: 2, 4, 16, 256, 32768, and 16 million.\n\tForms are indexed starting at 0 instead of 1; thus, the top-left pixel of a Form has coordinates 0@0.\n\tForms are combined using [[BitBlt]].  See the comment in class BitBlt.  Forms that repeat many times to fill a large destination are InfiniteForms.\n\n\tcolorAt: x@y\t\tReturns the abstract Color at this location\n\tdisplayAt: x@y\t\tshows this form on the screen\n\tdisplayOn: aMedium at: x@y\tshows this form in a Window, a Form, or other DisplayMedium\n\tfillColor: aColor\t\tSet all the pixels to the color.\n\tedit\t\tlaunch an editor to change the bits of this form.\n\tpixelValueAt: x@y\tThe encoded color.  The encoding depends on the depth.\n"
+      },
+      "date": 1655491287231
+    },
+    {
+      "type": "edit",
+      "id": "7d514df0434cb851",
+      "item": {
+        "type": "markdown",
+        "id": "7d514df0434cb851",
+        "text": "# [[DisplayMedium]]"
+      },
+      "date": 1660573568088
+    },
+    {
+      "type": "edit",
+      "id": "e71c4de37c84d2c6",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our intentions. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\nAnd also not about the [[whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". **The concept of form is explicitly set against such a [[holographic New Age mysticism]].** "
+      },
+      "date": 1661611119585
+    },
+    {
+      "type": "edit",
+      "id": "e71c4de37c84d2c6",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our intentions. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\nAnd also not about the [[Whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". **The concept of form is explicitly set against such a [[holographic New Age mysticism]].** "
+      },
+      "date": 1661611385155
+    },
+    {
+      "type": "edit",
+      "id": "e71c4de37c84d2c6",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our intentions. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\n\n"
+      },
+      "date": 1661760182154
+    },
+    {
+      "type": "add",
+      "id": "6b036eb7a4e31507",
+      "item": {
+        "type": "markdown",
+        "id": "6b036eb7a4e31507",
+        "text": "And also not about the [[Whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". **The concept of form is explicitly set against such a [[holographic New Age mysticism]].** "
+      },
+      "after": "e71c4de37c84d2c6",
+      "date": 1661760185362
+    },
+    {
+      "type": "edit",
+      "id": "e71c4de37c84d2c6",
+      "item": {
+        "type": "markdown",
+        "id": "e71c4de37c84d2c6",
+        "text": "**[[Niklas Luhmann]]**: Here [see [[Prozessunterbrechungen]] ; R.B.], I think, language is not quite up to par with what should be said.  We need to bring the language back into line with our [[Intention]]s. So I would answer yes and no. On the one hand, everything that can be seen or said takes place in the world, and they are always, in this sense, statements about the world. But just not about the unity of the world or about that which can never be left.\n\n\n"
+      },
+      "date": 1665399852534
+    },
+    {
+      "id": "149253df1c6ee31c",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "149253df1c6ee31c",
+        "text": "The introduction of a distinction is first of all the introduction of a form. A form is the distinction of an inside (of the distinguished) from an outside (of the thing). So the introduction of any distinction is itself a distinction. "
+      },
+      "date": 1667253160171
+    },
+    {
+      "type": "edit",
+      "id": "149253df1c6ee31c",
+      "item": {
+        "type": "paragraph",
+        "id": "149253df1c6ee31c",
+        "text": "The introduction of a [[Distinction]] is first of all the introduction of a *form*. A form is the distinction of an inside (of the distinguished) from an outside (of the thing). So the introduction of any distinction is itself a distinction. "
+      },
+      "date": 1667253193532
+    },
+    {
+      "type": "edit",
+      "id": "149253df1c6ee31c",
+      "item": {
+        "type": "markdown",
+        "id": "149253df1c6ee31c",
+        "text": "The introduction of a [[Distinction]] is first of all the introduction of a *form*. A form is the distinction of an inside (of the distinguished) from an outside (of the thing). So the introduction of any distinction is itself a distinction. "
+      },
+      "date": 1667253206501
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "e529a3eb72e7da62"
+      },
+      "id": "e529a3eb72e7da62",
+      "type": "add",
+      "after": "3fc66687860bf770",
+      "date": 1667253261626
+    },
+    {
+      "id": "e529a3eb72e7da62",
+      "type": "move",
+      "order": [
+        "149253df1c6ee31c",
+        "e529a3eb72e7da62",
+        "e71c4de37c84d2c6",
+        "6b036eb7a4e31507",
+        "ed1517bff0715135",
+        "7d514df0434cb851",
+        "ce4214e4db4e9005",
+        "3fc66687860bf770"
+      ],
+      "date": 1667253266185
+    },
+    {
+      "type": "edit",
+      "id": "e529a3eb72e7da62",
+      "item": {
+        "type": "pagefold",
+        "id": "e529a3eb72e7da62",
+        "text": "~"
+      },
+      "date": 1667253269426
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "a0ba7fceb00b5ef4"
+      },
+      "id": "a0ba7fceb00b5ef4",
+      "type": "add",
+      "after": "3fc66687860bf770",
+      "date": 1672050521017
+    },
+    {
+      "id": "a0ba7fceb00b5ef4",
+      "type": "move",
+      "order": [
+        "149253df1c6ee31c",
+        "a0ba7fceb00b5ef4",
+        "e529a3eb72e7da62",
+        "e71c4de37c84d2c6",
+        "6b036eb7a4e31507",
+        "ed1517bff0715135",
+        "7d514df0434cb851",
+        "ce4214e4db4e9005",
+        "3fc66687860bf770"
+      ],
+      "date": 1672050528293
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of […] marks the difference of two sides: Validity and non-validity. Validity is, in the terminology of George Spencer Brown, the inside of the form and non-validity the outside. For the form to cross from one side to the other, the system takes time - whether it moves norms from the status of validity to the status of non-validity or vice versa; whether, in observing and describing norms, it moves from finding that they are valid to finding that they are not valid or vice versa. In any case the form exists only as a two-sided form and the one side not without the other. And in any case both designations, the positive and the negative, are results of internal operations of the system and are related to internal states. Even non-validity, for example the invalidity of a contract or a law, is a state of the legal system and not of its environment. As with all symbols, a diabolical counter-case runs along."
+      },
+      "date": 1672050542004
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of […] marks the difference of two sides: Validity and non-validity. Validity is, in the terminology of George Spencer Brown, the inside of the form and non-validity the outside. "
+      },
+      "date": 1672050580030
+    },
+    {
+      "type": "add",
+      "id": "d17b413d51cdfb54",
+      "item": {
+        "type": "paragraph",
+        "id": "d17b413d51cdfb54",
+        "text": "For the form to [[cross]] from one side to the other, the system takes time - whether it moves norms from the status of validity to the status of non-validity or vice versa; whether, in observing and describing norms, it moves from finding that they are valid to finding that they are not valid or vice versa. In any case the form exists only as a two-sided form and the one side not without the other. And in any case both designations, the positive and the negative, are results of internal operations of the system and are related to internal states. Even non-validity, for example the invalidity of a contract or a law, is a state of the legal system and not of its environment. As with all symbols, a diabolical counter-case runs along."
+      },
+      "after": "a0ba7fceb00b5ef4",
+      "date": 1672050587772
+    },
+    {
+      "type": "edit",
+      "id": "d17b413d51cdfb54",
+      "item": {
+        "type": "paragraph",
+        "id": "d17b413d51cdfb54",
+        "text": "For the form to [[cross]] from one side to the other, the system takes time - whether it moves norms from the status of validity to the status of non-validity or vice versa; whether, in observing and describing norms, it moves from finding that they are valid to finding that they are not valid or vice versa. "
+      },
+      "date": 1672050609073
+    },
+    {
+      "type": "add",
+      "id": "f17a21ea02b9febf",
+      "item": {
+        "type": "paragraph",
+        "id": "f17a21ea02b9febf",
+        "text": "In any case the form exists only as a two-sided form and the one side not without the other. And in any case both designations, the positive and the negative, are results of internal operations of the system and are related to internal states. Even non-validity, for example the invalidity of a contract or a law, is a state of the legal system and not of its environment. As with all symbols, a diabolical counter-case runs along."
+      },
+      "after": "d17b413d51cdfb54",
+      "date": 1672050609808
+    },
+    {
+      "type": "edit",
+      "id": "f17a21ea02b9febf",
+      "item": {
+        "type": "paragraph",
+        "id": "f17a21ea02b9febf",
+        "text": "In any case the form exists only as a two-sided form and the one side not without the other. And in any case both designations, the positive and the negative, are results of internal operations of the system and are related to internal states. "
+      },
+      "date": 1672050627258
+    },
+    {
+      "type": "add",
+      "id": "885cf4b5cf4e2568",
+      "item": {
+        "type": "paragraph",
+        "id": "885cf4b5cf4e2568",
+        "text": "Even non-validity, for example the invalidity of a contract or a law, is a state of the legal system and not of its environment. "
+      },
+      "after": "f17a21ea02b9febf",
+      "date": 1672050639436
+    },
+    {
+      "type": "add",
+      "id": "9d1cc5376dbc54df",
+      "item": {
+        "type": "paragraph",
+        "id": "9d1cc5376dbc54df",
+        "text": "As with all symbols, a diabolical counter-case runs along."
+      },
+      "after": "885cf4b5cf4e2568",
+      "date": 1672050639989
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of X marks the difference of two sides: X and non-X. X is, in the terminology of George Spencer Brown, the inside of the form and non-X the outside. "
+      },
+      "date": 1672050702726
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of X marks the difference of two sides: X and non-X. X is, in the terminology of [[George Spencer Brown]], the inside of the form and non-X the outside. "
+      },
+      "date": 1672050718188
+    },
+    {
+      "type": "edit",
+      "id": "d17b413d51cdfb54",
+      "item": {
+        "type": "paragraph",
+        "id": "d17b413d51cdfb54",
+        "text": "For the form to [[cross]] from one side to the other, the system takes time - whether it moves norms from the status of X to the status of non-X or vice versa."
+      },
+      "date": 1672050760815
+    },
+    {
+      "type": "edit",
+      "id": "d17b413d51cdfb54",
+      "item": {
+        "type": "paragraph",
+        "id": "d17b413d51cdfb54",
+        "text": "For the form to [[cross]] from one side to the other, the system takes time – whether it moves norms from the status of X to the status of non-X or vice versa."
+      },
+      "date": 1672050769468
+    },
+    {
+      "type": "edit",
+      "id": "d17b413d51cdfb54",
+      "item": {
+        "type": "paragraph",
+        "id": "d17b413d51cdfb54",
+        "text": "For the form to [[cross]] from one side to the other, the system takes time – whether it moves something from the status of X to the status of non-X or vice versa."
+      },
+      "date": 1672050811364
+    },
+    {
+      "type": "remove",
+      "id": "885cf4b5cf4e2568",
+      "date": 1672050844724
+    },
+    {
+      "type": "add",
+      "id": "bf79668b67ad1552",
+      "item": {
+        "type": "paragraph",
+        "id": "bf79668b67ad1552",
+        "text": "LUHMANN, Niklas, 2018. Das Recht der Gesellschaft.   7. Auflage. Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf]\n"
+      },
+      "after": "9d1cc5376dbc54df",
+      "date": 1672050914678
+    },
+    {
+      "type": "edit",
+      "id": "bf79668b67ad1552",
+      "item": {
+        "type": "paragraph",
+        "id": "bf79668b67ad1552",
+        "text": "LUHMANN, Niklas, 1995. Das Recht der Gesellschaft.   Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf]\n"
+      },
+      "date": 1672050949591
+    },
+    {
+      "type": "edit",
+      "id": "bf79668b67ad1552",
+      "item": {
+        "type": "paragraph",
+        "id": "bf79668b67ad1552",
+        "text": "LUHMANN, Niklas, 1995. Das Recht der Gesellschaft.   Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5, p. 104. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf]\n"
+      },
+      "date": 1672050990479
+    },
+    {
+      "type": "edit",
+      "id": "bf79668b67ad1552",
+      "item": {
+        "type": "paragraph",
+        "id": "bf79668b67ad1552",
+        "text": "LUHMANN, Niklas, 1995. Das Recht der Gesellschaft.   Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf], p. 104.\n"
+      },
+      "date": 1672051016282
+    },
+    {
+      "type": "edit",
+      "id": "d17b413d51cdfb54",
+      "item": {
+        "type": "paragraph",
+        "id": "d17b413d51cdfb54",
+        "text": "For the form to [[cross]] from one side to the other, the system takes [[Time]] – whether it moves something from the status of X to the status of non-X or vice versa."
+      },
+      "date": 1672051284769
+    },
+    {
+      "type": "edit",
+      "id": "bf79668b67ad1552",
+      "item": {
+        "type": "paragraph",
+        "id": "bf79668b67ad1552",
+        "text": "LUHMANN, Niklas, 1995. [[Das Recht der Gesellschaft]].   Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf], p. 104.\n"
+      },
+      "date": 1672137266414
+    },
+    {
+      "type": "edit",
+      "id": "bf79668b67ad1552",
+      "item": {
+        "type": "paragraph",
+        "id": "bf79668b67ad1552",
+        "text": "LUHMANN, Niklas, 1995 (1993). [[Das Recht der Gesellschaft]].   Frankfurt am Main: Suhrkamp. Suhrkamp-Taschenbuch Wissenschaft, 1183. ISBN 978-3-518-28783-5. [https://luhmann.ir/wp-content/uploads/2021/07/Das-Recht-der-Gesellschaft.pdf pdf], p. 104.\n"
+      },
+      "date": 1672137430480
+    },
+    {
+      "type": "edit",
+      "id": "6b036eb7a4e31507",
+      "item": {
+        "type": "markdown",
+        "id": "6b036eb7a4e31507",
+        "text": "And also not about the [[Whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". **The concept of form is explicitly set against such a [ Holographic New Age Mysticism]].** "
+      },
+      "date": 1673336482787
+    },
+    {
+      "type": "edit",
+      "id": "6b036eb7a4e31507",
+      "item": {
+        "type": "markdown",
+        "id": "6b036eb7a4e31507",
+        "text": "And also not about the [[Whole]]. In this sense the theory is directed against holographic approaches, as they are offered today in the style of the New Age; somehow a trace of the whole is to be found in everything individual, somehow every element is a part in which the whole is \"inscribed\". **The concept of form is explicitly set against such a [[Holographic New Age Mysticism]].** "
+      },
+      "date": 1673336491820
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of X marks the difference of two sides: X and non-X. X is, in the terminology of [[George Spencer Brown]], the inside of the form and non-X the outside. [⇒ [[Binate]]"
+      },
+      "date": 1673345335923
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of X marks the difference of two sides: X and non-X. X is, in the terminology of [[George Spencer Brown]], the inside of the form and non-X the outside. [⇒ [[Binate]]]"
+      },
+      "date": 1673345339325
+    },
+    {
+      "type": "edit",
+      "id": "a0ba7fceb00b5ef4",
+      "item": {
+        "type": "paragraph",
+        "id": "a0ba7fceb00b5ef4",
+        "text": "As a form, the symbol of X marks the difference of two sides: X and non-X. [⇒ [[Binate]]]"
+      },
+      "date": 1673345370479
+    },
+    {
+      "type": "add",
+      "id": "6a6de1adfbf36cba",
+      "item": {
+        "type": "paragraph",
+        "id": "6a6de1adfbf36cba",
+        "text": "X is, in the terminology of [[George Spencer Brown]], the inside of the form and non-X the outside. "
+      },
+      "after": "a0ba7fceb00b5ef4",
+      "date": 1673345371393
+    },
+    {
+      "type": "edit",
+      "id": "6a6de1adfbf36cba",
+      "item": {
+        "type": "paragraph",
+        "id": "6a6de1adfbf36cba",
+        "text": "X is, in the terminology of [[George Spencer Brown]], the [[Inside]] of the form and non-X the [[Outside]]. "
+      },
+      "date": 1673345394395
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "adb0db32625a2e00"
+      },
+      "id": "adb0db32625a2e00",
+      "type": "add",
+      "after": "3fc66687860bf770",
+      "date": 1673345539111
+    },
+    {
+      "id": "adb0db32625a2e00",
+      "type": "move",
+      "order": [
+        "149253df1c6ee31c",
+        "adb0db32625a2e00",
+        "a0ba7fceb00b5ef4",
+        "6a6de1adfbf36cba",
+        "d17b413d51cdfb54",
+        "f17a21ea02b9febf",
+        "9d1cc5376dbc54df",
+        "bf79668b67ad1552",
+        "e529a3eb72e7da62",
+        "e71c4de37c84d2c6",
+        "6b036eb7a4e31507",
+        "ed1517bff0715135",
+        "7d514df0434cb851",
+        "ce4214e4db4e9005",
+        "3fc66687860bf770"
+      ],
+      "date": 1673345545333
+    },
+    {
+      "type": "edit",
+      "id": "149253df1c6ee31c",
+      "item": {
+        "type": "markdown",
+        "id": "149253df1c6ee31c",
+        "text": "The introduction of a [[Distinction]] is first of all the introduction of a *form*. "
+      },
+      "date": 1673345546486
+    },
+    {
+      "type": "edit",
+      "id": "adb0db32625a2e00",
+      "item": {
+        "type": "paragraph",
+        "id": "adb0db32625a2e00",
+        "text": "A form is the distinction of an inside (of the distinguished) from an outside (of the thing). So the introduction of any distinction is itself a distinction. "
+      },
+      "date": 1673345547735
+    },
+    {
+      "type": "edit",
+      "id": "adb0db32625a2e00",
+      "item": {
+        "type": "paragraph",
+        "id": "adb0db32625a2e00",
+        "text": "A form is the distinction of an [[Inside]] (of the distinguished) from an [[Outside]] (of the thing). So the introduction of any distinction is itself a distinction. "
+      },
+      "date": 1680066507618
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1692942973839
+    }
+  ]
+}
