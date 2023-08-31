@@ -173,7 +173,6 @@ type Event
     = Create CreateEvent
     | Add AddEvent
     | Edit EditEvent
-    | Unknown Decode.Value
 
 
 eventDecoder : Decode.Decoder Event
@@ -184,7 +183,6 @@ eventDecoder =
 
         -- , Decode.map Edit editEventDecoder
         -- Add decoders for other journal event variants as needed
-        , Decode.map Unknown Decode.value
         ]
 
 
@@ -259,6 +257,6 @@ journalEncoder event =
                 , ( "date", Encode.int editEvent.date )
                 ]
 
-        -- Add encoders for other journal event variants as needed
-        Unknown _ ->
-            Encode.null
+
+
+-- Add encoders for other journal event variants as needed
