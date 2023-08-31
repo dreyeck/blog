@@ -1,4 +1,4 @@
-module Wiki exposing (AddFactoryEvent, AddFactoryItemAlias, CreateEvent, EditEvent, Event(..), FutureItemAlias, Page, ParagraphItemAlias, Story(..), StoryItemAlias, pageDecoder, pageEncoder)
+module Wiki exposing (Event(..), Page, Story(..), pageDecoder, pageEncoder)
 
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -109,8 +109,7 @@ storyDecoder : Decode.Decoder Story
 storyDecoder =
     Decode.oneOf
         [ Decode.map Future futureEventDecoder
-
-        -- , Decode.map Snippet storySnippetDecoder
+        , Decode.map Factory addFactoryItemDecoder
         , Decode.map Paragraph paragraphItemDecoder
         , Decode.map (\_ -> EmptyStory) (Decode.succeed EmptyStory)
         ]

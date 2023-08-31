@@ -69,7 +69,7 @@ decoder =
         "title": "Create New Page Test",
         "story": []
       },
-      "date": 1685700575889
+      "date": 1693518954747
     }
   ]
 }
@@ -86,72 +86,74 @@ decoder =
                             [ Create
                                 { type_ = "create"
                                 , item = { title = "Create New Page Test", story = EmptyStory }
-                                , date = 1685700575889
+                                , date = 1693518954747
                                 }
                             ]
                 in
                 Expect.equal (Decode.decodeString pageDecoder jsonString) (Ok expectedPage)
-        , Test.test "Add Factory" <|
+        , Test.test "Add Factory (decoder)" <|
             \() ->
                 let
                     jsonString : String
                     jsonString =
-                        """{
-  "title": "WikiSpec Story",
+                        """
+{
+  "title": "Create New Page Test",
   "story": [
     {
       "type": "factory",
-      "id": "d1493b7d30cfab68"
+      "id": "eacbfcc1e964204d"
     }
   ],
   "journal": [
     {
       "type": "create",
       "item": {
-        "title": "WikiSpec Story",
+        "title": "Create New Page Test",
         "story": []
       },
-      "date": 1686168396028
+      "date": 1693518954747
     },
     {
       "item": {
         "type": "factory",
-        "id": "d1493b7d30cfab68"
+        "id": "eacbfcc1e964204d"
       },
-      "id": "d1493b7d30cfab68",
+      "id": "eacbfcc1e964204d",
       "type": "add",
-      "date": 1686168405017
+      "date": 1693519254045
     }
   ]
-}"""
+}
+"""
 
                     expectedPage : Page
                     expectedPage =
                         Page
                             -- TITLE
-                            "WikiSpec Story"
+                            "Create New Page Test"
                             -- STORY
                             [ Factory
                                 { type_ = "factory"
-                                , id = "d1493b7d30cfab68"
+                                , id = "eacbfcc1e964204d"
                                 }
                             ]
                             -- JOURNAL
                             [ Create
                                 { type_ = "create"
-                                , item = { title = "WikiSpec Story", story = EmptyStory }
-                                , date = 1686168396028
+                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , date = 1693518954747
                                 }
                             , AddFactory
-                                { item = { type_ = "factory", id = "d1493b7d30cfab68" }
-                                , id = "d1493b7d30cfab68"
+                                { item = { type_ = "factory", id = "eacbfcc1e964204d" }
+                                , id = "eacbfcc1e964204d"
                                 , type_ = "add"
-                                , date = 1686168405017
+                                , date = 1693519254045
                                 }
                             ]
                 in
                 Expect.equal (Decode.decodeString pageDecoder jsonString) (Ok expectedPage)
-        , Test.test "Add Paragraph" <|
+        , Test.test "Add Paragraph (decoder)" <|
             \() ->
                 let
                     jsonString : String
