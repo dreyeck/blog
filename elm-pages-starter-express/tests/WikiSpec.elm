@@ -131,7 +131,7 @@ decoder =
                             -- TITLE
                             "WikiSpec Story"
                             -- STORY
-                            [ AddFactory
+                            [ Factory
                                 { type_ = "factory"
                                 , id = "d1493b7d30cfab68"
                                 }
@@ -142,11 +142,91 @@ decoder =
                                 , item = { title = "WikiSpec Story", story = EmptyStory }
                                 , date = 1686168396028
                                 }
-                            , Add
+                            , AddFactory
                                 { item = { type_ = "factory", id = "d1493b7d30cfab68" }
                                 , id = "d1493b7d30cfab68"
                                 , type_ = "add"
                                 , date = 1686168405017
+                                }
+                            ]
+                in
+                Expect.equal (Decode.decodeString pageDecoder jsonString) (Ok expectedPage)
+        , Test.test "Add Paragraph" <|
+            \() ->
+                let
+                    jsonString : String
+                    jsonString =
+                        """
+{
+  "title": "Create New Page Test",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "bb853a441261d42d",
+      "text": "double-clicked to edit and entered this text."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Create New Page Test",
+        "story": []
+      },
+      "date": 1693495851475
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "bb853a441261d42d"
+      },
+      "id": "bb853a441261d42d",
+      "type": "add",
+      "date": 1693495853813
+    },
+    {
+      "type": "edit",
+      "id": "bb853a441261d42d",
+      "item": {
+        "type": "paragraph",
+        "id": "bb853a441261d42d",
+        "text": "double-clicked to edit and type this text."
+      },
+      "date": 1693495880350
+    }
+  ]
+}
+"""
+
+                    expectedPage : Page
+                    expectedPage =
+                        Page
+                            -- TITLE
+                            "Create New Page Test"
+                            -- STORY
+                            [ Paragraph
+                                { type_ = "paragraph"
+                                , id = "bb853a441261d42d"
+                                , text = "double-clicked to edit and entered this text."
+                                }
+                            ]
+                            -- JOURNAL
+                            [ Create
+                                { type_ = "create"
+                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , date = 1693495851475
+                                }
+                            , AddFactory
+                                { item = { type_ = "factory", id = "bb853a441261d42d" }
+                                , id = "bb853a441261d42d"
+                                , type_ = "add"
+                                , date = 1693495853813
+                                }
+                            , Edit
+                                { type_ = "edit"
+                                , id = "bb853a441261d42d"
+                                , item = { type_ = "paragraph", id = "bb853a441261d42d", text = "double-clicked to edit and type this text." }
+                                , date = 1693495880350
                                 }
                             ]
                 in
@@ -246,7 +326,7 @@ encoder =
                                 , item = { title = "Create New Page Test", story = EmptyStory }
                                 , date = 1686247427400
                                 }
-                            , Add
+                            , AddFactory
                                 { item = { type_ = "factory", id = "e3b2618b301412c5" }
                                 , id = "e3b2618b301412c5"
                                 , type_ = "add"

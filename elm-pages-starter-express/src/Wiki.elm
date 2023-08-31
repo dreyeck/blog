@@ -1,4 +1,4 @@
-module Wiki exposing (AddEvent, CreateEvent, EditEvent, Event(..), FactoryItemAlias, FutureAlias, Page, ParagraphItemAlias, Story(..), StoryItemAlias, StorySnippetAlias, pageDecoder, pageEncoder)
+module Wiki exposing (AddFactoryEvent, AddFactoryItemAlias, CreateEvent, EditEvent, Event(..), FutureItemAlias, Page, ParagraphItemAlias, Story(..), StoryItemAlias, pageDecoder, pageEncoder)
 
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -42,8 +42,17 @@ type alias ParagraphItemAlias =
     { type_ : String, id : String, text : String }
 
 
+paragraphItemDecoder : Decode.Decoder ParagraphItemAlias
+paragraphItemDecoder =
+    Decode.map3 ParagraphItemAlias
+        (Decode.field "type" Decode.string)
+        (Decode.field "id" Decode.string)
+        (Decode.field "text" Decode.string)
+
+
 paragraphItemEncoder : ParagraphItemAlias -> Encode.Value
 paragraphItemEncoder item =
+    -- "type": "paragraph"
     Encode.object
         [ ( "type", Encode.string "paragraph" )
         , ( "id", Encode.string item.id )
@@ -51,19 +60,19 @@ paragraphItemEncoder item =
         ]
 
 
-type alias FactoryItemAlias =
+type alias AddFactoryItemAlias =
     { type_ : String, id : String }
 
 
-factoryItemDecoder : Decode.Decoder FactoryItemAlias
-factoryItemDecoder =
-    Decode.map2 FactoryItemAlias
+addFactoryItemDecoder : Decode.Decoder AddFactoryItemAlias
+addFactoryItemDecoder =
+    Decode.map2 AddFactoryItemAlias
         (Decode.field "type" Decode.string)
         (Decode.field "id" Decode.string)
 
 
-factoryItemEncoder : FactoryItemAlias -> Encode.Value
-factoryItemEncoder item =
+addFactoryItemEncoder : AddFactoryItemAlias -> Encode.Value
+addFactoryItemEncoder item =
     -- "type": "factory"
     Encode.object
         [ ( "type", Encode.string "factory" )
@@ -72,47 +81,37 @@ factoryItemEncoder item =
 
 
 type Story
-    = Future FutureAlias
-    | AddFactory FactoryItemAlias
-    | Snippet StorySnippetAlias
+    = Future FutureItemAlias
+    | Factory FactoryItemAlias
+      -- | Snippet StorySnippetAlias
     | Paragraph ParagraphItemAlias
     | EmptyStory
 
 
-type alias FutureAlias =
+type alias FactoryItemAlias =
+    { type_ : String, id : String }
+
+
+type alias FutureItemAlias =
     { id : String, type_ : String, text : String, title : String }
 
 
-futureEventDecoder : Decode.Decoder FutureAlias
+futureEventDecoder : Decode.Decoder FutureItemAlias
 futureEventDecoder =
-    Decode.map4 FutureAlias
+    Decode.map4 FutureItemAlias
         (Decode.field "id" Decode.string)
         (Decode.field "type" Decode.string)
         (Decode.field "text" Decode.string)
         (Decode.field "title" Decode.string)
 
 
-type alias StorySnippetAlias =
-    { type_ : String
-    , id : String
-    , text : String
-    }
-
-
-storySnippetDecoder : Decode.Decoder StorySnippetAlias
-storySnippetDecoder =
-    Decode.map3 StorySnippetAlias
-        (Decode.field "type" Decode.string)
-        (Decode.field "id" Decode.string)
-        (Decode.field "text" Decode.string)
-
-
 storyDecoder : Decode.Decoder Story
 storyDecoder =
     Decode.oneOf
         [ Decode.map Future futureEventDecoder
-        , Decode.map Snippet storySnippetDecoder
-        , Decode.map AddFactory factoryItemDecoder
+
+        -- , Decode.map Snippet storySnippetDecoder
+        , Decode.map Paragraph paragraphItemDecoder
         , Decode.map (\_ -> EmptyStory) (Decode.succeed EmptyStory)
         ]
 
@@ -120,19 +119,18 @@ storyDecoder =
 storyEncoder : Story -> Encode.Value
 storyEncoder story =
     case story of
-        Snippet alias ->
-            Encode.object
-                [ ( "type", Encode.string alias.type_ )
-                , ( "id", Encode.string alias.id )
-                , ( "text", Encode.string alias.text )
-                ]
-
         Future alias ->
             Encode.object
                 [ ( "id", Encode.string alias.id )
                 , ( "type", Encode.string alias.type_ )
                 , ( "text", Encode.string alias.text )
                 , ( "title", Encode.string alias.title )
+                ]
+
+        Factory alias ->
+            Encode.object
+                [ ( "type", Encode.string alias.type_ )
+                , ( "id", Encode.string alias.id )
                 ]
 
         Paragraph alias ->
@@ -145,9 +143,6 @@ storyEncoder story =
         -- Add encoders for other story variants as needed
         EmptyStory ->
             Encode.list identity []
-
-        _ ->
-            Encode.null
 
 
 storyItemDecoder : Decode.Decoder StoryItemAlias
@@ -171,7 +166,7 @@ storyItemEncoder item =
 
 type Event
     = Create CreateEvent
-    | Add AddEvent
+    | AddFactory AddFactoryEvent
     | Edit EditEvent
 
 
@@ -179,15 +174,15 @@ eventDecoder : Decode.Decoder Event
 eventDecoder =
     Decode.oneOf
         [ Decode.map Create createEventDecoder
-        , Decode.map Add addEventDecoder
+        , Decode.map AddFactory addFactoryEventDecoder
+        , Decode.map Edit editEventDecoder
 
-        -- , Decode.map Edit editEventDecoder
         -- Add decoders for other journal event variants as needed
         ]
 
 
 type alias CreateEvent =
-    --"type": "create"
+    -- "type": "create"
     { type_ : String, item : StoryItemAlias, date : Int }
 
 
@@ -199,21 +194,32 @@ createEventDecoder =
         (Decode.field "date" Decode.int)
 
 
-type alias AddEvent =
-    { item : FactoryItemAlias, id : String, type_ : String, date : Int }
+type alias AddFactoryEvent =
+    -- "type": "add"
+    { item : AddFactoryItemAlias, id : String, type_ : String, date : Int }
 
 
-addEventDecoder : Decode.Decoder AddEvent
-addEventDecoder =
-    Decode.map4 AddEvent
-        (Decode.field "item" factoryItemDecoder)
+addFactoryEventDecoder : Decode.Decoder AddFactoryEvent
+addFactoryEventDecoder =
+    Decode.map4 AddFactoryEvent
+        (Decode.field "item" addFactoryItemDecoder)
         (Decode.field "id" Decode.string)
         (Decode.field "type" Decode.string)
         (Decode.field "date" Decode.int)
 
 
 type alias EditEvent =
+    -- "type": "edit"
     { type_ : String, id : String, item : ParagraphItemAlias, date : Int }
+
+
+editEventDecoder : Decode.Decoder EditEvent
+editEventDecoder =
+    Decode.map4 EditEvent
+        (Decode.field "type" Decode.string)
+        (Decode.field "id" Decode.string)
+        (Decode.field "item" paragraphItemDecoder)
+        (Decode.field "date" Decode.int)
 
 
 journalEncoder : Event -> Encode.Value
@@ -231,17 +237,17 @@ journalEncoder event =
                 , ( "date", Encode.int createEvent.date )
                 ]
 
-        Add addEvent ->
+        AddFactory addFactoryEvent ->
             let
-                eventItem : FactoryItemAlias
+                eventItem : AddFactoryItemAlias
                 eventItem =
-                    addEvent.item
+                    addFactoryEvent.item
             in
             Encode.object
-                [ ( "item", factoryItemEncoder eventItem )
-                , ( "id", Encode.string addEvent.id )
+                [ ( "item", addFactoryItemEncoder eventItem )
+                , ( "id", Encode.string addFactoryEvent.id )
                 , ( "type", Encode.string "add" )
-                , ( "date", Encode.int addEvent.date )
+                , ( "date", Encode.int addFactoryEvent.date )
                 ]
 
         Edit editEvent ->
