@@ -164,7 +164,7 @@ decoder =
   "story": [
     {
       "type": "paragraph",
-      "id": "bb853a441261d42d",
+      "id": "eacbfcc1e964204d",
       "text": "double-clicked to edit and entered this text."
     }
   ],
@@ -175,26 +175,26 @@ decoder =
         "title": "Create New Page Test",
         "story": []
       },
-      "date": 1693495851475
+      "date": 1693518954747
     },
     {
       "item": {
         "type": "factory",
-        "id": "bb853a441261d42d"
+        "id": "eacbfcc1e964204d"
       },
-      "id": "bb853a441261d42d",
+      "id": "eacbfcc1e964204d",
       "type": "add",
-      "date": 1693495853813
+      "date": 1693519254045
     },
     {
       "type": "edit",
-      "id": "bb853a441261d42d",
+      "id": "eacbfcc1e964204d",
       "item": {
         "type": "paragraph",
-        "id": "bb853a441261d42d",
-        "text": "double-clicked to edit and type this text."
+        "id": "eacbfcc1e964204d",
+        "text": "double-clicked to edit and entered this text."
       },
-      "date": 1693495880350
+      "date": 1693520732730
     }
   ]
 }
@@ -208,7 +208,7 @@ decoder =
                             -- STORY
                             [ Paragraph
                                 { type_ = "paragraph"
-                                , id = "bb853a441261d42d"
+                                , id = "eacbfcc1e964204d"
                                 , text = "double-clicked to edit and entered this text."
                                 }
                             ]
@@ -216,19 +216,19 @@ decoder =
                             [ Create
                                 { type_ = "create"
                                 , item = { title = "Create New Page Test", story = EmptyStory }
-                                , date = 1693495851475
+                                , date = 1693518954747
                                 }
                             , AddFactory
-                                { item = { type_ = "factory", id = "bb853a441261d42d" }
-                                , id = "bb853a441261d42d"
+                                { item = { type_ = "factory", id = "eacbfcc1e964204d" }
+                                , id = "eacbfcc1e964204d"
                                 , type_ = "add"
-                                , date = 1693495853813
+                                , date = 1693519254045
                                 }
                             , Edit
                                 { type_ = "edit"
-                                , id = "bb853a441261d42d"
-                                , item = { type_ = "paragraph", id = "bb853a441261d42d", text = "double-clicked to edit and type this text." }
-                                , date = 1693495880350
+                                , id = "eacbfcc1e964204d"
+                                , item = { type_ = "paragraph", id = "eacbfcc1e964204d", text = "double-clicked to edit and entered this text." }
+                                , date = 1693520732730
                                 }
                             ]
                 in

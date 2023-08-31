@@ -83,7 +83,6 @@ addFactoryItemEncoder item =
 type Story
     = Future FutureItemAlias
     | Factory FactoryItemAlias
-      -- | Snippet StorySnippetAlias
     | Paragraph ParagraphItemAlias
     | EmptyStory
 
@@ -109,8 +108,8 @@ storyDecoder : Decode.Decoder Story
 storyDecoder =
     Decode.oneOf
         [ Decode.map Future futureEventDecoder
-        , Decode.map Factory addFactoryItemDecoder
         , Decode.map Paragraph paragraphItemDecoder
+        , Decode.map Factory addFactoryItemDecoder
         , Decode.map (\_ -> EmptyStory) (Decode.succeed EmptyStory)
         ]
 
@@ -173,8 +172,8 @@ eventDecoder : Decode.Decoder Event
 eventDecoder =
     Decode.oneOf
         [ Decode.map Create createEventDecoder
-        , Decode.map AddFactory addFactoryEventDecoder
         , Decode.map Edit editEventDecoder
+        , Decode.map AddFactory addFactoryEventDecoder
 
         -- Add decoders for other journal event variants as needed
         ]
