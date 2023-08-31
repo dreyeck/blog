@@ -176,6 +176,9 @@ eventDecoder =
         , Decode.map AddFactory addFactoryEventDecoder
 
         -- Add decoders for other journal event variants as needed
+        -- remove
+        -- move
+        -- fork
         ]
 
 
