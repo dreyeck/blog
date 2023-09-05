@@ -1,0 +1,811 @@
+{
+  "title": "View Route Module",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "5d4f7ec10581a462",
+      "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm."
+    },
+    {
+      "type": "paragraph",
+      "id": "d6e043fff4c7168e",
+      "text": "See [[Scaffolding a Route Module]] and [[No Route Found]] vs [[Find Route]]. [⇒ [[Form]]]"
+    },
+    {
+      "type": "paragraph",
+      "id": "bb9f3c1c89608d3d",
+      "text": "Our View Route Module maps to a route called [[Lineup]]."
+    },
+    {
+      "type": "paragraph",
+      "id": "b5dfd7ba89323b17",
+      "text": "How to render the [[RouteParams]] in our view? [https://github.com/dreyeck/blog/blob/e1955b5d5942d5be5af145a18a6ef50ea9869dd0/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L93-L102 code], [https://github.com/dreyeck/blog/commit/58bd7a82a12d4a6c2fb54f65bddfc3bd318ae26d commit], [https://github.com/dreyeck/blog/commit/c90c6649f9865eace686dedf0b320b299c208a66 commit] , getSplat [https://github.com/dreyeck/blog/blob/b45f7c65fec939a35a69136751ecadd0ee1ef878/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L104-L106 code]"
+    },
+    {
+      "type": "paragraph",
+      "id": "26a53ad00df6b547",
+      "text": "view function:"
+    },
+    {
+      "type": "code",
+      "id": "0cd1a0ed59c054c8",
+      "text": "view :\n    RouteBuilder.App Data ActionData RouteParams\n    -> Shared.Model\n    -> Model\n    -> View.View (PagesMsg.PagesMsg Msg)\nview app shared model =\n    { title = \"View.Slug_.SPLAT__\"\n    , body = [ Html.h2 [] [ Html.text \"New Page\" ] ]\n    }\n\n"
+    },
+    {
+      "type": "paragraph",
+      "id": "b30944bd88a3d4e9",
+      "text": "We focus on [[RouteParams]]."
+    },
+    {
+      "type": "code",
+      "id": "8923c481f739d948",
+      "text": "type alias RouteParams =\n    { slug : String, splat : List String }"
+    },
+    {
+      "type": "paragraph",
+      "id": "047fb53e2ac6e580",
+      "text": "The splat data in [[RouteParams]] for an optional splat are List String rather than (String, List String) to represent the fact that optional splat routes could match 0 segments."
+    },
+    {
+      "type": "paragraph",
+      "id": "9b45ab447d5a5f3c",
+      "text": "See [[Optional Splat Routes]]. ⇐ [[Splat Routes]] convention "
+    },
+    {
+      "type": "paragraph",
+      "id": "65ad3f25d34223de",
+      "text": "Type Signature:"
+    },
+    {
+      "type": "code",
+      "id": "29e0cbe4e7c4468f",
+      "text": "view :\n    RouteBuilder.App Data ActionData RouteParams\n    -> Shared.Model\n    -> Model\n    -> View.View (PagesMsg.PagesMsg Msg)\n"
+    },
+    {
+      "type": "paragraph",
+      "id": "524d2e32250dacb3",
+      "text": "This is the type signature of the view function. In [[Elm]], type signatures provide information about the types of the function's arguments and its return value. Let's dissect it step by step:\n\nview is the name of the function.\nThe type signature starts with view :, indicating that this is a function definition.\nNow, let's look at the function's parameters and return type:\n\nRouteBuilder.App Data ActionData RouteParams is the first argument. This suggests that the view function expects a value of this type as its first argument. It appears to be some sort of routing information, likely related to your application's routing setup."
+    },
+    {
+      "type": "paragraph",
+      "id": "a79e7910dde4a737",
+      "text": "Shared.Model is the second argument. It expects a value of type Shared.Model. This could be a shared model used in your application."
+    },
+    {
+      "type": "paragraph",
+      "id": "8489851102fc1ca6",
+      "text": "Model is the third argument. It expects a value of type Model. This is probably a model specific to the part of your application that this view function is responsible for."
+    },
+    {
+      "type": "paragraph",
+      "id": "2275e1937be44d5f",
+      "text": "The return type of the function is View.View (PagesMsg.PagesMsg Msg). This suggests that the function will return a value of type View.View, which is likely a representation of the view that your Elm application will render. Inside this view, there seems to be a message type PagesMsg.PagesMsg Msg associated with it."
+    },
+    {
+      "type": "paragraph",
+      "id": "e63141ac4305f78b",
+      "text": "Function Body:"
+    },
+    {
+      "type": "paragraph",
+      "id": "f96f449a76e64e59",
+      "text": "The function body follows the type signature and is enclosed within the curly braces { ... }. In this case, the function body is quite simple:"
+    },
+    {
+      "type": "code",
+      "id": "bdec209610b27d98",
+      "text": "{ title = \"View.Slug_.SPLAT__\"\n, body = [ Html.h2 [] [ Html.text \"New Page\" ] ]\n}\n"
+    },
+    {
+      "type": "paragraph",
+      "id": "141ead5bcf498bd2",
+      "text": "It creates a record with two fields:\n\ntitle is set to the string \"View.Slug_.SPLAT__\". This is likely the title of the page being displayed."
+    },
+    {
+      "type": "paragraph",
+      "id": "7885a9aee3a0abea",
+      "text": "body is a list that contains an HTML h2 element with the text \"New Page\" inside it. This suggests that the body of the page contains an h2 heading with that text."
+    },
+    {
+      "type": "paragraph",
+      "id": "e7e3f9a65040b6af",
+      "text": "Overall, this view function seems to define the view for a specific page in your Elm application. It takes routing information, shared data, and a specific model as input and returns a representation of the page's view, including its title and body content."
+    },
+    {
+      "type": "pagefold",
+      "id": "bea6b30b34c2dc59",
+      "text": "~"
+    },
+    {
+      "type": "reference",
+      "id": "c249606e7e1ae14c",
+      "site": "wiki.ralfbarkow.ch",
+      "slug": "the-elm-pages-architecture",
+      "title": "The Elm-Pages Architecture",
+      "text": "Let's look at the lifecycle of a request in an elm-pages app. [https://elm-pages.com/docs/architecture page]"
+    },
+    {
+      "type": "graphviz",
+      "id": "e43583edaf62c3a5",
+      "text": "DOT FROM lambda-browsing\n",
+      "dot": "strict digraph {rankdir=LR\n\n\n\n\n\n\nnode [style=filled fillcolor=lightyellow penwidth=3 color=black fontname=\"Helvetica\"]\n\"View\nRoute\nModule\"\nnode [style=filled fillcolor=lightblue]\nnode [style=filled fillcolor=white penwidth=3 color=black]\n\"View\nRoute\nModule\" -> \"elm-pages\"\n\"View\nRoute\nModule\" -> \"Route\"\n\"View\nRoute\nModule\" -> \"app\"\n\"View\nRoute\nModule\" -> \"Route\"\n\"View\nRoute\nModule\" -> \"Scaffolding\na\nRoute\nModule\"\n\"View\nRoute\nModule\" -> \"No\nRoute\nFound\"\n\"View\nRoute\nModule\" -> \"Find\nRoute\"\n\"View\nRoute\nModule\" -> \"Form\"\n\"View\nRoute\nModule\" -> \"Lineup\"\n\"View\nRoute\nModule\" -> \"RouteParams\"\n\"View\nRoute\nModule\" -> \"RouteParams\"\n\"View\nRoute\nModule\" -> \"RouteParams\"\n\"View\nRoute\nModule\" -> \"Optional\nSplat\nRoutes\"\n\"View\nRoute\nModule\" -> \"Splat\nRoutes\"\n\"View\nRoute\nModule\" -> \"Elm\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"elm-pages\"\n\"elm-pages\" -> \"elm-pages\nv3\"\n\"elm-pages\" -> \"Federated\nWiki\"\n\"elm-pages\" -> \"Wikimedia\nResearch\"\n\"elm-pages\" -> \"npx\"\n\"elm-pages\" -> \"npm\"\n\"elm-pages\" -> \"Elm\nRadio\"\n\"elm-pages\" -> \"Lamdera\"\n\"elm-pages\" -> \"jq\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Route\"\n\"Route\" -> \"Session\"\n\"Route\" -> \"URI\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"app\"\n\"app\" -> \"elm-pages\"\n\"app\" -> \"Elm\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Route\"\n\"Route\" -> \"Session\"\n\"Route\" -> \"URI\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Scaffolding\na\nRoute\nModule\"\n\"Scaffolding\na\nRoute\nModule\" -> \"elm-pages\"\n\"Scaffolding\na\nRoute\nModule\" -> \"Elm\"\n\"Scaffolding\na\nRoute\nModule\" -> \"Form\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"No\nRoute\nFound\"\n\"No\nRoute\nFound\" -> \"Find\nRoute\"\n\"No\nRoute\nFound\" -> \"Lineup\"\n\"No\nRoute\nFound\" -> \"Find\nRoute\"\n\"No\nRoute\nFound\" -> \"Splat\nRoutes\"\n\"No\nRoute\nFound\" -> \"Optional\nSplat\nRoutes\"\n\"No\nRoute\nFound\" -> \"The\nElm-Pages\nArchitecture\"\n\"No\nRoute\nFound\" -> \"RouteParams\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Find\nRoute\"\n\"Find\nRoute\" -> \"File-Based\nRouting\"\n\"Find\nRoute\" -> \"Dynamic\nSegments\"\n\"Find\nRoute\" -> \"RouteParams\"\n\"Find\nRoute\" -> \"Scaffolding\na\nRoute\nModule\"\n\"Find\nRoute\" -> \"Splat\nRoutes\"\n\"Find\nRoute\" -> \"No\nRoute\nFound\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Form\"\n\"Form\" -> \"Distinction\"\n\"Form\" -> \"Inside\"\n\"Form\" -> \"Outside\"\n\"Form\" -> \"Binate\"\n\"Form\" -> \"George\nSpencer\nBrown\"\n\"Form\" -> \"Inside\"\n\"Form\" -> \"Outside\"\n\"Form\" -> \"cross\"\n\"Form\" -> \"Time\"\n\"Form\" -> \"Das\nRecht\nder\nGesellschaft\"\n\"Form\" -> \"Niklas\nLuhmann\"\n\"Form\" -> \"Prozessunterbrechungen\"\n\"Form\" -> \"Intention\"\n\"Form\" -> \"Whole\"\n\"Form\" -> \"Holographic\nNew\nAge\nMysticism\"\n\"Form\" -> \"DisplayMedium\"\n\"Form\" -> \"BitBlt\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Lineup\"\n\"Lineup\" -> \"Page\nPlace\nClues\"\n\"Lineup\" -> \"Eric\nDobbs\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"RouteParams\"\n\"RouteParams\" -> \"elm-pages\"\n\"RouteParams\" -> \"Elm\"\n\"RouteParams\" -> \"Dynamic\nSegments\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"RouteParams\"\n\"RouteParams\" -> \"elm-pages\"\n\"RouteParams\" -> \"Elm\"\n\"RouteParams\" -> \"Dynamic\nSegments\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"RouteParams\"\n\"RouteParams\" -> \"elm-pages\"\n\"RouteParams\" -> \"Elm\"\n\"RouteParams\" -> \"Dynamic\nSegments\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Optional\nSplat\nRoutes\"\n\"Optional\nSplat\nRoutes\" -> \"Splat\nRoutes\"\n\"Optional\nSplat\nRoutes\" -> \"File-Based\nRouting\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Splat\nRoutes\"\n\"Splat\nRoutes\" -> \"Optional\nSplat\nRoutes\"\n\"Splat\nRoutes\" -> \"File-Based\nRouting\"\n\"Splat\nRoutes\" -> \"RouteParams\"\nnode [style=filled fillcolor=white penwidth=1 color=black]\n\"Elm\"\n\"Elm\" -> \"Evan\nCzaplicki\"\n\"Elm\" -> \"The\nOfficial\nGuide\"\n\"Elm\" -> \"GraphQL\"\n\"Elm\" -> \"Yukihiro\nMatsumoto\"\n\"Elm\" -> \"Joy\"\n\"Elm\" -> \"Lindsay\nWardell\"\n\"Elm\" -> \"Dillon\nKearns\"\n\"Elm\" -> \"Jeroen\nEngels\"\n\"Elm\" -> \"Vite\"\nnode [style=\"filled,rounded,dotted\" fillcolor=white]\nedge [style=dotted]\n\"View\nRoute\nModule\"\n\"Journal,\nAug\n2023\" -> \"View\nRoute\nModule\"\n\"Optional\nSplat\nRoutes\" -> \"View\nRoute\nModule\"\n\"2023-08-25\" -> \"View\nRoute\nModule\"\n\"2023-08-26\" -> \"View\nRoute\nModule\"\n\"2023-08-28\" -> \"View\nRoute\nModule\"\n\"2023-08-30\" -> \"View\nRoute\nModule\"\n\"2023-08-31\" -> \"View\nRoute\nModule\"\n\"2023-09-01\" -> \"View\nRoute\nModule\"}",
+      "svg": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<!-- Generated by graphviz version 8.0.5 (0)\n -->\n<!-- Pages: 1 -->\n<svg width=\"1295pt\" height=\"1879pt\"\n viewBox=\"0.00 0.00 1294.65 1879.42\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<g id=\"graph0\" class=\"graph\" transform=\"scale(1 1) rotate(0) translate(4 1875.42)\">\n<polygon fill=\"white\" stroke=\"none\" points=\"-4,4 -4,-1875.42 1290.65,-1875.42 1290.65,4 -4,4\"/>\n<!-- View\nRoute\nModule -->\n<g id=\"node1\" class=\"node\">\n<title>View\nRoute\nModule</title>\n<ellipse fill=\"lightyellow\" stroke=\"black\" stroke-width=\"3\" cx=\"200.65\" cy=\"-845.42\" rx=\"43.78\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"200.65\" y=\"-858.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">View</text>\n<text text-anchor=\"middle\" x=\"200.65\" y=\"-841.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n<text text-anchor=\"middle\" x=\"200.65\" y=\"-824.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Module</text>\n</g>\n<!-- elm&#45;pages -->\n<g id=\"node2\" class=\"node\">\n<title>elm&#45;pages</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"1011.15\" cy=\"-1488.42\" rx=\"56.12\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-1484.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">elm&#45;pages</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;elm&#45;pages -->\n<g id=\"edge1\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;elm&#45;pages</title>\n<path fill=\"none\" stroke=\"black\" d=\"M202.04,-887.96C205.67,-1016.72 235.34,-1393.42 458.33,-1393.42 458.33,-1393.42 458.33,-1393.42 620.76,-1393.42 748.1,-1393.42 892.36,-1441.96 964.28,-1469.65\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"962.77,-1473.2 973.35,-1473.57 965.31,-1466.68 962.77,-1473.2\"/>\n</g>\n<!-- Route -->\n<g id=\"node3\" class=\"node\">\n<title>Route</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"319.82\" cy=\"-332.42\" rx=\"36.81\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"319.82\" y=\"-328.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Route -->\n<g id=\"edge2\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Route</title>\n<path fill=\"none\" stroke=\"black\" d=\"M204.81,-802.84C213.07,-699.66 237.67,-439.27 280.43,-364.42 282.4,-360.97 284.89,-357.74 287.64,-354.75\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"289.53,-357.84 294.41,-348.44 284.73,-352.75 289.53,-357.84\"/>\n</g>\n<!-- app -->\n<g id=\"node4\" class=\"node\">\n<title>app</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"786.13\" cy=\"-1262.42\" rx=\"27.15\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"786.13\" y=\"-1258.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">app</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;app -->\n<g id=\"edge3\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;app</title>\n<path fill=\"none\" stroke=\"black\" d=\"M205.35,-887.87C213.52,-971.21 236,-1151.63 280.43,-1192.42 413.67,-1314.73 656.04,-1286.31 748.21,-1269.92\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"748.74,-1273.19 757.94,-1267.94 747.47,-1266.31 748.74,-1273.19\"/>\n</g>\n<!-- Scaffolding\na\nRoute\nModule -->\n<g id=\"node5\" class=\"node\">\n<title>Scaffolding\na\nRoute\nModule</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"619.76\" cy=\"-1097.42\" rx=\"60.29\" ry=\"53.17\"/>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-1118.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Scaffolding</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-1101.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">a</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-1084.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-1068.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Module</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Scaffolding\na\nRoute\nModule -->\n<g id=\"edge4\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Scaffolding\na\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" d=\"M207.96,-887.51C216.64,-930.16 236.52,-994.77 280.43,-1030.42 356.31,-1092.01 472.97,-1102.3 547.56,-1101.66\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"547.3,-1105.15 557.24,-1101.5 547.19,-1098.15 547.3,-1105.15\"/>\n</g>\n<!-- No\nRoute\nFound -->\n<g id=\"node6\" class=\"node\">\n<title>No\nRoute\nFound</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"319.82\" cy=\"-766.42\" rx=\"39.38\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"319.82\" y=\"-779.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">No</text>\n<text text-anchor=\"middle\" x=\"319.82\" y=\"-762.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n<text text-anchor=\"middle\" x=\"319.82\" y=\"-745.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Found</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;No\nRoute\nFound -->\n<g id=\"edge5\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;No\nRoute\nFound</title>\n<path fill=\"none\" stroke=\"black\" d=\"M237.76,-821.07C249.99,-812.82 263.75,-803.54 276.43,-795\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"278.09,-797.42 284.42,-788.93 274.17,-791.62 278.09,-797.42\"/>\n</g>\n<!-- Find\nRoute -->\n<g id=\"node7\" class=\"node\">\n<title>Find\nRoute</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"459.33\" cy=\"-845.42\" rx=\"37.73\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-849.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Find</text>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-832.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Route</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Find\nRoute -->\n<g id=\"edge6\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Find\nRoute</title>\n<path fill=\"none\" stroke=\"black\" d=\"M245.77,-845.42C291.29,-845.42 362.11,-845.42 409.34,-845.42\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"409.21,-848.92 419.21,-845.42 409.21,-841.92 409.21,-848.92\"/>\n</g>\n<!-- Form -->\n<g id=\"node8\" class=\"node\">\n<title>Form</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"786.13\" cy=\"-762.42\" rx=\"33.57\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"786.13\" y=\"-758.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Form</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Form -->\n<g id=\"edge7\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Form</title>\n<path fill=\"none\" stroke=\"black\" d=\"M243.49,-859.15C305.31,-877.47 424.43,-905.21 523.46,-883.42 611.95,-863.95 706.14,-811.51 753.71,-782.46\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"755.2,-785.04 761.87,-776.81 751.52,-779.09 755.2,-785.04\"/>\n</g>\n<!-- Lineup -->\n<g id=\"node9\" class=\"node\">\n<title>Lineup</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"459.33\" cy=\"-559.42\" rx=\"40.04\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-555.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Lineup</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Lineup -->\n<g id=\"edge8\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Lineup</title>\n<path fill=\"none\" stroke=\"black\" d=\"M207.45,-803.12C215.9,-756.56 235.76,-682.14 280.43,-635.42 315.3,-598.95 370.51,-579.11 410.17,-568.94\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"410.78,-572.15 419.67,-566.38 409.12,-565.35 410.78,-572.15\"/>\n</g>\n<!-- RouteParams -->\n<g id=\"node10\" class=\"node\">\n<title>RouteParams</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"786.13\" cy=\"-1016.42\" rx=\"70.08\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"786.13\" y=\"-1012.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">RouteParams</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;RouteParams -->\n<g id=\"edge9\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M238.68,-868.61C251.65,-876.31 266.47,-884.64 280.43,-891.42 400.35,-949.64 429.4,-972.2 559.46,-1001.42 606.61,-1012.01 660.58,-1015.88 703.92,-1017.05\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"703.62,-1020.57 713.69,-1017.29 703.78,-1013.57 703.62,-1020.57\"/>\n</g>\n<!-- Optional\nSplat\nRoutes -->\n<g id=\"node11\" class=\"node\">\n<title>Optional\nSplat\nRoutes</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"786.13\" cy=\"-493.42\" rx=\"48.19\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"786.13\" y=\"-506.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Optional</text>\n<text text-anchor=\"middle\" x=\"786.13\" y=\"-489.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Splat</text>\n<text text-anchor=\"middle\" x=\"786.13\" y=\"-472.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Routes</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Optional\nSplat\nRoutes -->\n<g id=\"edge10\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Optional\nSplat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M204.45,-802.95C210.28,-745.55 227.93,-643.11 280.43,-575.42 369.29,-460.85 419.82,-445.41 559.46,-406.42 611.08,-392 629.16,-389.59 680.05,-406.42 706.29,-415.09 731.31,-433.13 750.35,-450.64\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"747.49,-452.7 757.13,-457.08 752.33,-447.64 747.49,-452.7\"/>\n</g>\n<!-- Splat\nRoutes -->\n<g id=\"node12\" class=\"node\">\n<title>Splat\nRoutes</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"619.76\" cy=\"-668.42\" rx=\"42.68\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-672.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Splat</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-655.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Routes</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Splat\nRoutes -->\n<g id=\"edge11\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M217.68,-805.77C230.85,-777.53 251.98,-740.47 280.43,-716.42 361.01,-648.29 492.94,-651.66 565.97,-660.06\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"565.38,-663.64 575.73,-661.39 566.24,-656.69 565.38,-663.64\"/>\n</g>\n<!-- Elm -->\n<g id=\"node13\" class=\"node\">\n<title>Elm</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-width=\"3\" cx=\"1011.15\" cy=\"-1189.42\" rx=\"27.67\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-1185.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Elm</text>\n</g>\n<!-- View\nRoute\nModule&#45;&gt;Elm -->\n<g id=\"edge12\" class=\"edge\">\n<title>View\nRoute\nModule&#45;&gt;Elm</title>\n<path fill=\"none\" stroke=\"black\" d=\"M208.26,-887.51C217.49,-935 238.13,-1012.5 280.43,-1065.42 338.92,-1138.58 364.66,-1178.42 458.33,-1178.42 458.33,-1178.42 458.33,-1178.42 620.76,-1178.42 749.2,-1178.42 901.39,-1184.47 971.39,-1187.6\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"971.15,-1191.13 981.3,-1188.09 971.46,-1184.14 971.15,-1191.13\"/>\n</g>\n<!-- elm&#45;pages\nv3 -->\n<g id=\"node14\" class=\"node\">\n<title>elm&#45;pages\nv3</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1604.42\" rx=\"57.53\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1608.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">elm&#45;pages</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1591.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">v3</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;elm&#45;pages\nv3 -->\n<g id=\"edge13\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;elm&#45;pages\nv3</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1042.24,-1504.79C1077.1,-1523.75 1135.02,-1555.27 1176.39,-1577.77\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1174.55,-1581.3 1185,-1583 1177.89,-1575.15 1174.55,-1581.3\"/>\n</g>\n<!-- Federated\nWiki -->\n<g id=\"node15\" class=\"node\">\n<title>Federated\nWiki</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1527.42\" rx=\"56.44\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1531.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Federated</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1514.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Wiki</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;Federated\nWiki -->\n<g id=\"edge14\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;Federated\nWiki</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1061.87,-1497.51C1091.72,-1502.97 1129.98,-1509.97 1161.99,-1515.82\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1161.12,-1519.4 1171.58,-1517.76 1162.38,-1512.52 1161.12,-1519.4\"/>\n</g>\n<!-- Wikimedia\nResearch -->\n<g id=\"node16\" class=\"node\">\n<title>Wikimedia\nResearch</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1450.42\" rx=\"56.97\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1454.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Wikimedia</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1437.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Research</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;Wikimedia\nResearch -->\n<g id=\"edge15\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;Wikimedia\nResearch</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1062.14,-1479.51C1091.77,-1474.22 1129.64,-1467.48 1161.43,-1461.81\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1161.73,-1465.13 1170.96,-1459.93 1160.5,-1458.24 1161.73,-1465.13\"/>\n</g>\n<!-- npx -->\n<g id=\"node17\" class=\"node\">\n<title>npx</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1385.42\" rx=\"27\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1381.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">npx</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;npx -->\n<g id=\"edge16\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;npx</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1043.85,-1472.4C1074.87,-1456.82 1123.54,-1432.6 1166.09,-1412.42 1174.9,-1408.23 1184.5,-1403.81 1193.36,-1399.77\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1194.67,-1402.57 1202.33,-1395.25 1191.78,-1396.19 1194.67,-1402.57\"/>\n</g>\n<!-- npm -->\n<g id=\"node18\" class=\"node\">\n<title>npm</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1853.42\" rx=\"29.82\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1849.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">npm</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;npm -->\n<g id=\"edge17\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;npm</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1015.91,-1507.56C1027.89,-1563.77 1070.11,-1730.44 1166.09,-1826.42 1172.45,-1832.78 1180.6,-1837.8 1188.79,-1841.69\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1187.13,-1845.21 1197.7,-1845.9 1189.86,-1838.77 1187.13,-1845.21\"/>\n</g>\n<!-- Elm\nRadio -->\n<g id=\"node19\" class=\"node\">\n<title>Elm\nRadio</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1788.42\" rx=\"37.18\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1792.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Elm</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1775.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Radio</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;Elm\nRadio -->\n<g id=\"edge18\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;Elm\nRadio</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1019.66,-1507.53C1038.55,-1553.71 1091.84,-1673.23 1166.09,-1750.42 1171.87,-1756.42 1178.77,-1761.93 1185.8,-1766.77\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1183.39,-1770.03 1193.68,-1772.54 1187.2,-1764.16 1183.39,-1770.03\"/>\n</g>\n<!-- Lamdera -->\n<g id=\"node20\" class=\"node\">\n<title>Lamdera</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1723.42\" rx=\"49.15\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1719.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Lamdera</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;Lamdera -->\n<g id=\"edge19\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;Lamdera</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1021.78,-1507.29C1042.94,-1547.1 1097.12,-1640.59 1166.09,-1696.42 1170.43,-1699.93 1175.29,-1703.09 1180.33,-1705.9\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1178.62,-1709.47 1189.12,-1710.89 1181.8,-1703.23 1178.62,-1709.47\"/>\n</g>\n<!-- jq -->\n<g id=\"node21\" class=\"node\">\n<title>jq</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1669.42\" rx=\"27\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1665.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">jq</text>\n</g>\n<!-- elm&#45;pages&#45;&gt;jq -->\n<g id=\"edge20\" class=\"edge\">\n<title>elm&#45;pages&#45;&gt;jq</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1026.8,-1506.92C1052.34,-1538.18 1107.85,-1602.01 1166.09,-1642.42 1174.03,-1647.93 1183.29,-1652.77 1192.09,-1656.78\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1190.54,-1660.35 1201.11,-1661.08 1193.3,-1653.92 1190.54,-1660.35\"/>\n</g>\n<!-- Session -->\n<g id=\"node22\" class=\"node\">\n<title>Session</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"459.33\" cy=\"-332.42\" rx=\"45.39\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-328.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Session</text>\n</g>\n<!-- Route&#45;&gt;Session -->\n<g id=\"edge21\" class=\"edge\">\n<title>Route&#45;&gt;Session</title>\n<path fill=\"none\" stroke=\"black\" d=\"M358.03,-332.42C371.79,-332.42 387.7,-332.42 402.74,-332.42\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"402.5,-335.92 412.5,-332.42 402.5,-328.92 402.5,-335.92\"/>\n</g>\n<!-- URI -->\n<g id=\"node23\" class=\"node\">\n<title>URI</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"459.33\" cy=\"-278.42\" rx=\"27.67\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-274.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">URI</text>\n</g>\n<!-- Route&#45;&gt;URI -->\n<g id=\"edge22\" class=\"edge\">\n<title>Route&#45;&gt;URI</title>\n<path fill=\"none\" stroke=\"black\" d=\"M350.32,-320.83C372.25,-312.22 402.21,-300.45 425.01,-291.5\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"426.22,-294.39 434.24,-287.48 423.66,-287.88 426.22,-294.39\"/>\n</g>\n<!-- app&#45;&gt;elm&#45;pages -->\n<g id=\"edge23\" class=\"edge\">\n<title>app&#45;&gt;elm&#45;pages</title>\n<path fill=\"none\" stroke=\"black\" d=\"M802.46,-1277.95C840.23,-1316.22 938.07,-1415.38 984.71,-1462.64\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"981.75,-1464.63 991.26,-1469.29 986.73,-1459.72 981.75,-1464.63\"/>\n</g>\n<!-- app&#45;&gt;Elm -->\n<g id=\"edge24\" class=\"edge\">\n<title>app&#45;&gt;Elm</title>\n<path fill=\"none\" stroke=\"black\" d=\"M811.85,-1254.32C851.43,-1241.37 929.19,-1215.91 974.69,-1201.02\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"975.56,-1204.09 983.97,-1197.65 973.38,-1197.44 975.56,-1204.09\"/>\n</g>\n<!-- Scaffolding\na\nRoute\nModule&#45;&gt;elm&#45;pages -->\n<g id=\"edge25\" class=\"edge\">\n<title>Scaffolding\na\nRoute\nModule&#45;&gt;elm&#45;pages</title>\n<path fill=\"none\" stroke=\"black\" d=\"M671.76,-1126.47C738.73,-1164.73 848.72,-1228.05 856.2,-1235.42 925.5,-1303.58 976.4,-1409.04 998.29,-1459.54\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"995.37,-1460.63 1002.51,-1468.45 1001.81,-1457.88 995.37,-1460.63\"/>\n</g>\n<!-- Scaffolding\na\nRoute\nModule&#45;&gt;Form -->\n<g id=\"edge27\" class=\"edge\">\n<title>Scaffolding\na\nRoute\nModule&#45;&gt;Form</title>\n<path fill=\"none\" stroke=\"black\" d=\"M645.19,-1047.62C680.21,-976.24 743.53,-847.2 771.37,-790.46\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"774.87,-792.26 776.14,-781.74 768.59,-789.18 774.87,-792.26\"/>\n</g>\n<!-- Scaffolding\na\nRoute\nModule&#45;&gt;Elm -->\n<g id=\"edge26\" class=\"edge\">\n<title>Scaffolding\na\nRoute\nModule&#45;&gt;Elm</title>\n<path fill=\"none\" stroke=\"black\" d=\"M679.23,-1111.6C734.17,-1124.88 818.72,-1145.21 892.2,-1162.42 919.22,-1168.74 949.75,-1175.73 972.98,-1181.01\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"971.9,-1184.58 982.43,-1183.38 973.45,-1177.75 971.9,-1184.58\"/>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Find\nRoute -->\n<g id=\"edge28\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Find\nRoute</title>\n<path fill=\"none\" stroke=\"black\" d=\"M357.67,-781.53C377.58,-792.04 402.09,-806.13 421.94,-818.47\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"419.66,-821.8 429.98,-824.19 423.4,-815.89 419.66,-821.8\"/>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Lineup -->\n<g id=\"edge29\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Lineup</title>\n<path fill=\"none\" stroke=\"black\" d=\"M331.19,-725.31C342.16,-688.45 362.47,-634.59 395.2,-597.42 401.9,-589.8 410.51,-583.26 419.2,-577.85\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"420.67,-580.47 427.58,-572.43 417.17,-574.4 420.67,-580.47\"/>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;RouteParams -->\n<g id=\"edge33\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M337.69,-804.61C350.43,-829.78 370.02,-861.94 395.2,-883.42 486,-960.87 624.09,-993.86 709.25,-1007.44\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"708.46,-1011.02 718.88,-1009.08 709.53,-1004.1 708.46,-1011.02\"/>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Optional\nSplat\nRoutes -->\n<g id=\"edge31\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Optional\nSplat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M340.88,-730.14C353.88,-709.79 372.59,-685.54 395.2,-670.42 449.75,-633.93 626.66,-630.59 680.05,-592.42 703.21,-575.85 695.82,-559.46 716.05,-539.42 722.02,-533.5 728.86,-527.89 735.86,-522.75\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"737.58,-525.12 743.76,-516.51 733.57,-519.39 737.58,-525.12\"/>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;Splat\nRoutes -->\n<g id=\"edge30\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M349.57,-737.45C362.49,-726.05 378.56,-713.92 395.2,-706.42 449.69,-681.85 518.18,-673.06 564.9,-669.97\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"564.92,-673.41 574.7,-669.33 564.51,-666.43 564.92,-673.41\"/>\n</g>\n<!-- The\nElm&#45;Pages\nArchitecture -->\n<g id=\"node24\" class=\"node\">\n<title>The\nElm&#45;Pages\nArchitecture</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"459.33\" cy=\"-756.42\" rx=\"64.13\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-769.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">The</text>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-752.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Elm&#45;Pages</text>\n<text text-anchor=\"middle\" x=\"459.33\" y=\"-735.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Architecture</text>\n</g>\n<!-- No\nRoute\nFound&#45;&gt;The\nElm&#45;Pages\nArchitecture -->\n<g id=\"edge32\" class=\"edge\">\n<title>No\nRoute\nFound&#45;&gt;The\nElm&#45;Pages\nArchitecture</title>\n<path fill=\"none\" stroke=\"black\" d=\"M360.59,-763.52C368.15,-762.97 376.27,-762.38 384.5,-761.78\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"384.61,-765.21 394.33,-761 384.1,-758.23 384.61,-765.21\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;Scaffolding\na\nRoute\nModule -->\n<g id=\"edge37\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;Scaffolding\na\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" d=\"M477.28,-872.38C502.44,-912.39 550.21,-988.38 583.23,-1040.91\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"580.73,-1042.51 589.02,-1049.11 586.66,-1038.78 580.73,-1042.51\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;No\nRoute\nFound -->\n<g id=\"edge39\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;No\nRoute\nFound</title>\n<path fill=\"none\" stroke=\"black\" d=\"M424.37,-831.82C405.57,-822.01 382.06,-808.61 362.19,-796.43\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"364.4,-793.06 354.06,-790.76 360.7,-799.01 364.4,-793.06\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;RouteParams -->\n<g id=\"edge36\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M486.93,-867.18C506.25,-882.3 533.46,-902.2 559.46,-916.42 610.08,-944.08 627.36,-940.94 680.05,-964.42 700.95,-973.73 723.75,-984.89 742.76,-994.48\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"740.82,-997.93 751.32,-999.33 743.99,-991.68 740.82,-997.93\"/>\n</g>\n<!-- Find\nRoute&#45;&gt;Splat\nRoutes -->\n<g id=\"edge38\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M493.28,-830.5C504.06,-824.32 515.35,-816.25 523.46,-806.42 552.2,-771.59 532.04,-747.28 559.46,-711.42 564.29,-705.1 570.31,-699.3 576.63,-694.14\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"578.51,-696.35 584.37,-687.52 574.29,-690.77 578.51,-696.35\"/>\n</g>\n<!-- File&#45;Based\nRouting -->\n<g id=\"node25\" class=\"node\">\n<title>File&#45;Based\nRouting</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-29.42\" rx=\"58.63\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-33.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">File&#45;Based</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-16.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Routing</text>\n</g>\n<!-- Find\nRoute&#45;&gt;File&#45;Based\nRouting -->\n<g id=\"edge34\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;File&#45;Based\nRouting</title>\n<path fill=\"none\" stroke=\"black\" d=\"M493.54,-830.3C580.82,-789.84 812.97,-677.38 856.2,-606.42 918.66,-503.9 818.33,-162.04 892.2,-67.42 904.49,-51.68 923.37,-42.36 942.45,-36.87\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"943.19,-40.04 952.03,-34.2 941.47,-33.25 943.19,-40.04\"/>\n</g>\n<!-- Dynamic\nSegments -->\n<g id=\"node26\" class=\"node\">\n<title>Dynamic\nSegments</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-1124.42\" rx=\"55.89\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-1128.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Dynamic</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-1111.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Segments</text>\n</g>\n<!-- Find\nRoute&#45;&gt;Dynamic\nSegments -->\n<g id=\"edge35\" class=\"edge\">\n<title>Find\nRoute&#45;&gt;Dynamic\nSegments</title>\n<path fill=\"none\" stroke=\"black\" d=\"M498.09,-848.33C576.16,-856.39 756.38,-885.78 856.2,-989.42 888.1,-1022.54 858.99,-1054.62 892.2,-1086.42 906.82,-1100.41 926.63,-1109.25 945.83,-1114.84\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"944.84,-1118.46 955.4,-1117.62 946.62,-1111.69 944.84,-1118.46\"/>\n</g>\n<!-- Distinction -->\n<g id=\"node27\" class=\"node\">\n<title>Distinction</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-94.42\" rx=\"55.58\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-90.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Distinction</text>\n</g>\n<!-- Form&#45;&gt;Distinction -->\n<g id=\"edge40\" class=\"edge\">\n<title>Form&#45;&gt;Distinction</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.76,-755.54C832.58,-750.84 847.57,-743.09 856.2,-730.42 932.53,-618.37 804.62,-224.9 892.2,-121.42 905.14,-106.13 924.8,-98.48 944.38,-94.91\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"944.83,-98.23 954.21,-93.32 943.81,-91.31 944.83,-98.23\"/>\n</g>\n<!-- Inside -->\n<g id=\"node28\" class=\"node\">\n<title>Inside</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-1059.42\" rx=\"36.81\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-1055.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Inside</text>\n</g>\n<!-- Form&#45;&gt;Inside -->\n<g id=\"edge41\" class=\"edge\">\n<title>Form&#45;&gt;Inside</title>\n<path fill=\"none\" stroke=\"black\" d=\"M798.98,-780.48C814.15,-804.31 840.38,-848 856.2,-888.42 880.26,-949.84 845.09,-986.24 892.2,-1032.42 910.81,-1050.65 939.06,-1057.55 963.25,-1059.83\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"962.81,-1063.37 973.03,-1060.57 963.3,-1056.39 962.81,-1063.37\"/>\n</g>\n<!-- Outside -->\n<g id=\"node29\" class=\"node\">\n<title>Outside</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-1005.42\" rx=\"44.32\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-1001.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Outside</text>\n</g>\n<!-- Form&#45;&gt;Outside -->\n<g id=\"edge42\" class=\"edge\">\n<title>Form&#45;&gt;Outside</title>\n<path fill=\"none\" stroke=\"black\" d=\"M797.9,-780.42C812.13,-804.55 837.57,-848.94 856.2,-888.42 874.59,-927.38 859.47,-950.41 892.2,-978.42 909.68,-993.37 933.79,-1000.47 955.65,-1003.7\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"955.15,-1007.29 965.5,-1005.02 956,-1000.34 955.15,-1007.29\"/>\n</g>\n<!-- Binate -->\n<g id=\"node30\" class=\"node\">\n<title>Binate</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-951.42\" rx=\"38.42\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-947.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Binate</text>\n</g>\n<!-- Form&#45;&gt;Binate -->\n<g id=\"edge43\" class=\"edge\">\n<title>Form&#45;&gt;Binate</title>\n<path fill=\"none\" stroke=\"black\" d=\"M796.83,-780.96C817.26,-819.33 865.07,-905.45 892.2,-924.42 912.4,-938.54 938.85,-945.38 961.58,-948.66\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"961.05,-952.25 971.4,-950 961.91,-945.3 961.05,-952.25\"/>\n</g>\n<!-- George\nSpencer\nBrown -->\n<g id=\"node31\" class=\"node\">\n<title>George\nSpencer\nBrown</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-874.42\" rx=\"48.19\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-887.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">George</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-870.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Spencer</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-853.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Brown</text>\n</g>\n<!-- Form&#45;&gt;George\nSpencer\nBrown -->\n<g id=\"edge44\" class=\"edge\">\n<title>Form&#45;&gt;George\nSpencer\nBrown</title>\n<path fill=\"none\" stroke=\"black\" d=\"M809.6,-776.85C830.55,-790.02 862.89,-809.63 892.2,-824.42 912.84,-834.82 936.17,-845.02 956.59,-853.47\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"955.09,-857.04 965.67,-857.59 957.74,-850.56 955.09,-857.04\"/>\n</g>\n<!-- cross -->\n<g id=\"node32\" class=\"node\">\n<title>cross</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-797.42\" rx=\"34.11\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-793.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">cross</text>\n</g>\n<!-- Form&#45;&gt;cross -->\n<g id=\"edge45\" class=\"edge\">\n<title>Form&#45;&gt;cross</title>\n<path fill=\"none\" stroke=\"black\" d=\"M819.56,-767.5C858.56,-773.63 924.17,-783.92 967.32,-790.69\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"966.62,-794.28 977.04,-792.38 967.7,-787.37 966.62,-794.28\"/>\n</g>\n<!-- Time -->\n<g id=\"node33\" class=\"node\">\n<title>Time</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-743.42\" rx=\"32.5\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-739.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Time</text>\n</g>\n<!-- Form&#45;&gt;Time -->\n<g id=\"edge46\" class=\"edge\">\n<title>Form&#45;&gt;Time</title>\n<path fill=\"none\" stroke=\"black\" d=\"M820.52,-759.57C859.78,-756.23 925.01,-750.67 967.8,-747.02\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"968.03,-750.43 977.69,-746.1 967.43,-743.46 968.03,-750.43\"/>\n</g>\n<!-- Das\nRecht\nder\nGesellschaft -->\n<g id=\"node34\" class=\"node\">\n<title>Das\nRecht\nder\nGesellschaft</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-654.42\" rx=\"65.79\" ry=\"53.17\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-675.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Das</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-658.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Recht</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-641.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">der</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-625.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Gesellschaft</text>\n</g>\n<!-- Form&#45;&gt;Das\nRecht\nder\nGesellschaft -->\n<g id=\"edge47\" class=\"edge\">\n<title>Form&#45;&gt;Das\nRecht\nder\nGesellschaft</title>\n<path fill=\"none\" stroke=\"black\" d=\"M813.44,-750.41C826.36,-744.47 842.14,-737.15 856.2,-730.42 885.42,-716.44 917.57,-700.64 944.89,-687.07\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"946.33,-689.77 953.73,-682.19 943.22,-683.5 946.33,-689.77\"/>\n</g>\n<!-- Niklas\nLuhmann -->\n<g id=\"node35\" class=\"node\">\n<title>Niklas\nLuhmann</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-553.42\" rx=\"52.59\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-557.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Niklas</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-540.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Luhmann</text>\n</g>\n<!-- Form&#45;&gt;Niklas\nLuhmann -->\n<g id=\"edge48\" class=\"edge\">\n<title>Form&#45;&gt;Niklas\nLuhmann</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.04,-754.6C831.53,-749.72 846.46,-742.08 856.2,-730.42 896.85,-681.78 848.84,-638.65 892.2,-592.42 906.97,-576.68 928.21,-567.28 948.6,-561.68\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"949.28,-564.87 958.16,-559.08 947.61,-558.07 949.28,-564.87\"/>\n</g>\n<!-- Prozessunterbrechungen -->\n<g id=\"node36\" class=\"node\">\n<title>Prozessunterbrechungen</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-488.42\" rx=\"118.94\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-484.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Prozessunterbrechungen</text>\n</g>\n<!-- Form&#45;&gt;Prozessunterbrechungen -->\n<g id=\"edge49\" class=\"edge\">\n<title>Form&#45;&gt;Prozessunterbrechungen</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.52,-754.99C832.11,-750.19 846.99,-742.5 856.2,-730.42 914.95,-653.37 825.75,-585.92 892.2,-515.42 896.11,-511.27 900.51,-507.7 905.26,-504.63\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"906.75,-507.25 913.78,-499.32 903.35,-501.13 906.75,-507.25\"/>\n</g>\n<!-- Intention -->\n<g id=\"node37\" class=\"node\">\n<title>Intention</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-434.42\" rx=\"48.08\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-430.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Intention</text>\n</g>\n<!-- Form&#45;&gt;Intention -->\n<g id=\"edge50\" class=\"edge\">\n<title>Form&#45;&gt;Intention</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.35,-755.25C832.07,-750.49 847.11,-742.76 856.2,-730.42 927.75,-633.31 810.92,-550.54 892.2,-461.42 907.28,-444.89 930.23,-437.44 951.88,-434.37\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"952.15,-437.75 961.71,-433.17 951.38,-430.8 952.15,-437.75\"/>\n</g>\n<!-- Whole -->\n<g id=\"node38\" class=\"node\">\n<title>Whole</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-380.42\" rx=\"38.41\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-376.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Whole</text>\n</g>\n<!-- Form&#45;&gt;Whole -->\n<g id=\"edge51\" class=\"edge\">\n<title>Form&#45;&gt;Whole</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.47,-755.34C832.22,-750.59 847.25,-742.86 856.2,-730.42 940.6,-613.19 796.05,-515.21 892.2,-407.42 909.42,-388.11 937.36,-381.13 961.73,-379.09\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"961.84,-382.53 971.62,-378.47 961.44,-375.54 961.84,-382.53\"/>\n</g>\n<!-- Holographic\nNew\nAge\nMysticism -->\n<g id=\"node39\" class=\"node\">\n<title>Holographic\nNew\nAge\nMysticism</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-291.42\" rx=\"64.14\" ry=\"53.17\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-312.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Holographic</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-295.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">New</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-278.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Age</text>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-262.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Mysticism</text>\n</g>\n<!-- Form&#45;&gt;Holographic\nNew\nAge\nMysticism -->\n<g id=\"edge52\" class=\"edge\">\n<title>Form&#45;&gt;Holographic\nNew\nAge\nMysticism</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.56,-755.4C832.33,-750.67 847.34,-742.93 856.2,-730.42 953.47,-593.04 798.42,-493.18 892.2,-353.42 903.89,-335.99 922.1,-323.14 940.75,-313.79\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"941.93,-316.63 949.5,-309.22 938.96,-310.3 941.93,-316.63\"/>\n</g>\n<!-- DisplayMedium -->\n<g id=\"node40\" class=\"node\">\n<title>DisplayMedium</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-202.42\" rx=\"77.05\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-198.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">DisplayMedium</text>\n</g>\n<!-- Form&#45;&gt;DisplayMedium -->\n<g id=\"edge53\" class=\"edge\">\n<title>Form&#45;&gt;DisplayMedium</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.69,-755.49C832.49,-750.78 847.49,-743.03 856.2,-730.42 919.63,-638.57 819.55,-314.16 892.2,-229.42 900.7,-219.51 912.01,-212.82 924.28,-208.37\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"925.24,-211.43 933.76,-205.14 923.17,-204.74 925.24,-211.43\"/>\n</g>\n<!-- BitBlt -->\n<g id=\"node41\" class=\"node\">\n<title>BitBlt</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1011.15\" cy=\"-148.42\" rx=\"33.58\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1011.15\" y=\"-144.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">BitBlt</text>\n</g>\n<!-- Form&#45;&gt;BitBlt -->\n<g id=\"edge54\" class=\"edge\">\n<title>Form&#45;&gt;BitBlt</title>\n<path fill=\"none\" stroke=\"black\" d=\"M818.73,-755.52C832.54,-750.82 847.54,-743.06 856.2,-730.42 926.08,-628.47 812.09,-269.52 892.2,-175.42 910.17,-154.31 940.96,-147.79 966.57,-146.42\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"966.64,-149.9 976.54,-146.13 966.45,-142.9 966.64,-149.9\"/>\n</g>\n<!-- Page\nPlace\nClues -->\n<g id=\"node42\" class=\"node\">\n<title>Page\nPlace\nClues</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"619.76\" cy=\"-465.42\" rx=\"36.62\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-478.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Page</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-461.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Place</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-444.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Clues</text>\n</g>\n<!-- Lineup&#45;&gt;Page\nPlace\nClues -->\n<g id=\"edge55\" class=\"edge\">\n<title>Lineup&#45;&gt;Page\nPlace\nClues</title>\n<path fill=\"none\" stroke=\"black\" d=\"M485.43,-544.52C510.23,-529.81 548.59,-507.05 577.8,-489.71\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"579.12,-492.41 585.94,-484.29 575.55,-486.39 579.12,-492.41\"/>\n</g>\n<!-- Eric\nDobbs -->\n<g id=\"node43\" class=\"node\">\n<title>Eric\nDobbs</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"619.76\" cy=\"-554.42\" rx=\"39.93\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-558.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Eric</text>\n<text text-anchor=\"middle\" x=\"619.76\" y=\"-541.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Dobbs</text>\n</g>\n<!-- Lineup&#45;&gt;Eric\nDobbs -->\n<g id=\"edge56\" class=\"edge\">\n<title>Lineup&#45;&gt;Eric\nDobbs</title>\n<path fill=\"none\" stroke=\"black\" d=\"M500.72,-558.14C521.42,-557.49 546.83,-556.69 568.76,-555.99\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"568.65,-559.47 578.54,-555.65 568.43,-552.47 568.65,-559.47\"/>\n</g>\n<!-- RouteParams&#45;&gt;elm&#45;pages -->\n<g id=\"edge57\" class=\"edge\">\n<title>RouteParams&#45;&gt;elm&#45;pages</title>\n<path fill=\"none\" stroke=\"black\" d=\"M796.15,-1035.5C830.72,-1108.67 954.93,-1371.56 996.49,-1459.52\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"993.7,-1460.8 1001.14,-1468.35 1000.03,-1457.81 993.7,-1460.8\"/>\n</g>\n<!-- RouteParams&#45;&gt;Elm -->\n<g id=\"edge58\" class=\"edge\">\n<title>RouteParams&#45;&gt;Elm</title>\n<path fill=\"none\" stroke=\"black\" d=\"M802.49,-1035.11C816.86,-1052.85 838.68,-1080.44 856.2,-1105.42 873.41,-1129.95 867.75,-1145.1 892.2,-1162.42 915.39,-1178.84 947.01,-1185.45 971.67,-1188.02\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"971.2,-1191.58 981.46,-1188.94 971.79,-1184.61 971.2,-1191.58\"/>\n</g>\n<!-- RouteParams&#45;&gt;Dynamic\nSegments -->\n<g id=\"edge59\" class=\"edge\">\n<title>RouteParams&#45;&gt;Dynamic\nSegments</title>\n<path fill=\"none\" stroke=\"black\" d=\"M810.21,-1034.52C830.78,-1049.97 862.2,-1071.93 892.2,-1086.42 910.35,-1095.17 931,-1102.61 949.9,-1108.52\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"948.61,-1112.09 959.19,-1111.64 950.64,-1105.39 948.61,-1112.09\"/>\n</g>\n<!-- Optional\nSplat\nRoutes&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge75\" class=\"edge\">\n<title>Optional\nSplat\nRoutes&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M749.11,-465.7C730.23,-450.35 705.72,-432.9 680.05,-424.42 629.16,-407.59 611.08,-410 559.46,-424.42 419.82,-463.41 369.29,-478.85 280.43,-593.42 234.7,-652.37 215.42,-737.69 207.35,-792.44\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"203.75,-791.92 205.84,-802.31 210.68,-792.88 203.75,-791.92\"/>\n</g>\n<!-- Optional\nSplat\nRoutes&#45;&gt;Splat\nRoutes -->\n<g id=\"edge60\" class=\"edge\">\n<title>Optional\nSplat\nRoutes&#45;&gt;Splat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M764.1,-531.49C744.26,-561.54 712.76,-603.14 680.05,-634.42 675.8,-638.48 671.15,-642.48 666.38,-646.25\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"664.62,-643.95 658.74,-652.76 668.83,-649.54 664.62,-643.95\"/>\n</g>\n<!-- Optional\nSplat\nRoutes&#45;&gt;File&#45;Based\nRouting -->\n<g id=\"edge61\" class=\"edge\">\n<title>Optional\nSplat\nRoutes&#45;&gt;File&#45;Based\nRouting</title>\n<path fill=\"none\" stroke=\"black\" d=\"M792.32,-450.99C804.91,-354.66 839.93,-123.48 892.2,-67.42 905.57,-53.08 924.37,-44.13 943.03,-38.56\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"943.9,-41.68 952.66,-35.72 942.09,-34.92 943.9,-41.68\"/>\n</g>\n<!-- Splat\nRoutes&#45;&gt;RouteParams -->\n<g id=\"edge64\" class=\"edge\">\n<title>Splat\nRoutes&#45;&gt;RouteParams</title>\n<path fill=\"none\" stroke=\"black\" d=\"M634.49,-697.49C665.47,-763.08 740.5,-921.93 771.44,-987.44\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"768.58,-988.57 776.01,-996.12 774.91,-985.58 768.58,-988.57\"/>\n</g>\n<!-- Splat\nRoutes&#45;&gt;Optional\nSplat\nRoutes -->\n<g id=\"edge62\" class=\"edge\">\n<title>Splat\nRoutes&#45;&gt;Optional\nSplat\nRoutes</title>\n<path fill=\"none\" stroke=\"black\" d=\"M646.16,-644C657.12,-635.72 669.76,-626.26 680.05,-616.42 705.81,-591.79 730.81,-560.76 749.97,-535.94\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"753.18,-538.5 756.49,-528.44 747.62,-534.24 753.18,-538.5\"/>\n</g>\n<!-- Splat\nRoutes&#45;&gt;File&#45;Based\nRouting -->\n<g id=\"edge63\" class=\"edge\">\n<title>Splat\nRoutes&#45;&gt;File&#45;Based\nRouting</title>\n<path fill=\"none\" stroke=\"black\" d=\"M661.84,-659.52C716.52,-645.3 811.5,-611.78 856.2,-543.42 914.26,-454.63 826.55,-150.74 892.2,-67.42 904.56,-51.73 923.46,-42.43 942.53,-36.93\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"943.27,-40.11 952.11,-34.26 941.55,-33.32 943.27,-40.11\"/>\n</g>\n<!-- Evan\nCzaplicki -->\n<g id=\"node44\" class=\"node\">\n<title>Evan\nCzaplicki</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-982.42\" rx=\"50.92\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-986.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Evan</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-969.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Czaplicki</text>\n</g>\n<!-- Elm&#45;&gt;Evan\nCzaplicki -->\n<g id=\"edge65\" class=\"edge\">\n<title>Elm&#45;&gt;Evan\nCzaplicki</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1040.07,-1190.77C1066.74,-1190.49 1106.27,-1185.68 1130.09,-1162.42 1176.66,-1116.92 1128.02,-1073.23 1166.09,-1020.42 1169.48,-1015.71 1173.66,-1011.43 1178.21,-1007.6\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1179.84,-1010 1185.72,-1001.18 1175.63,-1004.41 1179.84,-1010\"/>\n</g>\n<!-- The\nOfficial\nGuide -->\n<g id=\"node45\" class=\"node\">\n<title>The\nOfficial\nGuide</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-893.42\" rx=\"41.57\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-906.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">The</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-889.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Official</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-872.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Guide</text>\n</g>\n<!-- Elm&#45;&gt;The\nOfficial\nGuide -->\n<g id=\"edge66\" class=\"edge\">\n<title>Elm&#45;&gt;The\nOfficial\nGuide</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1040,-1191.2C1067,-1191.3 1107.13,-1186.82 1130.09,-1162.42 1197.36,-1090.88 1117.98,-1030.02 1166.09,-944.42 1170.49,-936.59 1176.57,-929.4 1183.17,-923.05\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1184.95,-926.25 1190.09,-916.98 1180.29,-921.03 1184.95,-926.25\"/>\n</g>\n<!-- GraphQL -->\n<g id=\"node46\" class=\"node\">\n<title>GraphQL</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-816.42\" rx=\"50.76\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-812.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">GraphQL</text>\n</g>\n<!-- Elm&#45;&gt;GraphQL -->\n<g id=\"edge67\" class=\"edge\">\n<title>Elm&#45;&gt;GraphQL</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1040.02,-1191.45C1067.22,-1191.76 1107.7,-1187.48 1130.09,-1162.42 1225.13,-1056.01 1082.27,-958.88 1166.09,-843.42 1168.97,-839.45 1172.57,-836.05 1176.57,-833.14\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1178.1,-835.7 1184.84,-827.53 1174.48,-829.71 1178.1,-835.7\"/>\n</g>\n<!-- Yukihiro\nMatsumoto -->\n<g id=\"node47\" class=\"node\">\n<title>Yukihiro\nMatsumoto</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-751.42\" rx=\"60.28\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-755.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Yukihiro</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-738.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Matsumoto</text>\n</g>\n<!-- Elm&#45;&gt;Yukihiro\nMatsumoto -->\n<g id=\"edge68\" class=\"edge\">\n<title>Elm&#45;&gt;Yukihiro\nMatsumoto</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1040.1,-1191.52C1067.38,-1191.9 1107.9,-1187.66 1130.09,-1162.42 1185.06,-1099.86 1122.67,-860.47 1166.09,-789.42 1168.35,-785.71 1171.13,-782.3 1174.24,-779.17\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1176.26,-781.18 1181.53,-771.99 1171.68,-775.89 1176.26,-781.18\"/>\n</g>\n<!-- Joy -->\n<g id=\"node48\" class=\"node\">\n<title>Joy</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1331.42\" rx=\"27\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1327.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Joy</text>\n</g>\n<!-- Elm&#45;&gt;Joy -->\n<g id=\"edge69\" class=\"edge\">\n<title>Elm&#45;&gt;Joy</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1029.29,-1204.17C1056.85,-1227.42 1113.27,-1273.15 1166.09,-1304.42 1174.41,-1309.34 1183.79,-1313.99 1192.59,-1318\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1190.99,-1321.56 1201.56,-1322.38 1193.81,-1315.15 1190.99,-1321.56\"/>\n</g>\n<!-- Lindsay\nWardell -->\n<g id=\"node49\" class=\"node\">\n<title>Lindsay\nWardell</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1266.42\" rx=\"45.44\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1270.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Lindsay</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1253.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Wardell</text>\n</g>\n<!-- Elm&#45;&gt;Lindsay\nWardell -->\n<g id=\"edge70\" class=\"edge\">\n<title>Elm&#45;&gt;Lindsay\nWardell</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1037.02,-1198.4C1070.99,-1210.67 1132.62,-1232.92 1176.12,-1248.63\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1174.61,-1252.17 1185.21,-1252.27 1176.99,-1245.59 1174.61,-1252.17\"/>\n</g>\n<!-- Dillon\nKearns -->\n<g id=\"node50\" class=\"node\">\n<title>Dillon\nKearns</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1189.42\" rx=\"42.68\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1193.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Dillon</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1176.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Kearns</text>\n</g>\n<!-- Elm&#45;&gt;Dillon\nKearns -->\n<g id=\"edge71\" class=\"edge\">\n<title>Elm&#45;&gt;Dillon\nKearns</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1040.02,-1189.42C1073.59,-1189.42 1130.71,-1189.42 1172.68,-1189.42\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1172.54,-1192.92 1182.54,-1189.42 1172.54,-1185.92 1172.54,-1192.92\"/>\n</g>\n<!-- Jeroen\nEngels -->\n<g id=\"node51\" class=\"node\">\n<title>Jeroen\nEngels</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1112.42\" rx=\"41.58\" ry=\"29.42\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1116.62\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Jeroen</text>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1099.82\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Engels</text>\n</g>\n<!-- Elm&#45;&gt;Jeroen\nEngels -->\n<g id=\"edge72\" class=\"edge\">\n<title>Elm&#45;&gt;Jeroen\nEngels</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1039.42,-1185.23C1063.7,-1181.03 1099.94,-1173.56 1130.09,-1162.42 1148.69,-1155.54 1168.25,-1145.77 1184.77,-1136.68\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1186.11,-1139.38 1193.12,-1131.44 1182.69,-1133.28 1186.11,-1139.38\"/>\n</g>\n<!-- Vite -->\n<g id=\"node52\" class=\"node\">\n<title>Vite</title>\n<ellipse fill=\"white\" stroke=\"black\" cx=\"1226.37\" cy=\"-1047.42\" rx=\"27.68\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"1226.37\" y=\"-1043.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Vite</text>\n</g>\n<!-- Elm&#45;&gt;Vite -->\n<g id=\"edge73\" class=\"edge\">\n<title>Elm&#45;&gt;Vite</title>\n<path fill=\"none\" stroke=\"black\" d=\"M1040.14,-1190C1066.28,-1189.08 1104.94,-1183.76 1130.09,-1162.42 1162.3,-1135.07 1136.8,-1104.87 1166.09,-1074.42 1172.74,-1067.5 1181.48,-1062.21 1190.21,-1058.21\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"1191.38,-1061.11 1199.32,-1054.11 1188.74,-1054.63 1191.38,-1061.11\"/>\n</g>\n<!-- Journal,\nAug\n2023 -->\n<g id=\"node53\" class=\"node\">\n<title>Journal,\nAug\n2023</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-1030.42\" rx=\"46.53\" ry=\"41.3\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-1043.02\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Journal,</text>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-1026.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">Aug</text>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-1009.42\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023</text>\n</g>\n<!-- Journal,\nAug\n2023&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge74\" class=\"edge\">\n<title>Journal,\nAug\n2023&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M96.61,-1004.24C105.09,-997.04 113.75,-988.87 120.87,-980.42 143.05,-954.07 162.6,-920.67 176.68,-893.68\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"180.17,-895.55 181.61,-885.05 173.94,-892.35 180.17,-895.55\"/>\n</g>\n<!-- 2023&#45;08&#45;25 -->\n<g id=\"node54\" class=\"node\">\n<title>2023&#45;08&#45;25</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-953.42\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-949.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;08&#45;25</text>\n</g>\n<!-- 2023&#45;08&#45;25&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge76\" class=\"edge\">\n<title>2023&#45;08&#45;25&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M98.75,-939.05C106.36,-935.41 114.1,-931.17 120.87,-926.42 136.83,-915.19 152.28,-900.46 165.21,-886.64\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"167.36,-889.39 171.52,-879.64 162.19,-884.67 167.36,-889.39\"/>\n</g>\n<!-- 2023&#45;08&#45;26 -->\n<g id=\"node55\" class=\"node\">\n<title>2023&#45;08&#45;26</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-899.42\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-895.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;08&#45;26</text>\n</g>\n<!-- 2023&#45;08&#45;26&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge77\" class=\"edge\">\n<title>2023&#45;08&#45;26&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M98.11,-885.09C113.61,-879.03 131.92,-871.88 148.7,-865.32\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"149.86,-868.23 157.9,-861.34 147.32,-861.71 149.86,-868.23\"/>\n</g>\n<!-- 2023&#45;08&#45;28 -->\n<g id=\"node56\" class=\"node\">\n<title>2023&#45;08&#45;28</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-845.42\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-841.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;08&#45;28</text>\n</g>\n<!-- 2023&#45;08&#45;28&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge78\" class=\"edge\">\n<title>2023&#45;08&#45;28&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M121.25,-845.42C129.09,-845.42 137.09,-845.42 144.83,-845.42\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"144.57,-848.92 154.57,-845.42 144.57,-841.92 144.57,-848.92\"/>\n</g>\n<!-- 2023&#45;08&#45;30 -->\n<g id=\"node57\" class=\"node\">\n<title>2023&#45;08&#45;30</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-791.42\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-787.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;08&#45;30</text>\n</g>\n<!-- 2023&#45;08&#45;30&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge79\" class=\"edge\">\n<title>2023&#45;08&#45;30&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M98.11,-805.74C113.61,-811.8 131.92,-818.95 148.7,-825.51\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"147.32,-829.12 157.9,-829.5 149.86,-822.6 147.32,-829.12\"/>\n</g>\n<!-- 2023&#45;08&#45;31 -->\n<g id=\"node58\" class=\"node\">\n<title>2023&#45;08&#45;31</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-737.42\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-733.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;08&#45;31</text>\n</g>\n<!-- 2023&#45;08&#45;31&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge80\" class=\"edge\">\n<title>2023&#45;08&#45;31&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M98.75,-751.79C106.36,-755.42 114.1,-759.66 120.87,-764.42 136.83,-775.64 152.28,-790.37 165.21,-804.19\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"162.19,-806.17 171.52,-811.19 167.36,-801.44 162.19,-806.17\"/>\n</g>\n<!-- 2023&#45;09&#45;01 -->\n<g id=\"node59\" class=\"node\">\n<title>2023&#45;09&#45;01</title>\n<ellipse fill=\"white\" stroke=\"black\" stroke-dasharray=\"1,5\" cx=\"60.43\" cy=\"-683.42\" rx=\"60.43\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"60.43\" y=\"-679.22\" font-family=\"Helvetica,sans-Serif\" font-size=\"14.00\">2023&#45;09&#45;01</text>\n</g>\n<!-- 2023&#45;09&#45;01&#45;&gt;View\nRoute\nModule -->\n<g id=\"edge81\" class=\"edge\">\n<title>2023&#45;09&#45;01&#45;&gt;View\nRoute\nModule</title>\n<path fill=\"none\" stroke=\"black\" stroke-dasharray=\"1,5\" d=\"M100.95,-697.2C108.07,-700.8 115.06,-705.17 120.87,-710.42 146.81,-733.84 166.59,-767.87 179.85,-795.91\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"176.91,-796.91 184.26,-804.54 183.28,-794 176.91,-796.91\"/>\n</g>\n</g>\n</svg>\n"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "View Route Module",
+        "story": []
+      },
+      "date": 1693030997327
+    },
+    {
+      "id": "5d4f7ec10581a462",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module app/Route/View/Slug_/SPLAT__.elm."
+      },
+      "attribution": {
+        "page": "2023-08-26"
+      },
+      "date": 1693031001431
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "bea6b30b34c2dc59"
+      },
+      "id": "bea6b30b34c2dc59",
+      "type": "add",
+      "after": "5d4f7ec10581a462",
+      "date": 1693031023715
+    },
+    {
+      "type": "edit",
+      "id": "bea6b30b34c2dc59",
+      "item": {
+        "type": "pagefold",
+        "id": "bea6b30b34c2dc59",
+        "text": "~"
+      },
+      "date": 1693031026413
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "c249606e7e1ae14c"
+      },
+      "id": "c249606e7e1ae14c",
+      "type": "add",
+      "after": "bea6b30b34c2dc59",
+      "date": 1693031028045
+    },
+    {
+      "type": "edit",
+      "id": "c249606e7e1ae14c",
+      "item": {
+        "type": "reference",
+        "id": "c249606e7e1ae14c",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "the-elm-pages-architecture",
+        "title": "The Elm-Pages Architecture",
+        "text": "Let's look at the lifecycle of a request in an elm-pages app. [https://elm-pages.com/docs/architecture page]"
+      },
+      "date": 1693031030255
+    },
+    {
+      "id": "b5dfd7ba89323b17",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "b5dfd7ba89323b17",
+        "text": "How to render the [[RouteParams]] in our view? [https://github.com/dreyeck/blog/blob/e1955b5d5942d5be5af145a18a6ef50ea9869dd0/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L93-L102 code], [https://github.com/dreyeck/blog/commit/58bd7a82a12d4a6c2fb54f65bddfc3bd318ae26d commit], [https://github.com/dreyeck/blog/commit/c90c6649f9865eace686dedf0b320b299c208a66 commit] (app/Route/View/Slug_/SPLAT__.elm)"
+      },
+      "after": "5d4f7ec10581a462",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031122894
+    },
+    {
+      "id": "0cd1a0ed59c054c8",
+      "type": "add",
+      "item": {
+        "type": "code",
+        "id": "0cd1a0ed59c054c8",
+        "text": "view :\n    RouteBuilder.App Data ActionData RouteParams\n    -> Shared.Model\n    -> Model\n    -> View.View (PagesMsg.PagesMsg Msg)\nview app shared model =\n    { title = \"View.Slug_.SPLAT__\"\n    , body = [ Html.h2 [] [ Html.text \"New Page\" ] ]\n    }\n\n"
+      },
+      "after": "5d4f7ec10581a462",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031132079
+    },
+    {
+      "id": "0cd1a0ed59c054c8",
+      "type": "move",
+      "order": [
+        "5d4f7ec10581a462",
+        "b5dfd7ba89323b17",
+        "0cd1a0ed59c054c8",
+        "bea6b30b34c2dc59",
+        "c249606e7e1ae14c"
+      ],
+      "date": 1693031134094
+    },
+    {
+      "id": "8923c481f739d948",
+      "type": "add",
+      "item": {
+        "type": "code",
+        "id": "8923c481f739d948",
+        "text": "type alias RouteParams =\n    { slug : String, splat : List String }"
+      },
+      "after": "0cd1a0ed59c054c8",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031139110
+    },
+    {
+      "id": "475ed04d1382159c",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "475ed04d1382159c",
+        "text": "Type Signature:"
+      },
+      "after": "8923c481f739d948",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031141628
+    },
+    {
+      "id": "29e0cbe4e7c4468f",
+      "type": "add",
+      "item": {
+        "type": "code",
+        "id": "29e0cbe4e7c4468f",
+        "text": "view :\n    RouteBuilder.App Data ActionData RouteParams\n    -> Shared.Model\n    -> Model\n    -> View.View (PagesMsg.PagesMsg Msg)\n"
+      },
+      "after": "475ed04d1382159c",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031148494
+    },
+    {
+      "id": "524d2e32250dacb3",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "524d2e32250dacb3",
+        "text": "This is the type signature of the view function. In [[Elm]], type signatures provide information about the types of the function's arguments and its return value. Let's dissect it step by step:\n\nview is the name of the function.\nThe type signature starts with view :, indicating that this is a function definition.\nNow, let's look at the function's parameters and return type:\n\nRouteBuilder.App Data ActionData RouteParams is the first argument. This suggests that the view function expects a value of this type as its first argument. It appears to be some sort of routing information, likely related to your application's routing setup."
+      },
+      "after": "29e0cbe4e7c4468f",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031151927
+    },
+    {
+      "id": "a79e7910dde4a737",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "a79e7910dde4a737",
+        "text": "Shared.Model is the second argument. It expects a value of type Shared.Model. This could be a shared model used in your application."
+      },
+      "after": "524d2e32250dacb3",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031166431
+    },
+    {
+      "id": "8489851102fc1ca6",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "8489851102fc1ca6",
+        "text": "Model is the third argument. It expects a value of type Model. This is probably a model specific to the part of your application that this view function is responsible for."
+      },
+      "after": "a79e7910dde4a737",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031169877
+    },
+    {
+      "id": "2275e1937be44d5f",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "2275e1937be44d5f",
+        "text": "The return type of the function is View.View (PagesMsg.PagesMsg Msg). This suggests that the function will return a value of type View.View, which is likely a representation of the view that your Elm application will render. Inside this view, there seems to be a message type PagesMsg.PagesMsg Msg associated with it."
+      },
+      "after": "8489851102fc1ca6",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031173494
+    },
+    {
+      "id": "e63141ac4305f78b",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "e63141ac4305f78b",
+        "text": "Function Body:"
+      },
+      "after": "2275e1937be44d5f",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031176644
+    },
+    {
+      "id": "f96f449a76e64e59",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "f96f449a76e64e59",
+        "text": "The function body follows the type signature and is enclosed within the curly braces { ... }. In this case, the function body is quite simple:"
+      },
+      "after": "e63141ac4305f78b",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031180911
+    },
+    {
+      "id": "bdec209610b27d98",
+      "type": "add",
+      "item": {
+        "type": "code",
+        "id": "bdec209610b27d98",
+        "text": "{ title = \"View.Slug_.SPLAT__\"\n, body = [ Html.h2 [] [ Html.text \"New Page\" ] ]\n}\n"
+      },
+      "after": "f96f449a76e64e59",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031184895
+    },
+    {
+      "id": "141ead5bcf498bd2",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "141ead5bcf498bd2",
+        "text": "It creates a record with two fields:\n\ntitle is set to the string \"View.Slug_.SPLAT__\". This is likely the title of the page being displayed."
+      },
+      "after": "bdec209610b27d98",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031190144
+    },
+    {
+      "id": "7885a9aee3a0abea",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "7885a9aee3a0abea",
+        "text": "body is a list that contains an HTML h2 element with the text \"New Page\" inside it. This suggests that the body of the page contains an h2 heading with that text."
+      },
+      "after": "141ead5bcf498bd2",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031194526
+    },
+    {
+      "id": "e7e3f9a65040b6af",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "e7e3f9a65040b6af",
+        "text": "Overall, this view function seems to define the view for a specific page in your Elm application. It takes routing information, shared data, and a specific model as input and returns a representation of the page's view, including its title and body content."
+      },
+      "after": "7885a9aee3a0abea",
+      "attribution": {
+        "page": "2023-08-25"
+      },
+      "date": 1693031203980
+    },
+    {
+      "type": "edit",
+      "id": "b5dfd7ba89323b17",
+      "item": {
+        "type": "paragraph",
+        "id": "b5dfd7ba89323b17",
+        "text": "How to render the [[RouteParams]] in our view? [https://github.com/dreyeck/blog/blob/e1955b5d5942d5be5af145a18a6ef50ea9869dd0/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L93-L102 code], [https://github.com/dreyeck/blog/commit/58bd7a82a12d4a6c2fb54f65bddfc3bd318ae26d commit], [https://github.com/dreyeck/blog/commit/c90c6649f9865eace686dedf0b320b299c208a66 commit] (app/Route/View/Slug_/SPLAT__.elm), getSplat [https://github.com/dreyeck/blog/blob/b45f7c65fec939a35a69136751ecadd0ee1ef878/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L104-L106 code]"
+      },
+      "date": 1693031315674
+    },
+    {
+      "type": "edit",
+      "id": "b5dfd7ba89323b17",
+      "item": {
+        "type": "paragraph",
+        "id": "b5dfd7ba89323b17",
+        "text": "How to render the [[RouteParams]] in our view? [https://github.com/dreyeck/blog/blob/e1955b5d5942d5be5af145a18a6ef50ea9869dd0/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L93-L102 code], [https://github.com/dreyeck/blog/commit/58bd7a82a12d4a6c2fb54f65bddfc3bd318ae26d commit], [https://github.com/dreyeck/blog/commit/c90c6649f9865eace686dedf0b320b299c208a66 commit] , getSplat [https://github.com/dreyeck/blog/blob/b45f7c65fec939a35a69136751ecadd0ee1ef878/elm-pages-starter-express/app/Route/View/Slug_/SPLAT__.elm#L104-L106 code]"
+      },
+      "date": 1693031571359
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm."
+      },
+      "date": 1693031588814
+    },
+    {
+      "type": "edit",
+      "id": "475ed04d1382159c",
+      "item": {
+        "type": "paragraph",
+        "id": "475ed04d1382159c",
+        "text": "Optional Splat Routes"
+      },
+      "date": 1693031652346
+    },
+    {
+      "type": "add",
+      "id": "65ad3f25d34223de",
+      "item": {
+        "type": "paragraph",
+        "id": "65ad3f25d34223de",
+        "text": "Type Signature:"
+      },
+      "after": "475ed04d1382159c",
+      "date": 1693031653700
+    },
+    {
+      "type": "edit",
+      "id": "475ed04d1382159c",
+      "item": {
+        "type": "paragraph",
+        "id": "475ed04d1382159c",
+        "text": "See [[Optional Splat Routes]]."
+      },
+      "date": 1693031664966
+    },
+    {
+      "id": "047fb53e2ac6e580",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "047fb53e2ac6e580",
+        "text": "The splat data in [[RouteParams]] for an optional splat are List String rather than (String, List String) to represent the fact that optional splat routes could match 0 segments."
+      },
+      "after": "8923c481f739d948",
+      "attribution": {
+        "page": "Optional Splat Routes"
+      },
+      "date": 1693031697999
+    },
+    {
+      "type": "remove",
+      "id": "475ed04d1382159c",
+      "date": 1693031703663
+    },
+    {
+      "type": "edit",
+      "id": "047fb53e2ac6e580",
+      "item": {
+        "type": "paragraph",
+        "id": "047fb53e2ac6e580",
+        "text": "The splat data in [[RouteParams]] for an optional splat are List String rather than (String, List String) to represent the fact that optional splat routes could match 0 segments. See [[Optional Splat Routes]]."
+      },
+      "date": 1693031720417
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm. See [[Scaffolding a Route Module]]"
+      },
+      "date": 1693031866962
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm. See [[Scaffolding a Route Module]] and [[Find Route]]."
+      },
+      "date": 1693031882511
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm. See [[Scaffolding a Route Module]] and [[Find Route]]. [⇒ ]"
+      },
+      "date": 1693031957905
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm. See [[Scaffolding a Route Module]] and [[Find Route]]. [⇒ [[Form]]]"
+      },
+      "date": 1693031965273
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "e43583edaf62c3a5"
+      },
+      "id": "e43583edaf62c3a5",
+      "type": "add",
+      "after": "c249606e7e1ae14c",
+      "date": 1693031969221
+    },
+    {
+      "type": "edit",
+      "id": "e43583edaf62c3a5",
+      "item": {
+        "type": "graphviz",
+        "id": "e43583edaf62c3a5",
+        "text": "DOT FROM lambda-browsng"
+      },
+      "date": 1693031981016
+    },
+    {
+      "type": "edit",
+      "id": "e43583edaf62c3a5",
+      "item": {
+        "type": "graphviz",
+        "id": "e43583edaf62c3a5",
+        "text": "DOT FROM lambda-browsing\n"
+      },
+      "date": 1693031993326
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm. See [[Scaffolding a Route Module]] and [[No Route Found]], [[Find Route]]. [⇒ [[Form]]]"
+      },
+      "date": 1693032365767
+    },
+    {
+      "type": "edit",
+      "id": "5d4f7ec10581a462",
+      "item": {
+        "type": "paragraph",
+        "id": "5d4f7ec10581a462",
+        "text": "If we open our browser to a server-rendered [[elm-pages]] [[Route]] http://blog.dreyeck.ch/view/welcome-visitors, it will render from our Route module [[app]]/[[Route]]/View/Slug_/SPLAT__.elm."
+      },
+      "date": 1693032426466
+    },
+    {
+      "type": "add",
+      "id": "d6e043fff4c7168e",
+      "item": {
+        "type": "paragraph",
+        "id": "d6e043fff4c7168e",
+        "text": "See [[Scaffolding a Route Module]] and [[No Route Found]] vs [[Find Route]]. [⇒ [[Form]]]"
+      },
+      "after": "5d4f7ec10581a462",
+      "date": 1693032427642
+    },
+    {
+      "type": "add",
+      "id": "26a53ad00df6b547",
+      "item": {
+        "type": "paragraph",
+        "id": "26a53ad00df6b547",
+        "text": "view function:"
+      },
+      "after": "b5dfd7ba89323b17",
+      "date": 1693032470945
+    },
+    {
+      "type": "add",
+      "id": "b30944bd88a3d4e9",
+      "item": {
+        "type": "paragraph",
+        "id": "b30944bd88a3d4e9",
+        "text": "We focus on [[RouteParams]]."
+      },
+      "after": "26a53ad00df6b547",
+      "date": 1693032513912
+    },
+    {
+      "id": "b30944bd88a3d4e9",
+      "type": "move",
+      "order": [
+        "5d4f7ec10581a462",
+        "d6e043fff4c7168e",
+        "b5dfd7ba89323b17",
+        "26a53ad00df6b547",
+        "0cd1a0ed59c054c8",
+        "b30944bd88a3d4e9",
+        "8923c481f739d948",
+        "047fb53e2ac6e580",
+        "65ad3f25d34223de",
+        "29e0cbe4e7c4468f",
+        "524d2e32250dacb3",
+        "a79e7910dde4a737",
+        "8489851102fc1ca6",
+        "2275e1937be44d5f",
+        "e63141ac4305f78b",
+        "f96f449a76e64e59",
+        "bdec209610b27d98",
+        "141ead5bcf498bd2",
+        "7885a9aee3a0abea",
+        "e7e3f9a65040b6af",
+        "bea6b30b34c2dc59",
+        "c249606e7e1ae14c",
+        "e43583edaf62c3a5"
+      ],
+      "date": 1693032515762
+    },
+    {
+      "id": "96037065f90a7281",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "96037065f90a7281",
+        "text": ""
+      },
+      "after": "047fb53e2ac6e580",
+      "attribution": {
+        "page": "Optional Splat Routes"
+      },
+      "date": 1693032583311
+    },
+    {
+      "type": "remove",
+      "id": "96037065f90a7281",
+      "date": 1693032586862
+    },
+    {
+      "type": "edit",
+      "id": "047fb53e2ac6e580",
+      "item": {
+        "type": "paragraph",
+        "id": "047fb53e2ac6e580",
+        "text": "The splat data in [[RouteParams]] for an optional splat are List String rather than (String, List String) to represent the fact that optional splat routes could match 0 segments."
+      },
+      "date": 1693032589332
+    },
+    {
+      "type": "edit",
+      "id": "047fb53e2ac6e580",
+      "item": {
+        "type": "paragraph",
+        "id": "047fb53e2ac6e580",
+        "text": "The splat data in [[RouteParams]] for an optional splat are List String rather than (String, List String) to represent the fact that optional splat routes could match 0 segments."
+      },
+      "date": 1693032594845
+    },
+    {
+      "type": "add",
+      "id": "9b45ab447d5a5f3c",
+      "item": {
+        "type": "paragraph",
+        "id": "9b45ab447d5a5f3c",
+        "text": "See [[Optional Splat Routes]]. ⇐ [[Splat Routes]] convention "
+      },
+      "after": "047fb53e2ac6e580",
+      "date": 1693032595834
+    },
+    {
+      "id": "bb9f3c1c89608d3d",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "bb9f3c1c89608d3d",
+        "text": "Our View Route Module maps to a route called [[Lineup]]."
+      },
+      "after": "5d4f7ec10581a462",
+      "attribution": {
+        "page": "File-Based Routing"
+      },
+      "date": 1693032635742
+    },
+    {
+      "type": "edit",
+      "id": "bb9f3c1c89608d3d",
+      "item": {
+        "type": "paragraph",
+        "id": "bb9f3c1c89608d3d",
+        "text": "Our View Route Module maps to a route called [[Lineup]]."
+      },
+      "date": 1693032662621
+    },
+    {
+      "id": "d6e043fff4c7168e",
+      "type": "move",
+      "order": [
+        "5d4f7ec10581a462",
+        "d6e043fff4c7168e",
+        "bb9f3c1c89608d3d",
+        "b5dfd7ba89323b17",
+        "26a53ad00df6b547",
+        "0cd1a0ed59c054c8",
+        "b30944bd88a3d4e9",
+        "8923c481f739d948",
+        "047fb53e2ac6e580",
+        "9b45ab447d5a5f3c",
+        "65ad3f25d34223de",
+        "29e0cbe4e7c4468f",
+        "524d2e32250dacb3",
+        "a79e7910dde4a737",
+        "8489851102fc1ca6",
+        "2275e1937be44d5f",
+        "e63141ac4305f78b",
+        "f96f449a76e64e59",
+        "bdec209610b27d98",
+        "141ead5bcf498bd2",
+        "7885a9aee3a0abea",
+        "e7e3f9a65040b6af",
+        "bea6b30b34c2dc59",
+        "c249606e7e1ae14c",
+        "e43583edaf62c3a5"
+      ],
+      "date": 1693032703531
+    },
+    {
+      "type": "edit",
+      "id": "d6e043fff4c7168e",
+      "item": {
+        "type": "paragraph",
+        "id": "d6e043fff4c7168e",
+        "text": "See [[Scaffolding a Route Module]] and [[No Route Found]] vs [[Find Route]]. [⇒ [[Form]]]"
+      },
+      "date": 1693032780814
+    },
+    {
+      "type": "edit",
+      "id": "9b45ab447d5a5f3c",
+      "item": {
+        "type": "paragraph",
+        "id": "9b45ab447d5a5f3c",
+        "text": "See [[Optional Splat Routes]]. ⇐ [[Splat Routes]] convention "
+      },
+      "date": 1693032935193
+    },
+    {
+      "type": "edit",
+      "id": "9b45ab447d5a5f3c",
+      "item": {
+        "type": "paragraph",
+        "id": "9b45ab447d5a5f3c",
+        "text": "See [[Optional Splat Routes]]. ⇐ [[Splat Routes]] convention "
+      },
+      "date": 1693032949147
+    },
+    {
+      "type": "fork",
+      "date": 1693033095690
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1693571315376
+    }
+  ]
+}

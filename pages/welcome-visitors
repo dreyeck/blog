@@ -39,7 +39,7 @@
     {
       "type": "roster",
       "id": "6340e132e97f74a0",
-      "text": "code.dreyeck.ch\ncode.fed.wiki\nwiki.ralfbarkow.ch"
+      "text": "code.dreyeck.ch\ncode.fed.wiki\nelm.dreyeck.ch\nwiki.ralfbarkow.ch"
     }
   ],
   "journal": [
@@ -197,6 +197,16 @@
         "text": "[[elm-pages-3-alpha-starter]] ⇒ [[elm-pages v3]] ⇒ [http://blog.dreyeck.ch blog.dreyeck.ch]"
       },
       "date": 1692087357855
+    },
+    {
+      "type": "edit",
+      "id": "6340e132e97f74a0",
+      "item": {
+        "type": "roster",
+        "id": "6340e132e97f74a0",
+        "text": "code.dreyeck.ch\ncode.fed.wiki\nelm.dreyeck.ch\nwiki.ralfbarkow.ch"
+      },
+      "date": 1693938417426
     }
   ]
 }
