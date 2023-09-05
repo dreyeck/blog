@@ -12,9 +12,7 @@ import Effect
 import ErrorPage
 import FatalError exposing (FatalError)
 import Head
-import Html
-import Json.Decode as Decode
-import Json.Encode as Encode
+import Html exposing (Html)
 import PagesMsg exposing (PagesMsg)
 import RouteBuilder exposing (App, StatefulRoute)
 import Server.Request
@@ -22,7 +20,7 @@ import Server.Response
 import Shared
 import UrlPath
 import View exposing (View)
-import Wiki
+import Wiki exposing (Story(..))
 
 
 type alias Model =
@@ -84,7 +82,7 @@ type alias ActionData =
 data :
     RouteParams
     -> Server.Request.Request
-    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response Data ErrorPage.ErrorPage)
+    -> BackendTask FatalError (Server.Response.Response Data ErrorPage.ErrorPage)
 data routeParams request =
     "../pages/"
         ++ routeParams.slug
@@ -92,39 +90,13 @@ data routeParams request =
         |> BackendTask.allowFatal
         |> BackendTask.map
             (\page ->
-                Server.Response.render
-                    { title = page.title
-                    , story = page.story
-                    , journal = page.journal
-                    }
+                Server.Response.render page
             )
 
 
 head : App Data ActionData RouteParams -> List Head.Tag
 head app =
     []
-
-
-view :
-    App Data ActionData RouteParams
-    -> Shared.Model
-    -> Model
-    -> View.View (PagesMsg.PagesMsg Msg)
-view app shared model =
-    { title = "View.Slug_.SPLAT__"
-    , body =
-        [ Html.h2 [] [ Html.text app.data.title ]
-        , Html.p [] [ Html.text ("splat: " ++ splat app) ]
-        ]
-    }
-
-
-action :
-    RouteParams
-    -> Server.Request.Request
-    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
-action routeParams request =
-    BackendTask.succeed (Server.Response.render {})
 
 
 slug : App Data ActionData RouteParams -> String
@@ -141,3 +113,70 @@ and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
 splat : App Data ActionData RouteParams -> String
 splat app =
     String.join ", " app.routeParams.splat
+
+
+storyToString : App Data ActionData RouteParams -> String
+storyToString app =
+    app.data.story
+        -- |> List.length
+        -- Note: It is usually preferable to use a case to deconstruct a List because it gives you (x :: xs) and you can work with both subparts.
+        -- |> List.head
+        |> Debug.toString
+
+
+journalToString : App Data ActionData RouteParams -> String
+journalToString app =
+    app.data.journal
+        -- |> List.length
+        -- Note: It is usually preferable to use a case to deconstruct a List because it gives you (x :: xs) and you can work with both subparts.
+        -- |> List.head
+        |> Debug.toString
+
+
+view :
+    App Data ActionData RouteParams
+    -> Shared.Model
+    -> Model
+    -> View (PagesMsg Msg)
+view app shared model =
+    { title = "View.Slug_.SPLAT__"
+    , body =
+        [ Html.h2 [] [ Html.text app.data.title ]
+        , Html.p [] [ Html.text ("splat: " ++ splat app) ]
+        , Html.p [] [ Html.text (storyToString app) ]
+        , Html.p [] [ Html.text (journalToString app) ]
+
+        -- Apply renderStory to every element of the Story list
+        -- , List.map renderStory app.data.story
+        -- Mapping a List, see <https://elmprogramming.com/list.html#mapping-a-list>
+        ]
+    }
+
+
+renderStory : Wiki.Story -> Html msg
+renderStory story =
+    case story of
+        Paragraph paragraph ->
+            case paragraph.type_ of
+                "paragraph" ->
+                    Html.div [] [ Html.text paragraph.text ]
+
+                _ ->
+                    Html.text "Unknown story type"
+
+        Future future ->
+            Html.div [] [ Html.text "Future: " ]
+
+        Factory factory ->
+            Html.div [] [ Html.text "Factory: " ]
+
+        EmptyStory ->
+            Html.text "Empty Story"
+
+
+action :
+    RouteParams
+    -> Server.Request.Request
+    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
+action routeParams request =
+    BackendTask.succeed (Server.Response.render {})
