@@ -142,13 +142,7 @@ view app shared model =
     { title = "View.Slug_.SPLAT__"
     , body =
         [ Html.h2 [] [ Html.text app.data.title ]
-        , Html.p [] [ Html.text ("splat: " ++ splat app) ]
-        , Html.p [] [ Html.text (storyToString app) ]
-        , Html.p [] [ Html.text (journalToString app) ]
-
-        -- Apply renderStory to every element of the Story list
-        -- , List.map renderStory app.data.story
-        -- Mapping a List, see <https://elmprogramming.com/list.html#mapping-a-list>
+        , Html.div [] (List.map renderStory app.data.story)
         ]
     }
 
