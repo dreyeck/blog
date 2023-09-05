@@ -12,7 +12,7 @@ import Effect
 import ErrorPage
 import FatalError exposing (FatalError)
 import Head
-import Html
+import Html exposing (Html)
 import PagesMsg exposing (PagesMsg)
 import RouteBuilder exposing (App, StatefulRoute)
 import Server.Request
@@ -20,7 +20,7 @@ import Server.Response
 import Shared
 import UrlPath
 import View exposing (View)
-import Wiki
+import Wiki exposing (Story(..))
 
 
 type alias Model =
@@ -99,25 +99,20 @@ head app =
     []
 
 
-view :
-    App Data ActionData RouteParams
-    -> Shared.Model
-    -> Model
-    -> View (PagesMsg Msg)
-view app shared model =
-    { title = "View.Slug_.SPLAT__"
-    , body =
-        [ Html.h2 [] [ Html.text app.data.title ]
-        , Html.p [] [ Html.text ("splat: " ++ splat app) ]
-        , Html.p [] [ Html.text (storyToString app) ]
-        , Html.p [] [ Html.text (journalToString app) ]
-        ]
-    }
+slug : App Data ActionData RouteParams -> String
+slug app =
+    app.routeParams.slug
 
 
-
--- app.data.story
--- Function to convert app.data.story to a single string
+{-| The splat data in RouteParams for an optional splat
+are List String rather than (String, List String)
+to represent the fact that optional splat routes could match 0 segments.
+See Optional Splat Routes <https://wiki.ralfbarkow.ch/view/optional-splat-routes>
+and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
+-}
+splat : App Data ActionData RouteParams -> String
+splat app =
+    String.join ", " app.routeParams.splat
 
 
 storyToString : App Data ActionData RouteParams -> String
@@ -138,9 +133,45 @@ journalToString app =
         |> Debug.toString
 
 
+view :
+    App Data ActionData RouteParams
+    -> Shared.Model
+    -> Model
+    -> View (PagesMsg Msg)
+view app shared model =
+    { title = "View.Slug_.SPLAT__"
+    , body =
+        [ Html.h2 [] [ Html.text app.data.title ]
+        , Html.p [] [ Html.text ("splat: " ++ splat app) ]
+        , Html.p [] [ Html.text (storyToString app) ]
+        , Html.p [] [ Html.text (journalToString app) ]
 
--- List.map renderStory app.data.story
--- Mapping a List, see <https://elmprogramming.com/list.html#mapping-a-list>
+        -- Apply renderStory to every element of the Story list
+        -- , List.map renderStory app.data.story
+        -- Mapping a List, see <https://elmprogramming.com/list.html#mapping-a-list>
+        ]
+    }
+
+
+renderStory : Wiki.Story -> Html msg
+renderStory story =
+    case story of
+        Paragraph paragraph ->
+            case paragraph.type_ of
+                "paragraph" ->
+                    Html.div [] [ Html.text paragraph.text ]
+
+                _ ->
+                    Html.text "Unknown story type"
+
+        Future future ->
+            Html.div [] [ Html.text "Future: " ]
+
+        Factory factory ->
+            Html.div [] [ Html.text "Factory: " ]
+
+        EmptyStory ->
+            Html.text "Empty Story"
 
 
 action :
@@ -149,19 +180,3 @@ action :
     -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
 action routeParams request =
     BackendTask.succeed (Server.Response.render {})
-
-
-slug : App Data ActionData RouteParams -> String
-slug app =
-    app.routeParams.slug
-
-
-{-| The splat data in RouteParams for an optional splat
-are List String rather than (String, List String)
-to represent the fact that optional splat routes could match 0 segments.
-See Optional Splat Routes <https://wiki.ralfbarkow.ch/view/optional-splat-routes>
-and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
--}
-splat : App Data ActionData RouteParams -> String
-splat app =
-    String.join ", " app.routeParams.splat
