@@ -75,10 +75,6 @@ type alias Data =
     Wiki.Page
 
 
-type alias ActionData =
-    {}
-
-
 data :
     RouteParams
     -> Server.Request.Request
@@ -94,43 +90,21 @@ data routeParams request =
             )
 
 
+type alias ActionData =
+    {}
+
+
+action :
+    RouteParams
+    -> Server.Request.Request
+    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
+action routeParams request =
+    BackendTask.succeed (Server.Response.render {})
+
+
 head : App Data ActionData RouteParams -> List Head.Tag
 head app =
     []
-
-
-slug : App Data ActionData RouteParams -> String
-slug app =
-    app.routeParams.slug
-
-
-{-| The splat data in RouteParams for an optional splat
-are List String rather than (String, List String)
-to represent the fact that optional splat routes could match 0 segments.
-See Optional Splat Routes <https://wiki.ralfbarkow.ch/view/optional-splat-routes>
-and <https://elm-pages.com/docs/file-based-routing/#optional-splat-routes>
--}
-splat : App Data ActionData RouteParams -> String
-splat app =
-    String.join ", " app.routeParams.splat
-
-
-storyToString : App Data ActionData RouteParams -> String
-storyToString app =
-    app.data.story
-        -- |> List.length
-        -- Note: It is usually preferable to use a case to deconstruct a List because it gives you (x :: xs) and you can work with both subparts.
-        -- |> List.head
-        |> Debug.toString
-
-
-journalToString : App Data ActionData RouteParams -> String
-journalToString app =
-    app.data.journal
-        -- |> List.length
-        -- Note: It is usually preferable to use a case to deconstruct a List because it gives you (x :: xs) and you can work with both subparts.
-        -- |> List.head
-        |> Debug.toString
 
 
 view :
@@ -166,11 +140,3 @@ renderStory story =
 
         EmptyStory ->
             Html.text "Empty Story"
-
-
-action :
-    RouteParams
-    -> Server.Request.Request
-    -> BackendTask.BackendTask FatalError.FatalError (Server.Response.Response ActionData ErrorPage.ErrorPage)
-action routeParams request =
-    BackendTask.succeed (Server.Response.render {})
