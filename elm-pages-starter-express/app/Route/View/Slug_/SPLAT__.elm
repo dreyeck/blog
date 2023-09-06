@@ -127,7 +127,7 @@ renderStory story =
         Paragraph paragraph ->
             case paragraph.type_ of
                 "paragraph" ->
-                    Html.div [] [ Html.text paragraph.text ]
+                    Html.p [] [ Html.text paragraph.text ]
 
                 _ ->
                     Html.text "Unknown story type"
