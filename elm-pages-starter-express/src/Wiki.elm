@@ -1,5 +1,6 @@
-module Wiki exposing (Event(..), Page, Story(..), pageDecoder, pageEncoder)
+module Wiki exposing (Event(..), Page, Story(..), pageDecoder, pageEncoder, renderStory)
 
+import Html exposing (Html)
 import Json.Decode as Decode
 import Json.Encode as Encode
 
@@ -37,6 +38,27 @@ type Story
     | Factory FactoryItemAlias
     | Paragraph ParagraphItemAlias
     | EmptyStory
+
+
+renderStory : Story -> Html msg
+renderStory story =
+    case story of
+        Paragraph paragraph ->
+            case paragraph.type_ of
+                "paragraph" ->
+                    Html.p [] [ Html.text paragraph.text ]
+
+                _ ->
+                    Html.text "Unknown story type"
+
+        Future future ->
+            Html.div [] [ Html.text "Future: " ]
+
+        Factory factory ->
+            Html.div [] [ Html.text "Factory: " ]
+
+        EmptyStory ->
+            Html.text "Empty Story"
 
 
 storyDecoder : Decode.Decoder Story

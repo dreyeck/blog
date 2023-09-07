@@ -116,27 +116,6 @@ view app shared model =
     { title = "View.Slug_.SPLAT__"
     , body =
         [ Html.h2 [] [ Html.text app.data.title ]
-        , Html.div [] (List.map renderStory app.data.story)
+        , Html.div [] (List.map Wiki.renderStory app.data.story)
         ]
     }
-
-
-renderStory : Wiki.Story -> Html msg
-renderStory story =
-    case story of
-        Paragraph paragraph ->
-            case paragraph.type_ of
-                "paragraph" ->
-                    Html.p [] [ Html.text paragraph.text ]
-
-                _ ->
-                    Html.text "Unknown story type"
-
-        Future future ->
-            Html.div [] [ Html.text "Future: " ]
-
-        Factory factory ->
-            Html.div [] [ Html.text "Factory: " ]
-
-        EmptyStory ->
-            Html.text "Empty Story"
