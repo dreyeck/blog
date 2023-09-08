@@ -1,0 +1,230 @@
+{
+  "title": "Item",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "a57e931ea04385ae",
+      "text": "An item, often but not always a paragraph, makes up one self-contained element of a wiki page's story."
+    },
+    {
+      "type": "paragraph",
+      "id": "75a6b103432cef14",
+      "text": "Items can be made of words, numbers, images, formulas, sounds and diagrams. They do things, creating and responding to events."
+    },
+    {
+      "type": "paragraph",
+      "id": "624346831a5ae387",
+      "text": "An item may be expressed as markup that can be edited by double-clicking the item. Some markups format words, others program actions."
+    },
+    {
+      "type": "paragraph",
+      "id": "348000640dc16161",
+      "text": "Type cmd-i/alt-i/ctrl-i (by operating system) in an editor to read about an item's markup."
+    },
+    {
+      "type": "paragraph",
+      "id": "4f04c844456c917a",
+      "text": "Other ways to learn about an Item include pressing the JSON link in the page's footer (CC BY-SA 4.0 . JSON . wiki.ralfbarkow.ch . search) -- these are all linked. JSON gives you the item's local attributes, text content, etc."
+    },
+    {
+      "type": "paragraph",
+      "id": "e755097ac34cf20c",
+      "text": "Google Chrome's inspector shows you each paragraph as a DIV element, <div class=\"item html ...\"> for example, where \"html\" indicates an html plugin item."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Item",
+        "story": []
+      },
+      "date": 1423060489137
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "a57e931ea04385ae"
+      },
+      "id": "a57e931ea04385ae",
+      "type": "add",
+      "date": 1423060513911
+    },
+    {
+      "type": "edit",
+      "id": "a57e931ea04385ae",
+      "item": {
+        "type": "paragraph",
+        "id": "a57e931ea04385ae",
+        "text": "An item, not always a paragraph, makes up one self-contained element of a wiki page."
+      },
+      "date": 1423060788175
+    },
+    {
+      "type": "add",
+      "id": "624346831a5ae387",
+      "item": {
+        "type": "paragraph",
+        "id": "624346831a5ae387",
+        "text": "An item may be expressed as markup that can be edited by double-clicking the item."
+      },
+      "after": "a57e931ea04385ae",
+      "date": 1423060858085
+    },
+    {
+      "type": "add",
+      "id": "75a6b103432cef14",
+      "item": {
+        "type": "paragraph",
+        "id": "75a6b103432cef14",
+        "text": "Items can be made of words, numbers, images, formulas, sounds and diagrams."
+      },
+      "after": "624346831a5ae387",
+      "date": 1423061069735
+    },
+    {
+      "type": "move",
+      "order": [
+        "a57e931ea04385ae",
+        "75a6b103432cef14",
+        "624346831a5ae387"
+      ],
+      "id": "75a6b103432cef14",
+      "date": 1423061072827
+    },
+    {
+      "type": "edit",
+      "id": "75a6b103432cef14",
+      "item": {
+        "type": "paragraph",
+        "id": "75a6b103432cef14",
+        "text": "Items can be made of words, numbers, images, formulas, sounds and diagrams. They do things, creating and responding to events."
+      },
+      "date": 1423061116030
+    },
+    {
+      "type": "edit",
+      "id": "624346831a5ae387",
+      "item": {
+        "type": "paragraph",
+        "id": "624346831a5ae387",
+        "text": "An item may be expressed as markup that can be edited by double-clicking the item. Some markups format words, others program actions."
+      },
+      "date": 1423061149892
+    },
+    {
+      "type": "edit",
+      "id": "a57e931ea04385ae",
+      "item": {
+        "type": "paragraph",
+        "id": "a57e931ea04385ae",
+        "text": "An item, often but not always a paragraph, makes up one self-contained element of a wiki page's story."
+      },
+      "date": 1423061213960
+    },
+    {
+      "type": "add",
+      "id": "a3c512dfe65d4277",
+      "item": {
+        "type": "paragraph",
+        "id": "a3c512dfe65d4277",
+        "text": "Shift-double-click an item to edit its markup."
+      },
+      "after": "624346831a5ae387",
+      "date": 1423065492375
+    },
+    {
+      "type": "add",
+      "id": "348000640dc16161",
+      "item": {
+        "type": "paragraph",
+        "id": "348000640dc16161",
+        "text": "Type command/alt-i in an editor to read about its markup."
+      },
+      "after": "a3c512dfe65d4277",
+      "date": 1423065557443
+    },
+    {
+      "type": "remove",
+      "id": "a3c512dfe65d4277",
+      "date": 1423065590195
+    },
+    {
+      "type": "edit",
+      "id": "348000640dc16161",
+      "item": {
+        "type": "paragraph",
+        "id": "348000640dc16161",
+        "text": "Type command/alt-i in an editor to read about an item's markup."
+      },
+      "date": 1423065605335
+    },
+    {
+      "type": "edit",
+      "id": "348000640dc16161",
+      "item": {
+        "type": "paragraph",
+        "id": "348000640dc16161",
+        "text": "Type cmd/alt-i in an editor to read about an item's markup."
+      },
+      "date": 1423065617195
+    },
+    {
+      "type": "fork",
+      "site": "glossary.asia.wiki.org",
+      "date": 1630887890810
+    },
+    {
+      "type": "edit",
+      "id": "348000640dc16161",
+      "item": {
+        "type": "paragraph",
+        "id": "348000640dc16161",
+        "text": "Type cmd-i/alt-i/ctrl-i (by operating system) in an editor to read about an item's markup."
+      },
+      "date": 1630887940501
+    },
+    {
+      "type": "add",
+      "id": "4f04c844456c917a",
+      "item": {
+        "type": "paragraph",
+        "id": "4f04c844456c917a",
+        "text": "Other ways to learn about an Item include pressing the JSON link in the page's footer (CC BY-SA 4.0 . JSON . jeff.dojo.fed.wiki . search) -- these are all linked. JSON gives you the item's local attributes, text content, etc."
+      },
+      "after": "348000640dc16161",
+      "date": 1630990081545
+    },
+    {
+      "type": "add",
+      "id": "e755097ac34cf20c",
+      "item": {
+        "type": "paragraph",
+        "id": "e755097ac34cf20c",
+        "text": "Google Chrome's inspector shows you each paragraph as a DIV element, <div class=\"item html ...\"> for example, where \"html\" indicates an html plugin item."
+      },
+      "after": "4f04c844456c917a",
+      "date": 1630990199784
+    },
+    {
+      "type": "fork",
+      "site": "jeff.dojo.fed.wiki",
+      "date": 1693848261643
+    },
+    {
+      "type": "edit",
+      "id": "4f04c844456c917a",
+      "item": {
+        "type": "paragraph",
+        "id": "4f04c844456c917a",
+        "text": "Other ways to learn about an Item include pressing the JSON link in the page's footer (CC BY-SA 4.0 . JSON . wiki.ralfbarkow.ch . search) -- these are all linked. JSON gives you the item's local attributes, text content, etc."
+      },
+      "date": 1693946191880
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1694159350565
+    }
+  ]
+}

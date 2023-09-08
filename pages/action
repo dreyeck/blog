@@ -1,0 +1,444 @@
+{
+  "title": "Action",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "500900aed76e6734",
+      "text": "An Action [[record]]s a human activity that changes or copies a page. >> record"
+    },
+    {
+      "type": "markdown",
+      "id": "ac0c0f3f0d5588b9",
+      "text": "Actions are of a small number of [[Types]] that apply to all pages and their items. "
+    },
+    {
+      "type": "paragraph",
+      "id": "a085daa1319256c6",
+      "text": "Actions of type 'create' indicate newly made pages."
+    },
+    {
+      "type": "paragraph",
+      "id": "cdf0423981d247b0",
+      "text": "Actions of type 'add', 'delete' and 'move' arrange the story."
+    },
+    {
+      "type": "paragraph",
+      "id": "6c01e53ead0c7ffe",
+      "text": "Actions of type 'edit' change the contents of a story item."
+    },
+    {
+      "type": "paragraph",
+      "id": "53750036479ba33a",
+      "text": "Actions of type 'fork' change the [[Ownership]] of a page. >> ownership"
+    },
+    {
+      "type": "paragraph",
+      "id": "604236f230de9a75",
+      "text": "The [[Journal]], when properly maintained, collects the complete history of a wiki page."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Action",
+        "story": []
+      },
+      "date": 1423063876548
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "133be9a891c1bd5f"
+      },
+      "id": "133be9a891c1bd5f",
+      "type": "add",
+      "date": 1423063887758
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "paragraph",
+        "id": "133be9a891c1bd5f",
+        "text": "An Action records a human activity that changes or copies a page. Actions are of a small number of types that apply to all pages and their items. "
+      },
+      "date": 1423064309880
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "cdf0423981d247b0"
+      },
+      "id": "cdf0423981d247b0",
+      "type": "add",
+      "after": "133be9a891c1bd5f",
+      "date": 1423064312716
+    },
+    {
+      "type": "edit",
+      "id": "cdf0423981d247b0",
+      "item": {
+        "type": "paragraph",
+        "id": "cdf0423981d247b0",
+        "text": "Actions of type 'add', 'delete' and 'move' change the order of a story."
+      },
+      "date": 1423064423641
+    },
+    {
+      "type": "add",
+      "id": "6c01e53ead0c7ffe",
+      "item": {
+        "type": "paragraph",
+        "id": "6c01e53ead0c7ffe",
+        "text": "Actions of type 'edit' change the contents of an item."
+      },
+      "after": "cdf0423981d247b0",
+      "date": 1423064443623
+    },
+    {
+      "type": "add",
+      "id": "53750036479ba33a",
+      "item": {
+        "type": "paragraph",
+        "id": "53750036479ba33a",
+        "text": "Actions of type 'fork' change the location and ownership of a whole page."
+      },
+      "after": "6c01e53ead0c7ffe",
+      "date": 1423064496682
+    },
+    {
+      "type": "edit",
+      "id": "53750036479ba33a",
+      "item": {
+        "type": "paragraph",
+        "id": "53750036479ba33a",
+        "text": "Actions of type 'fork' change ownership of a page."
+      },
+      "date": 1423064584187
+    },
+    {
+      "type": "edit",
+      "id": "cdf0423981d247b0",
+      "item": {
+        "type": "paragraph",
+        "id": "cdf0423981d247b0",
+        "text": "Actions of type 'add', 'delete' change the contents of the story."
+      },
+      "date": 1423064662094
+    },
+    {
+      "type": "edit",
+      "id": "cdf0423981d247b0",
+      "item": {
+        "type": "paragraph",
+        "id": "cdf0423981d247b0",
+        "text": "Actions of type 'add', 'delete' change the story contents."
+      },
+      "date": 1423064674763
+    },
+    {
+      "type": "edit",
+      "id": "cdf0423981d247b0",
+      "item": {
+        "type": "paragraph",
+        "id": "cdf0423981d247b0",
+        "text": "Actions of type 'add', 'delete' change the story."
+      },
+      "date": 1423064694430
+    },
+    {
+      "type": "edit",
+      "id": "cdf0423981d247b0",
+      "item": {
+        "type": "paragraph",
+        "id": "cdf0423981d247b0",
+        "text": "Actions of type 'add' and 'delete' change the story."
+      },
+      "date": 1423064736460
+    },
+    {
+      "type": "edit",
+      "id": "cdf0423981d247b0",
+      "item": {
+        "type": "paragraph",
+        "id": "cdf0423981d247b0",
+        "text": "Actions of type 'add', 'delete' and 'move' arrange the story."
+      },
+      "date": 1423064800251
+    },
+    {
+      "type": "edit",
+      "id": "6c01e53ead0c7ffe",
+      "item": {
+        "type": "paragraph",
+        "id": "6c01e53ead0c7ffe",
+        "text": "Actions of type 'edit' change the contents of an item of the story."
+      },
+      "date": 1423064820948
+    },
+    {
+      "type": "edit",
+      "id": "6c01e53ead0c7ffe",
+      "item": {
+        "type": "paragraph",
+        "id": "6c01e53ead0c7ffe",
+        "text": "Actions of type 'edit' change the contents of a story item."
+      },
+      "date": 1423064836420
+    },
+    {
+      "type": "edit",
+      "id": "53750036479ba33a",
+      "item": {
+        "type": "paragraph",
+        "id": "53750036479ba33a",
+        "text": "Actions of type 'fork' change the ownership of a page."
+      },
+      "date": 1423064847396
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "a085daa1319256c6"
+      },
+      "id": "a085daa1319256c6",
+      "type": "add",
+      "after": "53750036479ba33a",
+      "date": 1423064883236
+    },
+    {
+      "type": "edit",
+      "id": "a085daa1319256c6",
+      "item": {
+        "type": "paragraph",
+        "id": "a085daa1319256c6",
+        "text": "Actions of type 'create' indicate new pages."
+      },
+      "date": 1423064963926
+    },
+    {
+      "type": "edit",
+      "id": "a085daa1319256c6",
+      "item": {
+        "type": "paragraph",
+        "id": "a085daa1319256c6",
+        "text": "Actions of type 'create' indicate newly made pages."
+      },
+      "date": 1423064973566
+    },
+    {
+      "type": "move",
+      "order": [
+        "133be9a891c1bd5f",
+        "a085daa1319256c6",
+        "cdf0423981d247b0",
+        "6c01e53ead0c7ffe",
+        "53750036479ba33a"
+      ],
+      "id": "a085daa1319256c6",
+      "date": 1423064983958
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "604236f230de9a75"
+      },
+      "id": "604236f230de9a75",
+      "type": "add",
+      "after": "53750036479ba33a",
+      "date": 1423065063180
+    },
+    {
+      "type": "edit",
+      "id": "604236f230de9a75",
+      "item": {
+        "type": "paragraph",
+        "id": "604236f230de9a75",
+        "text": "The [[Journal]], when properly maintained, collects the complete history of a wiki page."
+      },
+      "date": 1423065117772
+    },
+    {
+      "type": "fork",
+      "site": "glossary.asia.wiki.org",
+      "date": 1630751392610
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "paragraph",
+        "id": "133be9a891c1bd5f",
+        "text": "An Action records a human activity that changes or copies a page. Actions are of a small number of [[types]] that apply to all pages and their items. "
+      },
+      "date": 1651215286760
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "paragraph",
+        "id": "133be9a891c1bd5f",
+        "text": "An [[Action]] records a human activity that changes or copies a page. Actions are of a small number of [[types]] that apply to all pages and their items. "
+      },
+      "date": 1651215302470
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "paragraph",
+        "id": "133be9a891c1bd5f",
+        "text": "An [[Action]] [[record]]s a human activity that changes or copies a page. Actions are of a small number of [[types]] that apply to all pages and their items. "
+      },
+      "date": 1663769985716
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "paragraph",
+        "id": "133be9a891c1bd5f",
+        "text": "An *Action* [[record]]s a human activity that changes or copies a page. Actions are of a small number of [[types]] that apply to all pages and their items. "
+      },
+      "date": 1663797024314
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "markdown",
+        "id": "133be9a891c1bd5f",
+        "text": "An *Action* [[record]]s a human activity that changes or copies a page. Actions are of a small number of [[types]] that apply to all pages and their items. "
+      },
+      "date": 1663797025727
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "markdown",
+        "id": "133be9a891c1bd5f",
+        "text": "An *Action* [[record]]s a human activity that changes or copies a page. Actions are of a small number of [[Types]] that apply to all pages and their items. "
+      },
+      "date": 1663797031488
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1679040365270
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "markdown",
+        "id": "133be9a891c1bd5f",
+        "text": "An *Action* [[record]]s a human activity that changes or copies a page. \n"
+      },
+      "date": 1679040422192
+    },
+    {
+      "type": "add",
+      "id": "ac0c0f3f0d5588b9",
+      "item": {
+        "type": "markdown",
+        "id": "ac0c0f3f0d5588b9",
+        "text": "Actions are of a small number of [[Types]] that apply to all pages and their items. "
+      },
+      "after": "133be9a891c1bd5f",
+      "date": 1679040423653
+    },
+    {
+      "type": "edit",
+      "id": "133be9a891c1bd5f",
+      "item": {
+        "type": "markdown",
+        "id": "133be9a891c1bd5f",
+        "text": "An *Action* [[record]]s a human activity that changes or copies a page. >> record\n"
+      },
+      "date": 1679040428555
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "500900aed76e6734"
+      },
+      "id": "500900aed76e6734",
+      "type": "add",
+      "after": "604236f230de9a75",
+      "date": 1679040751093
+    },
+    {
+      "id": "500900aed76e6734",
+      "type": "move",
+      "order": [
+        "500900aed76e6734",
+        "133be9a891c1bd5f",
+        "ac0c0f3f0d5588b9",
+        "a085daa1319256c6",
+        "cdf0423981d247b0",
+        "6c01e53ead0c7ffe",
+        "53750036479ba33a",
+        "604236f230de9a75"
+      ],
+      "date": 1679040753775
+    },
+    {
+      "type": "remove",
+      "id": "133be9a891c1bd5f",
+      "date": 1679040758277
+    },
+    {
+      "type": "edit",
+      "id": "500900aed76e6734",
+      "item": {
+        "type": "paragraph",
+        "id": "500900aed76e6734",
+        "text": "An action [[record]]s a human activity that changes or copies a page. >> record\n"
+      },
+      "date": 1679040769522
+    },
+    {
+      "type": "edit",
+      "id": "500900aed76e6734",
+      "item": {
+        "type": "paragraph",
+        "id": "500900aed76e6734",
+        "text": "An Action [[record]]s a human activity that changes or copies a page. >> record\n"
+      },
+      "date": 1679040823958
+    },
+    {
+      "type": "edit",
+      "id": "500900aed76e6734",
+      "item": {
+        "type": "paragraph",
+        "id": "500900aed76e6734",
+        "text": "An Action [[record]]s a human activity that changes or copies a page. >> record"
+      },
+      "date": 1679040871408
+    },
+    {
+      "type": "edit",
+      "id": "53750036479ba33a",
+      "item": {
+        "type": "paragraph",
+        "id": "53750036479ba33a",
+        "text": "Actions of type 'fork' change the [[Ownership]] of a page. >> ownership"
+      },
+      "date": 1679041097453
+    },
+    {
+      "type": "fork",
+      "site": "books.dreyeck.ch",
+      "date": 1679520033543
+    },
+    {
+      "type": "fork",
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1694159399676
+    }
+  ]
+}

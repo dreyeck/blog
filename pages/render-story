@@ -9,12 +9,90 @@
     {
       "type": "paragraph",
       "id": "7fa4066f5ca5aeea",
-      "text": "This commit introduces a new function `renderStory` that takes a `Wiki.Story`\nand transforms it into an `Html msg` element based on its type. The function\nhandles different story item types, including \"paragraph,\" \"future,\" \"factory,\" and\n\"EmptyStory,\" and produces corresponding HTML representations."
+      "text": "This commit introduces a new function `renderStory` that takes a `Wiki.Story` item  and transforms it into an `Html msg` element based on its type. The function handles different story item types, including \"paragraph,\" \"future,\" \"factory,\" and\n\"EmptyStory,\" and produces corresponding HTML representations."
     },
     {
       "type": "code",
       "id": "29ddf4b602dbf0e3",
-      "text": "renderStory : Wiki.Story -> Html msg\nrenderStory story =\n    case story of\n        Paragraph paragraph ->\n            case paragraph.type_ of\n                \"paragraph\" ->\n                    Html.div [] [ Html.text paragraph.text ]\n\n                _ ->\n                    Html.text \"Unknown story type\"\n\n        Future future ->\n            Html.div [] [ Html.text \"Future: \" ]\n\n        Factory factory ->\n            Html.div [] [ Html.text \"Factory: \" ]\n\n        EmptyStory ->\n            Html.text \"Empty Story\"\n\n"
+      "text": "renderStory : Wiki.Story -> Html msg\nrenderStory story =\n    case story of\n        Paragraph paragraph ->\n            case paragraph.type_ of\n                \"paragraph\" ->\n                    Html.p [] [ Html.text paragraph.text ]\n\n                _ ->\n                    Html.text \"Unknown story type\"\n\n        Future future ->\n            Html.div [] [ Html.text \"Future: \" ]\n\n        Factory factory ->\n            Html.div [] [ Html.text \"Factory: \" ]\n\n        EmptyStory ->\n            Html.text \"Empty Story\"\n\n"
+    },
+    {
+      "type": "image",
+      "id": "d61d994bbaeb36a4",
+      "text": "Side-by-Side Comparison [https://github.com/dreyeck/blog/commit/27ba4048efae557d442773d44f0ba54715f627e6 commit]",
+      "size": "wide",
+      "width": 419,
+      "height": 148,
+      "url": "/assets/plugins/image/c5af8b0fa7c0fe03374303b4267aa2d6.jpg"
+    },
+    {
+      "type": "paragraph",
+      "id": "b7e235132ef58e4d",
+      "text": "We see the same [[Wiki Page JSON]] displayed on one side (left) by the fedwiki reference implementation and on the other side (right) by the elm-pages prototype. [https://matrix.to/#/!ORfrUEFeWFcHAMLFLr:matrix.org/$16939825695UUWPO:dreyeck.freedombox.rocks?via=matrix.org&via=matrix.allmende.io&via=chat.weho.st matrix]"
+    },
+    {
+      "type": "paragraph",
+      "id": "5844461890908459",
+      "text": "refactor(renderStory): Move function to [[Wiki Module]]. [https://github.com/dreyeck/blog/commit/c9480f0bc43ea0df14e79ebbf24cb96fe9caa567 commit]"
+    },
+    {
+      "type": "paragraph",
+      "id": "f5eba6f30486c76f",
+      "text": "⇐ [[Wiki Module]]"
+    },
+    {
+      "type": "pagefold",
+      "id": "5f922a0e4cb1b74a",
+      "text": "~"
+    },
+    {
+      "type": "reference",
+      "id": "f3f1bf5e2c40f366",
+      "site": "dev.asia.wiki.org",
+      "slug": "render-and-follow-links",
+      "title": "Render and Follow Links",
+      "text": "Federated wiki collects [[Context]] for links based on sites mentioned on the page. This context is consulted when a link is clicked."
+    },
+    {
+      "type": "reference",
+      "id": "ebce5f5bb95fe820",
+      "site": "wiki.ralfbarkow.ch",
+      "slug": "between-content-and-context",
+      "title": "Between Content and Context",
+      "text": "The inside of a container supports concurrent transformation of its contents, just like the inside of a theater full of people supports concurrent breathing."
+    },
+    {
+      "type": "reference",
+      "id": "4a5524afbb804f21",
+      "site": "marc.tries.fed.wiki",
+      "slug": "context",
+      "title": "Context",
+      "text": "Sometimes we hear \"context is everything.\" It may not be everything but it really helps make sense of situations."
+    },
+    {
+      "type": "markdown",
+      "id": "52cf512a13cb216b",
+      "text": "The FedWiki is programmable and selectable to do [[Computation]]s that involve the content of any open page in your FedWiki. That is an unusual and powerful type of context indeed.\n"
+    },
+    {
+      "type": "reference",
+      "id": "66e67da0af71458f",
+      "site": "glossary.asia.wiki.org",
+      "slug": "lineup",
+      "title": "Lineup",
+      "text": "The lineup is the list of wiki pages currently displayed within one tab, in order, with duplication possible."
+    },
+    {
+      "type": "markdown",
+      "id": "03a03913154825ec",
+      "text": "Lots of explanatory material can be left out of a page, because it can be accessed immediately and adjacently as needed. It is rather like having a open dictionary next to an open book. \n"
+    },
+    {
+      "type": "graphviz",
+      "id": "b04245396e6ca715",
+      "text": "DOT strict digraph\n  \nrankdir=LR\n\n  node [shape=box style=\"solid,rounded,filled\" fillcolor=lightyellow penwidth=3 color=black]\n  HERE NODE\n\n    node [style=\"solid,rounded,filled\" fillcolor=white penwidth=1 color=black]\n    edge [style=solid penwidth=1 color=black]\n    BACKLINKS NODE -> HERE\n\n       node [style=\"dotted,rounded,filled\" penwidth=1 fillcolor=white color=grey]\n       edge [style=dotted penwidth=1 color=grey]\n       HERE\n         BACKLINKS NODE -> HERE",
+      "dot": "strict digraph {rankdir=LR\n\n\n\n\nnode [shape=box style=\"solid,rounded,filled\" fillcolor=lightyellow penwidth=3 color=black]\n\"Render\nStory\"\nnode [style=\"solid,rounded,filled\" fillcolor=white penwidth=1 color=black]\nedge [style=solid penwidth=1 color=black]\n\"Wiki\nModule\" -> \"Render\nStory\"\n\"2023-09-05\" -> \"Render\nStory\"\n\"Journal,\nSept\n2023\" -> \"Render\nStory\"\n\"2023-09-06\" -> \"Render\nStory\"\n\"2023-09-07\" -> \"Render\nStory\"\n\"Between\nContent\nand\nContext\" -> \"Render\nStory\"\nnode [style=\"dotted,rounded,filled\" penwidth=1 fillcolor=white color=grey]\nedge [style=dotted penwidth=1 color=grey]\n\"Wiki\nModule\" -> \"Render\nStory\"\n\"2023-09-05\" -> \"Render\nStory\"\n\"Journal,\nSept\n2023\" -> \"Render\nStory\"\n\"2023-09-06\" -> \"Render\nStory\"\n\"2023-09-07\" -> \"Render\nStory\"\n\"Between\nContent\nand\nContext\" -> \"Render\nStory\"}",
+      "svg": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<!-- Generated by graphviz version 8.0.5 (0)\n -->\n<!-- Pages: 1 -->\n<svg width=\"182pt\" height=\"381pt\"\n viewBox=\"0.00 0.00 181.75 381.40\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<g id=\"graph0\" class=\"graph\" transform=\"scale(1 1) rotate(0) translate(4 377.4)\">\n<polygon fill=\"white\" stroke=\"none\" points=\"-4,4 -4,-377.4 177.75,-377.4 177.75,4 -4,4\"/>\n<!-- Render\nStory -->\n<g id=\"node1\" class=\"node\">\n<title>Render\nStory</title>\n<path fill=\"lightyellow\" stroke=\"black\" stroke-width=\"3\" d=\"M161.75,-218.4C161.75,-218.4 129.32,-218.4 129.32,-218.4 123.32,-218.4 117.32,-212.4 117.32,-206.4 117.32,-206.4 117.32,-188.8 117.32,-188.8 117.32,-182.8 123.32,-176.8 129.32,-176.8 129.32,-176.8 161.75,-176.8 161.75,-176.8 167.75,-176.8 173.75,-182.8 173.75,-188.8 173.75,-188.8 173.75,-206.4 173.75,-206.4 173.75,-212.4 167.75,-218.4 161.75,-218.4\"/>\n<text text-anchor=\"middle\" x=\"145.54\" y=\"-201.8\" font-family=\"Times,serif\" font-size=\"14.00\">Render</text>\n<text text-anchor=\"middle\" x=\"145.54\" y=\"-185\" font-family=\"Times,serif\" font-size=\"14.00\">Story</text>\n</g>\n<!-- Wiki\nModule -->\n<g id=\"node2\" class=\"node\">\n<title>Wiki\nModule</title>\n<path fill=\"white\" stroke=\"black\" d=\"M58.44,-373.4C58.44,-373.4 22.89,-373.4 22.89,-373.4 16.89,-373.4 10.89,-367.4 10.89,-361.4 10.89,-361.4 10.89,-343.8 10.89,-343.8 10.89,-337.8 16.89,-331.8 22.89,-331.8 22.89,-331.8 58.44,-331.8 58.44,-331.8 64.44,-331.8 70.44,-337.8 70.44,-343.8 70.44,-343.8 70.44,-361.4 70.44,-361.4 70.44,-367.4 64.44,-373.4 58.44,-373.4\"/>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-356.8\" font-family=\"Times,serif\" font-size=\"14.00\">Wiki</text>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-340\" font-family=\"Times,serif\" font-size=\"14.00\">Module</text>\n</g>\n<!-- Wiki\nModule&#45;&gt;Render\nStory -->\n<g id=\"edge1\" class=\"edge\">\n<title>Wiki\nModule&#45;&gt;Render\nStory</title>\n<path fill=\"none\" stroke=\"black\" d=\"M70.79,-333.07C74.58,-329.83 78.23,-326.31 81.32,-322.6 104.72,-294.59 122.41,-256.46 133.04,-229.7\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"136.57,-231.29 136.9,-220.7 130.04,-228.77 136.57,-231.29\"/>\n</g>\n<!-- 2023&#45;09&#45;05 -->\n<g id=\"node3\" class=\"node\">\n<title>2023&#45;09&#45;05</title>\n<path fill=\"white\" stroke=\"black\" d=\"M69.32,-313.6C69.32,-313.6 12,-313.6 12,-313.6 6,-313.6 0,-307.6 0,-301.6 0,-301.6 0,-289.6 0,-289.6 0,-283.6 6,-277.6 12,-277.6 12,-277.6 69.32,-277.6 69.32,-277.6 75.32,-277.6 81.32,-283.6 81.32,-289.6 81.32,-289.6 81.32,-301.6 81.32,-301.6 81.32,-307.6 75.32,-313.6 69.32,-313.6\"/>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-291.4\" font-family=\"Times,serif\" font-size=\"14.00\">2023&#45;09&#45;05</text>\n</g>\n<!-- 2023&#45;09&#45;05&#45;&gt;Render\nStory -->\n<g id=\"edge2\" class=\"edge\">\n<title>2023&#45;09&#45;05&#45;&gt;Render\nStory</title>\n<path fill=\"none\" stroke=\"black\" d=\"M70.46,-277.24C74.23,-274.48 77.94,-271.57 81.32,-268.6 95.26,-256.36 109.15,-241.19 120.34,-228.01\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"123.56,-230.61 127.27,-220.69 118.18,-226.13 123.56,-230.61\"/>\n</g>\n<!-- Journal,\nSept\n2023 -->\n<g id=\"node4\" class=\"node\">\n<title>Journal,\nSept\n2023</title>\n<path fill=\"white\" stroke=\"black\" d=\"M59.02,-259.8C59.02,-259.8 22.31,-259.8 22.31,-259.8 16.31,-259.8 10.31,-253.8 10.31,-247.8 10.31,-247.8 10.31,-213.4 10.31,-213.4 10.31,-207.4 16.31,-201.4 22.31,-201.4 22.31,-201.4 59.02,-201.4 59.02,-201.4 65.02,-201.4 71.02,-207.4 71.02,-213.4 71.02,-213.4 71.02,-247.8 71.02,-247.8 71.02,-253.8 65.02,-259.8 59.02,-259.8\"/>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-243.2\" font-family=\"Times,serif\" font-size=\"14.00\">Journal,</text>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-226.4\" font-family=\"Times,serif\" font-size=\"14.00\">Sept</text>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-209.6\" font-family=\"Times,serif\" font-size=\"14.00\">2023</text>\n</g>\n<!-- Journal,\nSept\n2023&#45;&gt;Render\nStory -->\n<g id=\"edge3\" class=\"edge\">\n<title>Journal,\nSept\n2023&#45;&gt;Render\nStory</title>\n<path fill=\"none\" stroke=\"black\" d=\"M71.42,-221.06C82.14,-217.62 94.4,-213.68 105.78,-210.03\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"106.46,-213.17 114.91,-206.78 104.32,-206.5 106.46,-213.17\"/>\n</g>\n<!-- 2023&#45;09&#45;06 -->\n<g id=\"node5\" class=\"node\">\n<title>2023&#45;09&#45;06</title>\n<path fill=\"white\" stroke=\"black\" d=\"M69.32,-183.6C69.32,-183.6 12,-183.6 12,-183.6 6,-183.6 0,-177.6 0,-171.6 0,-171.6 0,-159.6 0,-159.6 0,-153.6 6,-147.6 12,-147.6 12,-147.6 69.32,-147.6 69.32,-147.6 75.32,-147.6 81.32,-153.6 81.32,-159.6 81.32,-159.6 81.32,-171.6 81.32,-171.6 81.32,-177.6 75.32,-183.6 69.32,-183.6\"/>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-161.4\" font-family=\"Times,serif\" font-size=\"14.00\">2023&#45;09&#45;06</text>\n</g>\n<!-- 2023&#45;09&#45;06&#45;&gt;Render\nStory -->\n<g id=\"edge4\" class=\"edge\">\n<title>2023&#45;09&#45;06&#45;&gt;Render\nStory</title>\n<path fill=\"none\" stroke=\"black\" d=\"M81.73,-178.06C89.57,-180.5 97.77,-183.05 105.57,-185.48\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"104.29,-189.06 114.88,-188.69 106.37,-182.37 104.29,-189.06\"/>\n</g>\n<!-- 2023&#45;09&#45;07 -->\n<g id=\"node6\" class=\"node\">\n<title>2023&#45;09&#45;07</title>\n<path fill=\"white\" stroke=\"black\" d=\"M69.32,-129.6C69.32,-129.6 12,-129.6 12,-129.6 6,-129.6 0,-123.6 0,-117.6 0,-117.6 0,-105.6 0,-105.6 0,-99.6 6,-93.6 12,-93.6 12,-93.6 69.32,-93.6 69.32,-93.6 75.32,-93.6 81.32,-99.6 81.32,-105.6 81.32,-105.6 81.32,-117.6 81.32,-117.6 81.32,-123.6 75.32,-129.6 69.32,-129.6\"/>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-107.4\" font-family=\"Times,serif\" font-size=\"14.00\">2023&#45;09&#45;07</text>\n</g>\n<!-- 2023&#45;09&#45;07&#45;&gt;Render\nStory -->\n<g id=\"edge5\" class=\"edge\">\n<title>2023&#45;09&#45;07&#45;&gt;Render\nStory</title>\n<path fill=\"none\" stroke=\"black\" d=\"M69.79,-129.96C73.73,-132.76 77.68,-135.69 81.32,-138.6 92.61,-147.62 104.35,-158.2 114.6,-167.89\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"111.83,-170.04 121.47,-174.43 116.67,-164.98 111.83,-170.04\"/>\n</g>\n<!-- Between\nContent\nand\nContext -->\n<g id=\"node7\" class=\"node\">\n<title>Between\nContent\nand\nContext</title>\n<path fill=\"white\" stroke=\"black\" d=\"M61.15,-75.2C61.15,-75.2 20.17,-75.2 20.17,-75.2 14.17,-75.2 8.17,-69.2 8.17,-63.2 8.17,-63.2 8.17,-12 8.17,-12 8.17,-6 14.17,0 20.17,0 20.17,0 61.15,0 61.15,0 67.15,0 73.15,-6 73.15,-12 73.15,-12 73.15,-63.2 73.15,-63.2 73.15,-69.2 67.15,-75.2 61.15,-75.2\"/>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-58.6\" font-family=\"Times,serif\" font-size=\"14.00\">Between</text>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-41.8\" font-family=\"Times,serif\" font-size=\"14.00\">Content</text>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-25\" font-family=\"Times,serif\" font-size=\"14.00\">and</text>\n<text text-anchor=\"middle\" x=\"40.66\" y=\"-8.2\" font-family=\"Times,serif\" font-size=\"14.00\">Context</text>\n</g>\n<!-- Between\nContent\nand\nContext&#45;&gt;Render\nStory -->\n<g id=\"edge6\" class=\"edge\">\n<title>Between\nContent\nand\nContext&#45;&gt;Render\nStory</title>\n<path fill=\"none\" stroke=\"black\" d=\"M73.53,-74.02C76.25,-77.53 78.89,-81.09 81.32,-84.6 99.49,-110.84 116.95,-142.74 128.9,-165.94\"/>\n<polygon fill=\"black\" stroke=\"black\" points=\"126.17,-167.3 133.83,-174.62 132.41,-164.12 126.17,-167.3\"/>\n</g>\n</g>\n</svg>\n"
     }
   ],
   "journal": [
@@ -147,14 +225,337 @@
       "date": 1693938126835
     },
     {
-      "type": "fork",
-      "site": "wiki.ralfbarkow.ch",
-      "date": 1693938364080
+      "item": {
+        "type": "factory",
+        "id": "f5eba6f30486c76f"
+      },
+      "id": "f5eba6f30486c76f",
+      "type": "add",
+      "after": "29ddf4b602dbf0e3",
+      "date": 1693938496158
+    },
+    {
+      "type": "edit",
+      "id": "f5eba6f30486c76f",
+      "item": {
+        "type": "paragraph",
+        "id": "f5eba6f30486c76f",
+        "text": "⇐[[ Wiki Module]]"
+      },
+      "date": 1693938509372
+    },
+    {
+      "type": "edit",
+      "id": "f5eba6f30486c76f",
+      "item": {
+        "type": "paragraph",
+        "id": "f5eba6f30486c76f",
+        "text": "⇐ [[Wiki Module]]"
+      },
+      "date": 1693938517442
+    },
+    {
+      "type": "edit",
+      "id": "7fa4066f5ca5aeea",
+      "item": {
+        "type": "paragraph",
+        "id": "7fa4066f5ca5aeea",
+        "text": "This commit introduces a new function `renderStory` that takes a `Wiki.Story` item  and transforms it into an `Html msg` element based on its type. The function handles different story item types, including \"paragraph,\" \"future,\" \"factory,\" and\n\"EmptyStory,\" and produces corresponding HTML representations."
+      },
+      "date": 1693946026587
+    },
+    {
+      "type": "edit",
+      "id": "29ddf4b602dbf0e3",
+      "item": {
+        "type": "code",
+        "id": "29ddf4b602dbf0e3",
+        "text": "renderStory : Wiki.Story -> Html msg\nrenderStory story =\n    case story of\n        Paragraph paragraph ->\n            case paragraph.type_ of\n                \"paragraph\" ->\n                    Html.p [] [ Html.text paragraph.text ]\n\n                _ ->\n                    Html.text \"Unknown story type\"\n\n        Future future ->\n            Html.div [] [ Html.text \"Future: \" ]\n\n        Factory factory ->\n            Html.div [] [ Html.text \"Factory: \" ]\n\n        EmptyStory ->\n            Html.text \"Empty Story\"\n\n"
+      },
+      "date": 1693978933689
+    },
+    {
+      "id": "d61d994bbaeb36a4",
+      "type": "add",
+      "item": {
+        "type": "image",
+        "id": "d61d994bbaeb36a4",
+        "text": "Side-by-Side Comparison [https://github.com/dreyeck/blog/commit/27ba4048efae557d442773d44f0ba54715f627e6 commit]",
+        "size": "wide",
+        "width": 419,
+        "height": 148,
+        "url": "/assets/plugins/image/c5af8b0fa7c0fe03374303b4267aa2d6.jpg"
+      },
+      "after": "29ddf4b602dbf0e3",
+      "attribution": {
+        "page": "2023-09-06"
+      },
+      "date": 1693978956832
+    },
+    {
+      "id": "b7e235132ef58e4d",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "b7e235132ef58e4d",
+        "text": "We see the same [[Wiki Page JSON]] displayed on one side (left) by the fedwiki reference implementation and on the other side (right) by the elm-pages prototype."
+      },
+      "after": "d61d994bbaeb36a4",
+      "attribution": {
+        "page": "2023-09-06"
+      },
+      "date": 1693978961350
+    },
+    {
+      "id": "f5eba6f30486c76f",
+      "type": "move",
+      "order": [
+        "f5eba6f30486c76f",
+        "526751853c6deb70",
+        "7fa4066f5ca5aeea",
+        "29ddf4b602dbf0e3",
+        "d61d994bbaeb36a4",
+        "b7e235132ef58e4d"
+      ],
+      "date": 1694077719547
+    },
+    {
+      "id": "5844461890908459",
+      "type": "add",
+      "item": {
+        "type": "paragraph",
+        "id": "5844461890908459",
+        "text": "refactor(renderStory): Move function to Wiki module. [https://github.com/dreyeck/blog/commit/c9480f0bc43ea0df14e79ebbf24cb96fe9caa567 commit]"
+      },
+      "after": "b7e235132ef58e4d",
+      "attribution": {
+        "page": "Wiki Module"
+      },
+      "date": 1694077749601
+    },
+    {
+      "id": "f5eba6f30486c76f",
+      "type": "move",
+      "order": [
+        "526751853c6deb70",
+        "7fa4066f5ca5aeea",
+        "29ddf4b602dbf0e3",
+        "d61d994bbaeb36a4",
+        "b7e235132ef58e4d",
+        "5844461890908459",
+        "f5eba6f30486c76f"
+      ],
+      "date": 1694077774935
+    },
+    {
+      "type": "edit",
+      "id": "5844461890908459",
+      "item": {
+        "type": "paragraph",
+        "id": "5844461890908459",
+        "text": "refactor(renderStory): Move function to [[Wiki Module]]. [https://github.com/dreyeck/blog/commit/c9480f0bc43ea0df14e79ebbf24cb96fe9caa567 commit]"
+      },
+      "date": 1694077790028
+    },
+    {
+      "type": "edit",
+      "id": "b7e235132ef58e4d",
+      "item": {
+        "type": "paragraph",
+        "id": "b7e235132ef58e4d",
+        "text": "We see the same [[Wiki Page JSON]] displayed on one side (left) by the fedwiki reference implementation and on the other side (right) by the elm-pages prototype. [https://matrix.to/#/!ORfrUEFeWFcHAMLFLr:matrix.org/$16939825695UUWPO:dreyeck.freedombox.rocks?via=matrix.org&via=matrix.allmende.io&via=chat.weho.st matrix]"
+      },
+      "date": 1694079076302
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "5f922a0e4cb1b74a"
+      },
+      "id": "5f922a0e4cb1b74a",
+      "type": "add",
+      "after": "f5eba6f30486c76f",
+      "date": 1694105888172
+    },
+    {
+      "type": "edit",
+      "id": "5f922a0e4cb1b74a",
+      "item": {
+        "type": "pagefold",
+        "id": "5f922a0e4cb1b74a",
+        "text": "~"
+      },
+      "date": 1694105891080
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "f3f1bf5e2c40f366"
+      },
+      "id": "f3f1bf5e2c40f366",
+      "type": "add",
+      "after": "5f922a0e4cb1b74a",
+      "date": 1694105892607
+    },
+    {
+      "type": "edit",
+      "id": "f3f1bf5e2c40f366",
+      "item": {
+        "type": "reference",
+        "id": "f3f1bf5e2c40f366",
+        "site": "dev.asia.wiki.org",
+        "slug": "render-and-follow-links",
+        "title": "Render and Follow Links",
+        "text": "Federated wiki collects context for links based on sites mentioned on the page. This context is consulted when a link is clicked."
+      },
+      "date": 1694105901998
+    },
+    {
+      "type": "edit",
+      "id": "f3f1bf5e2c40f366",
+      "item": {
+        "type": "reference",
+        "id": "f3f1bf5e2c40f366",
+        "site": "dev.asia.wiki.org",
+        "slug": "render-and-follow-links",
+        "title": "Render and Follow Links",
+        "text": "Federated wiki collects [[Context]] for links based on sites mentioned on the page. This context is consulted when a link is clicked."
+      },
+      "date": 1694105917431
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "ebce5f5bb95fe820"
+      },
+      "id": "ebce5f5bb95fe820",
+      "type": "add",
+      "after": "f3f1bf5e2c40f366",
+      "date": 1694105931306
+    },
+    {
+      "type": "edit",
+      "id": "ebce5f5bb95fe820",
+      "item": {
+        "type": "reference",
+        "id": "ebce5f5bb95fe820",
+        "site": "wiki.ralfbarkow.ch",
+        "slug": "between-content-and-context",
+        "title": "Between Content and Context",
+        "text": "The inside of a container supports concurrent transformation of its contents, just like the inside of a theater full of people supports concurrent breathing."
+      },
+      "date": 1694105934164
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "4a5524afbb804f21"
+      },
+      "id": "4a5524afbb804f21",
+      "type": "add",
+      "after": "ebce5f5bb95fe820",
+      "date": 1694106334034
+    },
+    {
+      "type": "edit",
+      "id": "4a5524afbb804f21",
+      "item": {
+        "type": "reference",
+        "id": "4a5524afbb804f21",
+        "site": "marc.tries.fed.wiki",
+        "slug": "context",
+        "title": "Context",
+        "text": "Sometimes we hear \"context is everything.\" It may not be everything but it really helps make sense of situations."
+      },
+      "date": 1694106337782
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "66e67da0af71458f"
+      },
+      "id": "66e67da0af71458f",
+      "type": "add",
+      "after": "4a5524afbb804f21",
+      "date": 1694106415967
+    },
+    {
+      "type": "edit",
+      "id": "66e67da0af71458f",
+      "item": {
+        "type": "reference",
+        "id": "66e67da0af71458f",
+        "site": "glossary.asia.wiki.org",
+        "slug": "lineup",
+        "title": "Lineup",
+        "text": "The lineup is the list of wiki pages currently displayed within one tab, in order, with duplication possible."
+      },
+      "date": 1694106431872
+    },
+    {
+      "id": "03a03913154825ec",
+      "type": "add",
+      "item": {
+        "type": "markdown",
+        "id": "03a03913154825ec",
+        "text": "Lots of explanatory material can be left out of a page, because it can be accessed immediately and adjacently as needed. It is rather like having a open dictionary next to an open book. \n"
+      },
+      "after": "66e67da0af71458f",
+      "attribution": {
+        "page": "Context",
+        "site": "marc.tries.fed.wiki"
+      },
+      "date": 1694106436999
+    },
+    {
+      "id": "52cf512a13cb216b",
+      "type": "add",
+      "item": {
+        "type": "markdown",
+        "id": "52cf512a13cb216b",
+        "text": "The FedWiki is programmable and selectable to do [[computation]]s that involve the content of any open page in your FedWiki. That is an unusual and powerful type of context indeed.\n"
+      },
+      "after": "4a5524afbb804f21",
+      "attribution": {
+        "page": "Context",
+        "site": "marc.tries.fed.wiki"
+      },
+      "date": 1694106556798
+    },
+    {
+      "type": "edit",
+      "id": "52cf512a13cb216b",
+      "item": {
+        "type": "markdown",
+        "id": "52cf512a13cb216b",
+        "text": "The FedWiki is programmable and selectable to do [[Computation]]s that involve the content of any open page in your FedWiki. That is an unusual and powerful type of context indeed.\n"
+      },
+      "date": 1694106570693
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "b04245396e6ca715"
+      },
+      "id": "b04245396e6ca715",
+      "type": "add",
+      "after": "03a03913154825ec",
+      "date": 1694106603432
+    },
+    {
+      "type": "edit",
+      "id": "b04245396e6ca715",
+      "item": {
+        "type": "graphviz",
+        "id": "b04245396e6ca715",
+        "text": "DOT strict digraph\n  \nrankdir=LR\n\n  node [shape=box style=\"solid,rounded,filled\" fillcolor=lightyellow penwidth=3 color=black]\n  HERE NODE\n\n    node [style=\"solid,rounded,filled\" fillcolor=white penwidth=1 color=black]\n    edge [style=solid penwidth=1 color=black]\n    BACKLINKS NODE -> HERE\n\n       node [style=\"dotted,rounded,filled\" penwidth=1 fillcolor=white color=grey]\n       edge [style=dotted penwidth=1 color=grey]\n       HERE\n         BACKLINKS NODE -> HERE"
+      },
+      "date": 1694106605865
     },
     {
       "type": "fork",
-      "site": "elm.dreyeck.ch",
-      "date": 1693938435835
+      "site": "wiki.ralfbarkow.ch",
+      "date": 1694159571542
     }
   ]
 }
