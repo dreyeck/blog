@@ -184,6 +184,7 @@ type Event
     = Create CreateEvent
     | AddFactory AddFactoryEvent
     | Edit EditEvent
+    | Fork ForkEvent
 
 
 eventDecoder : Decode.Decoder Event
@@ -192,11 +193,14 @@ eventDecoder =
         [ Decode.map Create createEventDecoder
         , Decode.map Edit editEventDecoder
         , Decode.map AddFactory addFactoryEventDecoder
+        , Decode.map Fork forkEventDecoder
 
         -- Add other journal event variants as needed
         -- remove
         -- move
         -- fork
+        -- reference
+        -- roster
         ]
 
 
@@ -286,6 +290,23 @@ journalEncoder event =
                 , ( "date", Encode.int editEvent.date )
                 ]
 
+        Fork forkEvent ->
+            Encode.object
+                [ ( "type", Encode.string "fork" )
+                , ( "date", Encode.int forkEvent.date )
+                ]
+
 
 
 -- Add encoders for other journal event variants as needed
+
+
+type alias ForkEvent =
+    -- "type": "for"
+    { date : Int }
+
+
+forkEventDecoder : Decode.Decoder ForkEvent
+forkEventDecoder =
+    Decode.map ForkEvent
+        (Decode.field "date" Decode.int)
