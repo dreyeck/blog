@@ -8,7 +8,7 @@ import Json.Encode as Encode
 type alias Page =
     { title : String
     , story : List Story
-    , journal : List Event
+    , journal : List Event -- items are called Actions
     }
 
 
@@ -193,7 +193,7 @@ eventDecoder =
         , Decode.map Edit editEventDecoder
         , Decode.map AddFactory addFactoryEventDecoder
 
-        -- Add decoders for other journal event variants as needed
+        -- Add other journal event variants as needed
         -- remove
         -- move
         -- fork
@@ -213,13 +213,13 @@ createEventDecoder =
         (Decode.field "date" Decode.int)
 
 
-type alias AddFactoryItemAlias =
-    { type_ : String, id : String }
-
-
 type alias AddFactoryEvent =
     -- "type": "add"
     { item : AddFactoryItemAlias, id : String, type_ : String, date : Int }
+
+
+type alias AddFactoryItemAlias =
+    { type_ : String, id : String }
 
 
 addFactoryEventDecoder : Decode.Decoder AddFactoryEvent
