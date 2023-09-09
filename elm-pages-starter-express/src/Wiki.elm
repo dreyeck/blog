@@ -49,16 +49,21 @@ renderStory story =
                     Html.p [] [ Html.text paragraph.text ]
 
                 _ ->
-                    Html.text "Unknown story type"
+                    Html.text ("⚠️ INFO Paragraph – Unknown story type: " ++ paragraph.type_)
 
         Future future ->
-            Html.div [] [ Html.text "Future: " ]
+            case future.type_ of
+                "future" ->
+                    Html.div [] [ Html.text ("⚠️ INFO Future – Known story type: " ++ future.type_) ]
+
+                _ ->
+                    Html.div [] [ Html.text ("⚠️ INFO Future – Unknown story type: " ++ future.type_) ]
 
         Factory factory ->
-            Html.div [] [ Html.text "Factory: " ]
+            Html.text "⚠️ INFO – Factory"
 
         EmptyStory ->
-            Html.text "Empty Story"
+            Html.text "⚠️ INFO – Empty Story"
 
 
 storyDecoder : Decode.Decoder Story
