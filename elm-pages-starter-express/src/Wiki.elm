@@ -49,15 +49,15 @@ renderStory story =
                     Html.p [] [ Html.text paragraph.text ]
 
                 _ ->
-                    Html.text ("⚠️ INFO Paragraph – Unknown story type: " ++ paragraph.type_)
+                    Html.text ("⚠️ INFO Paragraph – Unknown story item type: " ++ paragraph.type_)
 
         Future future ->
             case future.type_ of
                 "future" ->
-                    Html.div [] [ Html.text ("⚠️ INFO Future – Known story type: " ++ future.type_) ]
+                    Html.div [] [ Html.text ("⚠️ INFO Future – Known story item type: " ++ future.type_) ]
 
                 _ ->
-                    Html.div [] [ Html.text ("⚠️ INFO Future – Unknown story type: " ++ future.type_) ]
+                    Html.div [] [ Html.text ("⚠️ INFO Future – Unknown story item type: " ++ future.type_) ]
 
         Factory factory ->
             Html.text "⚠️ INFO – Factory"
