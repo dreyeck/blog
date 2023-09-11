@@ -4,7 +4,6 @@ import Html exposing (Html, a, div, p, text)
 import Html.Attributes
 import Json.Decode as Decode
 import Json.Encode as Encode
-import String exposing (contains, split)
 
 
 type alias Page =
@@ -42,38 +41,18 @@ type Story
     | EmptyStory
 
 
-paragraphTextAsList : String -> List String
-paragraphTextAsList input =
+extractWikiLinks : String -> List String
+extractWikiLinks input =
     [ input ]
 
 
-type alias WikiLink =
-    { label : String
-    , target : String
-    }
-
-
-parseWikiLink : String -> Maybe WikiLink
-parseWikiLink input =
+renderWikiLink : String -> Html msg
+renderWikiLink label =
     let
-        parts =
-            split "]]" input
+        target =
+            label |> String.toLower |> String.replace " " "-" |> (\s -> "/" ++ s)
     in
-    case parts of
-        [ label, target ] ->
-            if contains "[[" label then
-                Just { label = String.dropLeft 2 label, target = target }
-
-            else
-                Nothing
-
-        _ ->
-            Nothing
-
-
-renderWikiLink : WikiLink -> Html msg
-renderWikiLink link =
-    a [ Html.Attributes.href link.target ] [ Html.text link.label ]
+    a [ Html.Attributes.href target ] [ text label ]
 
 
 renderStory : Story -> Html msg
@@ -83,16 +62,13 @@ renderStory story =
             case paragraph.type_ of
                 "paragraph" ->
                     let
-                        maybeWikiLink : Maybe WikiLink
-                        maybeWikiLink =
-                            parseWikiLink paragraph.text
+                        textWithLinks =
+                            paragraph.text
+                                |> extractWikiLinks
+                                |> List.map renderWikiLink
                     in
-                    case maybeWikiLink of
-                        Just link ->
-                            renderWikiLink link
-
-                        Nothing ->
-                            text "Invalid Wiki Link"
+                    Html.p []
+                        textWithLinks
 
                 _ ->
                     Html.text ("⚠️ INFO Paragraph – Unknown story item type: " ++ paragraph.type_)
