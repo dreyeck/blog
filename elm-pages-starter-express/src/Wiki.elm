@@ -1,8 +1,10 @@
 module Wiki exposing (Event(..), Page, Story(..), pageDecoder, pageEncoder, renderStory)
 
-import Html exposing (Html)
+import Html exposing (Html, a, div, p, text)
+import Html.Attributes
 import Json.Decode as Decode
 import Json.Encode as Encode
+import String exposing (contains, split)
 
 
 type alias Page =
@@ -40,13 +42,57 @@ type Story
     | EmptyStory
 
 
+paragraphTextAsList : String -> List String
+paragraphTextAsList input =
+    [ input ]
+
+
+type alias WikiLink =
+    { label : String
+    , target : String
+    }
+
+
+parseWikiLink : String -> Maybe WikiLink
+parseWikiLink input =
+    let
+        parts =
+            split "]]" input
+    in
+    case parts of
+        [ label, target ] ->
+            if contains "[[" label then
+                Just { label = String.dropLeft 2 label, target = target }
+
+            else
+                Nothing
+
+        _ ->
+            Nothing
+
+
+renderWikiLink : WikiLink -> Html msg
+renderWikiLink link =
+    a [ Html.Attributes.href link.target ] [ Html.text link.label ]
+
+
 renderStory : Story -> Html msg
 renderStory story =
     case story of
         Paragraph paragraph ->
             case paragraph.type_ of
                 "paragraph" ->
-                    Html.p [] [ Html.text paragraph.text ]
+                    let
+                        maybeWikiLink : Maybe WikiLink
+                        maybeWikiLink =
+                            parseWikiLink paragraph.text
+                    in
+                    case maybeWikiLink of
+                        Just link ->
+                            renderWikiLink link
+
+                        Nothing ->
+                            text "Invalid Wiki Link"
 
                 _ ->
                     Html.text ("⚠️ INFO Paragraph – Unknown story item type: " ++ paragraph.type_)
