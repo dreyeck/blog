@@ -41,8 +41,8 @@ type Story
     | EmptyStory
 
 
-extractWikiLinks : String -> List String
-extractWikiLinks input =
+paragraphTextAsList : String -> List String
+paragraphTextAsList input =
     [ input ]
 
 
@@ -64,7 +64,7 @@ renderStory story =
                     let
                         textWithLinks =
                             paragraph.text
-                                |> extractWikiLinks
+                                |> paragraphTextAsList
                                 |> List.map renderWikiLink
                     in
                     Html.p []
