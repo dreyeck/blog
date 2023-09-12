@@ -73,6 +73,10 @@ renderStory story =
                 _ ->
                     Html.text ("⚠️ INFO Paragraph – Unknown story item type: " ++ paragraph.type_)
 
+        {- A Future item describes how a missing page can be found or created.
+           Unresolved internal links add a ghost page with a future to the lineup.
+           Ref: http://glossary.asia.wiki.org/view/welcome-visitors/view/future
+        -}
         Future future ->
             case future.type_ of
                 "future" ->
