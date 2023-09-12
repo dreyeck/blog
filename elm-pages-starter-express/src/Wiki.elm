@@ -47,12 +47,17 @@ paragraphTextAsList input =
 
 
 renderWikiLink : String -> Html msg
-renderWikiLink label =
+renderWikiLink title =
+    {- Links are enclosed in doubled square brackets
+       Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
+       and http://ward.bay.wiki.org/view/internal-link
+    -}
     let
         target =
-            label |> String.toLower |> String.replace " " "-" |> (\s -> "/" ++ s)
+            -- title asSlug
+            title |> String.toLower |> String.replace " " "-" |> (\s -> "/" ++ s)
     in
-    a [ Html.Attributes.href target ] [ text label ]
+    a [ Html.Attributes.href target ] [ text title ]
 
 
 renderStory : Story -> Html msg
