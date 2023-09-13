@@ -5,6 +5,7 @@ import Html.Attributes
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Parser exposing (..)
+import Parser.Advanced exposing (inContext)
 
 
 type alias WikiLink =
@@ -12,8 +13,8 @@ type alias WikiLink =
     }
 
 
-wikiLink : Parser WikiLink
-wikiLink =
+link : Parser WikiLink
+link =
     succeed WikiLink
         |. symbol "[["
         |= (getChompedString <| chompWhile (\c -> c /= ']'))
@@ -22,7 +23,7 @@ wikiLink =
 
 parseWikiLink : String -> Result (List Parser.DeadEnd) WikiLink
 parseWikiLink str =
-    Parser.run wikiLink str
+    Parser.run link str
 
 
 renderWikiLink : String -> Html msg
