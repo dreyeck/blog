@@ -1,9 +1,46 @@
 module Wiki exposing (Event(..), Page, Story(..), pageDecoder, pageEncoder, renderStory)
 
-import Html exposing (Html, a, div, p, text)
+import Html exposing (Html, text)
 import Html.Attributes
 import Json.Decode as Decode
 import Json.Encode as Encode
+import Parser exposing (..)
+
+
+type alias WikiLink =
+    { title : String
+    }
+
+
+wikiLink : Parser WikiLink
+wikiLink =
+    succeed WikiLink
+        |. symbol "[["
+        |= (getChompedString <| chompWhile (\c -> c /= ']'))
+        |. symbol "]]"
+
+
+parseWikiLink : String -> Result (List Parser.DeadEnd) WikiLink
+parseWikiLink str =
+    Parser.run wikiLink str
+
+
+renderWikiLink : String -> Html msg
+renderWikiLink title =
+    {- Links are enclosed in doubled square brackets
+       Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
+       and http://ward.bay.wiki.org/view/internal-link
+    -}
+    let
+        target =
+            -- title asSlug
+            title |> String.toLower |> String.replace " " "-" |> (\s -> "/" ++ s)
+    in
+    Html.a [ Html.Attributes.href target ] [ text title ]
+
+
+
+-- The "page"
 
 
 type alias Page =
@@ -41,25 +78,6 @@ type Story
     | EmptyStory
 
 
-paragraphTextAsList : String -> List String
-paragraphTextAsList input =
-    [ input ]
-
-
-renderWikiLink : String -> Html msg
-renderWikiLink title =
-    {- Links are enclosed in doubled square brackets
-       Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
-       and http://ward.bay.wiki.org/view/internal-link
-    -}
-    let
-        target =
-            -- title asSlug
-            title |> String.toLower |> String.replace " " "-" |> (\s -> "/" ++ s)
-    in
-    a [ Html.Attributes.href target ] [ text title ]
-
-
 renderStory : Story -> Html msg
 renderStory story =
     case story of
@@ -67,13 +85,16 @@ renderStory story =
             case paragraph.type_ of
                 "paragraph" ->
                     let
-                        textWithLinks =
+                        renderedText =
                             paragraph.text
-                                |> paragraphTextAsList
-                                |> List.map renderWikiLink
+                                |> parseWikiLink
+
+                        -- |> renderWikiLink
                     in
                     Html.p []
-                        textWithLinks
+                        [ Html.text
+                            (Debug.toString renderedText)
+                        ]
 
                 _ ->
                     Html.text ("⚠️ INFO Paragraph – Unknown story item type: " ++ paragraph.type_)
@@ -90,7 +111,7 @@ renderStory story =
                 _ ->
                     Html.div [] [ Html.text ("⚠️ INFO Future – Unknown story item type: " ++ future.type_) ]
 
-        Factory factory ->
+        Factory _ ->
             Html.text "⚠️ INFO – Factory"
 
         EmptyStory ->
