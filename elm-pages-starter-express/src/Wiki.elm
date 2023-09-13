@@ -15,6 +15,10 @@ type alias WikiLink =
 
 link : Parser WikiLink
 link =
+    {- Links are enclosed in doubled square brackets
+       Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
+       and http://ward.bay.wiki.org/view/internal-link
+    -}
     succeed WikiLink
         |. symbol "[["
         |= (getChompedString <| chompWhile (\c -> c /= ']'))
@@ -28,10 +32,6 @@ parseWikiLink str =
 
 renderWikiLink : String -> Html msg
 renderWikiLink title =
-    {- Links are enclosed in doubled square brackets
-       Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
-       and http://ward.bay.wiki.org/view/internal-link
-    -}
     let
         target =
             -- title asSlug
