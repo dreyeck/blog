@@ -73,10 +73,10 @@ pageEncoder page =
 
 
 type Story
-    = Future FutureItemAlias
-    | Factory FactoryItemAlias
-    | Paragraph ParagraphItemAlias
-    | EmptyContainer
+    = Future FutureStoryItemAlias
+    | Factory FactoryStoryItemAlias
+    | Paragraph ParagraphStoryItemAlias
+    | EmptyContainer -- basic fact
 
 
 renderStory : Story -> Html msg
@@ -122,9 +122,9 @@ renderStory story =
 storyDecoder : Decode.Decoder Story
 storyDecoder =
     Decode.oneOf
-        [ Decode.map Future futureEventDecoder
-        , Decode.map Paragraph paragraphItemDecoder
-        , Decode.map Factory addFactoryItemDecoder
+        [ Decode.map Future futureDecoder
+        , Decode.map Paragraph paragraphDecoder
+        , Decode.map Factory factoryDecoder
         , Decode.map (\_ -> EmptyContainer) (Decode.succeed EmptyContainer)
         ]
 
@@ -179,20 +179,20 @@ storyItemEncoder item =
         ]
 
 
-type alias ParagraphItemAlias =
+type alias ParagraphStoryItemAlias =
     { type_ : String, id : String, text : String }
 
 
-paragraphItemDecoder : Decode.Decoder ParagraphItemAlias
-paragraphItemDecoder =
-    Decode.map3 ParagraphItemAlias
+paragraphDecoder : Decode.Decoder ParagraphStoryItemAlias
+paragraphDecoder =
+    Decode.map3 ParagraphStoryItemAlias
         (Decode.field "type" Decode.string)
         (Decode.field "id" Decode.string)
         (Decode.field "text" Decode.string)
 
 
-paragraphItemEncoder : ParagraphItemAlias -> Encode.Value
-paragraphItemEncoder item =
+paragraphEncoder : ParagraphStoryItemAlias -> Encode.Value
+paragraphEncoder item =
     -- "type": "paragraph"
     Encode.object
         [ ( "type", Encode.string "paragraph" )
@@ -201,19 +201,19 @@ paragraphItemEncoder item =
         ]
 
 
-type alias FactoryItemAlias =
+type alias FactoryStoryItemAlias =
     { type_ : String, id : String }
 
 
-addFactoryItemDecoder : Decode.Decoder AddFactoryItemAlias
-addFactoryItemDecoder =
-    Decode.map2 AddFactoryItemAlias
+factoryDecoder : Decode.Decoder FactoryStoryItemAlias
+factoryDecoder =
+    Decode.map2 FactoryStoryItemAlias
         (Decode.field "type" Decode.string)
         (Decode.field "id" Decode.string)
 
 
-addFactoryItemEncoder : AddFactoryItemAlias -> Encode.Value
-addFactoryItemEncoder item =
+factoryEncoder : FactoryStoryItemAlias -> Encode.Value
+factoryEncoder item =
     -- "type": "factory"
     Encode.object
         [ ( "type", Encode.string "factory" )
@@ -221,18 +221,19 @@ addFactoryItemEncoder item =
         ]
 
 
-type alias FutureItemAlias =
+type alias FutureStoryItemAlias =
     { id : String, type_ : String, text : String, title : String }
 
 
-futureEventDecoder : Decode.Decoder FutureItemAlias
-futureEventDecoder =
-    Decode.map4 FutureItemAlias
+futureDecoder : Decode.Decoder FutureStoryItemAlias
+futureDecoder =
+    Decode.map4 FutureStoryItemAlias
         (Decode.field "id" Decode.string)
         (Decode.field "type" Decode.string)
         (Decode.field "text" Decode.string)
         (Decode.field "title" Decode.string)
 
+-- futureEncoder ?
 
 
 -- The "journal" collects story edits.
@@ -240,7 +241,7 @@ futureEventDecoder =
 
 type Event
     = Create CreateEvent
-    | AddFactory AddFactoryEvent
+    | Add AddFactoryEvent
     | Edit EditEvent
     | Fork ForkEvent
 
@@ -248,10 +249,10 @@ type Event
 eventDecoder : Decode.Decoder Event
 eventDecoder =
     Decode.oneOf
-        [ Decode.map Create createEventDecoder
-        , Decode.map Edit editEventDecoder
-        , Decode.map AddFactory addFactoryEventDecoder
-        , Decode.map Fork forkEventDecoder
+        [ Decode.map Create createDecoder
+        , Decode.map Edit editDecoder
+        , Decode.map Add addDecoder
+        , Decode.map Fork forkDecoder
 
         -- Add other journal event variants as needed
         -- remove
@@ -273,8 +274,8 @@ type alias CreateEvent =
     { type_ : String, item : StoryItemAlias, date : Int }
 
 
-createEventDecoder : Decode.Decoder CreateEvent
-createEventDecoder =
+createDecoder : Decode.Decoder CreateEvent
+createDecoder =
     Decode.map3 CreateEvent
         (Decode.field "type" Decode.string)
         (Decode.field "item" storyItemDecoder)
@@ -283,17 +284,17 @@ createEventDecoder =
 
 type alias AddFactoryEvent =
     -- "type": "add"
-    { item : AddFactoryItemAlias, id : String, type_ : String, date : Int }
+    { item : AddFactoryEventItemAlias, id : String, type_ : String, date : Int }
 
-
-type alias AddFactoryItemAlias =
+type alias AddFactoryEventItemAlias =
     { type_ : String, id : String }
 
 
-addFactoryEventDecoder : Decode.Decoder AddFactoryEvent
-addFactoryEventDecoder =
+
+addDecoder : Decode.Decoder AddFactoryEvent
+addDecoder =
     Decode.map4 AddFactoryEvent
-        (Decode.field "item" addFactoryItemDecoder)
+        (Decode.field "item" factoryDecoder)
         (Decode.field "id" Decode.string)
         (Decode.field "type" Decode.string)
         (Decode.field "date" Decode.int)
@@ -301,15 +302,15 @@ addFactoryEventDecoder =
 
 type alias EditEvent =
     -- "type": "edit"
-    { type_ : String, id : String, item : ParagraphItemAlias, date : Int }
+    { type_ : String, id : String, item : ParagraphStoryItemAlias, date : Int }
 
 
-editEventDecoder : Decode.Decoder EditEvent
-editEventDecoder =
+editDecoder : Decode.Decoder EditEvent
+editDecoder =
     Decode.map4 EditEvent
         (Decode.field "type" Decode.string)
         (Decode.field "id" Decode.string)
-        (Decode.field "item" paragraphItemDecoder)
+        (Decode.field "item" paragraphDecoder)
         (Decode.field "date" Decode.int)
 
 
@@ -328,14 +329,14 @@ journalEncoder event =
                 , ( "date", Encode.int createEvent.date )
                 ]
 
-        AddFactory addFactoryEvent ->
+        Add addFactoryEvent ->
             let
-                eventItem : AddFactoryItemAlias
+                eventItem : AddFactoryEventItemAlias
                 eventItem =
                     addFactoryEvent.item
             in
             Encode.object
-                [ ( "item", addFactoryItemEncoder eventItem )
+                [ ( "item", factoryEncoder eventItem )
                 , ( "id", Encode.string addFactoryEvent.id )
                 , ( "type", Encode.string "add" )
                 , ( "date", Encode.int addFactoryEvent.date )
@@ -343,14 +344,14 @@ journalEncoder event =
 
         Edit editEvent ->
             let
-                eventItem : ParagraphItemAlias
+                eventItem : ParagraphStoryItemAlias
                 eventItem =
                     editEvent.item
             in
             Encode.object
                 [ ( "type", Encode.string "edit" )
                 , ( "id", Encode.string editEvent.id )
-                , ( "item", paragraphItemEncoder eventItem )
+                , ( "item", paragraphEncoder eventItem )
                 , ( "date", Encode.int editEvent.date )
                 ]
 
@@ -370,7 +371,7 @@ type alias ForkEvent =
     { date : Int }
 
 
-forkEventDecoder : Decode.Decoder ForkEvent
-forkEventDecoder =
+forkDecoder : Decode.Decoder ForkEvent
+forkDecoder =
     Decode.map ForkEvent
         (Decode.field "date" Decode.int)
