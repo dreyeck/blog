@@ -86,7 +86,7 @@ decoder =
                             -- JOURNAL
                             [ Create
                                 { type_ = "create"
-                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , item = { title = "Create New Page Test", story = EmptyContainer }
                                 , date = 1693518954747
                                 }
                             ]
@@ -142,10 +142,10 @@ decoder =
                             -- JOURNAL
                             [ Create
                                 { type_ = "create"
-                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , item = { title = "Create New Page Test", story = EmptyContainer }
                                 , date = 1693518954747
                                 }
-                            , AddFactory
+                            , Add
                                 { item = { type_ = "factory", id = "eacbfcc1e964204d" }
                                 , id = "eacbfcc1e964204d"
                                 , type_ = "add"
@@ -216,10 +216,10 @@ decoder =
                             -- JOURNAL
                             [ Create
                                 { type_ = "create"
-                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , item = { title = "Create New Page Test", story = EmptyContainer }
                                 , date = 1693518954747
                                 }
-                            , AddFactory
+                            , Add
                                 { item = { type_ = "factory", id = "eacbfcc1e964204d" }
                                 , id = "eacbfcc1e964204d"
                                 , type_ = "add"
@@ -281,7 +281,7 @@ encoder =
                             -- JOURNAL
                             [ Create
                                 { type_ = "create"
-                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , item = { title = "Create New Page Test", story = EmptyContainer }
                                 , date = 1686247427400
                                 }
                             ]
@@ -326,10 +326,10 @@ encoder =
                             -- JOURNAL
                             [ Create
                                 { type_ = "create"
-                                , item = { title = "Create New Page Test", story = EmptyStory }
+                                , item = { title = "Create New Page Test", story = EmptyContainer }
                                 , date = 1686247427400
                                 }
-                            , AddFactory
+                            , Add
                                 { item = { type_ = "factory", id = "e3b2618b301412c5" }
                                 , id = "e3b2618b301412c5"
                                 , type_ = "add"
