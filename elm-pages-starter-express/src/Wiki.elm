@@ -76,7 +76,7 @@ type Story
     = Future FutureItemAlias
     | Factory FactoryItemAlias
     | Paragraph ParagraphItemAlias
-    | EmptyStory
+    | EmptyContainer
 
 
 renderStory : Story -> Html msg
@@ -115,7 +115,7 @@ renderStory story =
         Factory _ ->
             Html.text "⚠️ INFO – Factory"
 
-        EmptyStory ->
+        EmptyContainer ->
             Html.text "⚠️ INFO – Empty Story"
 
 
@@ -125,7 +125,7 @@ storyDecoder =
         [ Decode.map Future futureEventDecoder
         , Decode.map Paragraph paragraphItemDecoder
         , Decode.map Factory addFactoryItemDecoder
-        , Decode.map (\_ -> EmptyStory) (Decode.succeed EmptyStory)
+        , Decode.map (\_ -> EmptyContainer) (Decode.succeed EmptyContainer)
         ]
 
 
@@ -154,7 +154,7 @@ storyEncoder story =
                 ]
 
         -- Add encoders for other story variants as needed
-        EmptyStory ->
+        EmptyContainer ->
             Encode.list identity []
 
 
@@ -259,6 +259,12 @@ eventDecoder =
         -- fork
         -- reference
         -- roster
+        {- Note: Reference and roster are not events (or action items) but story item types. 
+           Roster is a story item type in the paragraph branch. 
+           Reference is one type in the future branch. 
+           This error in association – eventDecoder instead of correct storyDecoder – indicates 
+           the intimate relationship between these two decoders. 
+           Ref: https://wiki.ralfbarkow.ch/view/2023-09-15/view/oneof -}
         ]
 
 
