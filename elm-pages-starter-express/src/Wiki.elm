@@ -25,13 +25,21 @@ link =
         |. symbol "]]"
 
 
+char : Parser String
+char =
+    chompUntilEndOr "\n"
+        |> Parser.getChompedString
+
+
 paragraphText : Parser String
 paragraphText =
     Parser.oneOf
-        [ link ]
+        [ link
+        , char
+        ]
 
 
-parse : String -> Result (List Parser.DeadEnd) String
+parse : String -> Result (List DeadEnd) String
 parse str =
     Parser.run paragraphText str
 
