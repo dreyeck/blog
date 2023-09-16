@@ -13,21 +13,27 @@ type alias WikiLink =
     }
 
 
-link : Parser WikiLink
+link : Parser String
 link =
     {- Links are enclosed in doubled square brackets
        Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
        and http://ward.bay.wiki.org/view/internal-link
     -}
-    succeed WikiLink
+    succeed identity
         |. symbol "[["
         |= (getChompedString <| chompWhile (\c -> c /= ']'))
         |. symbol "]]"
 
 
-parseWikiLink : String -> Result (List Parser.DeadEnd) WikiLink
-parseWikiLink str =
-    Parser.run link str
+paragraphText : Parser String
+paragraphText =
+    Parser.oneOf
+        [ link ]
+
+
+parse : String -> Result (List Parser.DeadEnd) String
+parse str =
+    Parser.run paragraphText str
 
 
 lookAhead : Parser a -> Parser ()
@@ -114,7 +120,7 @@ renderStory story =
                     let
                         renderedText =
                             paragraph.text
-                                |> parseWikiLink
+                                |> parse
 
                         -- |> renderWikiLink
                     in
@@ -259,9 +265,9 @@ futureDecoder =
         (Decode.field "text" Decode.string)
         (Decode.field "title" Decode.string)
 
+
+
 -- futureEncoder ?
-
-
 -- The "journal" collects story edits.
 
 
@@ -286,12 +292,13 @@ eventDecoder =
         -- fork
         -- reference
         -- roster
-        {- Note: Reference and roster are not events (or action items) but story item types. 
-           Roster is a story item type in the paragraph branch. 
-           Reference is one type in the future branch. 
-           This error in association – eventDecoder instead of correct storyDecoder – indicates 
-           the intimate relationship between these two decoders. 
-           Ref: https://wiki.ralfbarkow.ch/view/2023-09-15/view/oneof -}
+        {- Note: Reference and roster are not events (or action items) but story item types.
+           Roster is a story item type in the paragraph branch.
+           Reference is one type in the future branch.
+           This error in association – eventDecoder instead of correct storyDecoder – indicates
+           the intimate relationship between these two decoders.
+           Ref: https://wiki.ralfbarkow.ch/view/2023-09-15/view/oneof
+        -}
         ]
 
 
@@ -312,9 +319,9 @@ type alias AddFactoryEvent =
     -- "type": "add"
     { item : AddFactoryEventItemAlias, id : String, type_ : String, date : Int }
 
+
 type alias AddFactoryEventItemAlias =
     { type_ : String, id : String }
-
 
 
 addDecoder : Decode.Decoder AddFactoryEvent
