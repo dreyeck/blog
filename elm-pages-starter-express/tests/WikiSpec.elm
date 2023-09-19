@@ -4,11 +4,10 @@ module WikiSpec exposing (decoder, encoder)
 -- https://wiki.ralfbarkow.ch/view/wikispec-encoders/view/wikispec-encoders_rev204
 
 import Expect
-import FatalError
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Test exposing (Test)
-import Wiki exposing (Event(..), Page, Story(..), pageDecoder, pageEncoder)
+import Wiki exposing (Journal(..), Page, Story(..), pageDecoder, pageEncoder)
 
 
 rawData : String
