@@ -404,6 +404,12 @@ char =
 paragraphText : Parser String
 paragraphText =
     Parser.oneOf
+        {- You can think of oneOf as
+           trying either the head of the list,
+           or oneOf the parsers in the tail of the list.
+
+           Ref: https://github.com/elm/parser/blob/master/semantics.md#either--parser-a---parser-a---parser-a
+        -}
         [ link
         , char
         ]
@@ -412,6 +418,19 @@ paragraphText =
 parse : String -> Result (List DeadEnd) String
 parse str =
     Parser.run paragraphText str
+
+
+
+-- Parsing puzzle, avoid look-ahead? https://discourse.elm-lang.org/t/parsing-puzzle-avoid-look-ahead/663
+{- https://ellie-app.com/t33jCVvgyQa1 Outdated Code
+   This code was written with an older version of the Elm compiler.
+   You can still modify the code and compile it, but you cannot save your changes.
+
+
+   Elm/parser look ahead without backtrackable
+   https://discourse.elm-lang.org/t/elm-parser-look-ahead-without-backtrackable/3106
+   https://ellie-app.com/4FmvZ49qQhGa1
+-}
 
 
 lookAhead : Parser a -> Parser ()
