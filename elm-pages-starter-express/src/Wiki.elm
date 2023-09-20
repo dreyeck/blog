@@ -8,6 +8,7 @@ import Parser
     exposing
         ( (|.)
         , (|=)
+        , DeadEnd
         , Parser
         , andThen
         , chompUntil
