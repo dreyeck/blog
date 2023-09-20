@@ -4,7 +4,24 @@ import Html exposing (Html, text)
 import Html.Attributes
 import Json.Decode as Decode
 import Json.Encode as Encode
-import Parser exposing (..)
+import Parser
+    exposing
+        ( (|.)
+        , (|=)
+        , Parser
+        , andThen
+        , chompUntil
+        , chompUntilEndOr
+        , chompWhile
+        , deadEndsToString
+        , getChompedString
+        , oneOf
+        , problem
+        , run
+        , succeed
+        , symbol
+        , token
+        )
 import Parser.Advanced exposing (inContext)
 
 
