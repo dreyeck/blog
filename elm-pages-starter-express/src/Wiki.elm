@@ -9,22 +9,107 @@ import Parser
         ( (|.)
         , (|=)
         , DeadEnd
+        , Nestable(..)
         , Parser
+        , Problem(..)
+        , Step(..)
+        , Trailing(..)
         , andThen
+        , backtrackable
+        , chompIf
         , chompUntil
         , chompUntilEndOr
         , chompWhile
+        , commit
         , deadEndsToString
         , end
+        , float
         , getChompedString
+        , getCol
+        , getIndent
+        , getOffset
+        , getPosition
+        , getRow
+        , getSource
+        , int
+        , keyword
+        , lazy
+        , lineComment
+        , loop
+        , map
+        , mapChompedString
+        , multiComment
+        , number
         , oneOf
         , problem
         , run
+        , sequence
+        , spaces
         , succeed
         , symbol
         , token
+        , variable
+        , withIndent
         )
-import Parser.Advanced exposing (inContext)
+import Parser.Advanced
+    exposing
+        ( (|.)
+        , (|=)
+        , DeadEnd
+        , Nestable(..)
+          -- , Parser
+        , Step(..)
+        , Token(..)
+        , Trailing(..)
+        , andThen
+        , backtrackable
+        , chompIf
+        , chompUntil
+        , chompUntilEndOr
+        , chompWhile
+        , commit
+        , end
+        , float
+        , getChompedString
+        , getCol
+        , getIndent
+        , getOffset
+        , getPosition
+        , getRow
+        , getSource
+        , inContext
+        , int
+        , keyword
+        , lazy
+        , lineComment
+        , loop
+        , map
+        , mapChompedString
+        , multiComment
+        , number
+        , oneOf
+        , problem
+        , run
+        , sequence
+        , spaces
+        , succeed
+        , symbol
+        , token
+        , variable
+        , withIndent
+        )
+import Pratt
+    exposing
+        ( Config
+        , constant
+        , expression
+        , infixLeft
+        , infixRight
+        , literal
+        , postfix
+        , prefix
+        , subExpression
+        )
 
 
 
@@ -408,55 +493,59 @@ link =
        Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
        and http://ward.bay.wiki.org/view/internal-link
     -}
-    succeed identity
-        |. symbol "[["
-        |= (getChompedString <| chompWhile (\c -> c /= ']'))
-        |. symbol "]]"
+    Parser.succeed identity
+        |. Parser.symbol "[["
+        |= (Parser.getChompedString <| Parser.chompWhile (\c -> c /= ']'))
+        |. Parser.symbol "]]"
 
 
 char : Parser String
 char =
-    chompUntilEndOr "\n"
+    Parser.chompUntilEndOr "\n"
         |> Parser.getChompedString
 
 
-paragraphText : Parser String
-paragraphText =
-    Parser.oneOf
-        {- You can think of oneOf as
-           trying either the head of the list,
-           or oneOf the parsers in the tail of the list.
+textParagraph : Parser String
+textParagraph =
+    Pratt.expression
+        { oneOf =
+            [ literal link
+            , literal char
 
-           Ref: https://github.com/elm/parser/blob/master/semantics.md#either--parser-a---parser-a---parser-a
-        -}
-        [ link
-        , char
-        ]
+            -- , externalLink
+            ]
+        , andThenOneOf =
+            []
+        , spaces = Parser.spaces
+        }
+
+
+internalLink : Pratt.Config String -> Parser String
+internalLink config =
+    Parser.succeed identity
+        |. Parser.symbol "[["
+        |= Pratt.subExpression 0 config
+        |. Parser.symbol "]]"
+
+
+externalLink : Pratt.Config String -> Parser String
+externalLink config =
+    Parser.succeed identity
+        |. Parser.symbol "["
+        |= Pratt.subExpression 0 config
+        |. Parser.symbol "]"
 
 
 parser : Parser String
 parser =
-    succeed identity
-        |= paragraphText
-        |. end
+    Parser.succeed identity
+        |= textParagraph
+        |. Parser.end
 
 
 run : String -> Result (List Parser.DeadEnd) String
 run str =
-    Parser.run parser str
-
-
-
--- Parsing puzzle, avoid look-ahead? https://discourse.elm-lang.org/t/parsing-puzzle-avoid-look-ahead/663
-{- https://ellie-app.com/t33jCVvgyQa1 Outdated Code
-   This code was written with an older version of the Elm compiler.
-   You can still modify the code and compile it, but you cannot save your changes.
-
-
-   Elm/parser look ahead without backtrackable
-   https://discourse.elm-lang.org/t/elm-parser-look-ahead-without-backtrackable/3106
-   https://ellie-app.com/4FmvZ49qQhGa1
--}
+    Parser.run textParagraph str
 
 
 renderWikiLink : String -> Html msg
