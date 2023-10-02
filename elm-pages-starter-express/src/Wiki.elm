@@ -15,6 +15,7 @@ import Parser
         , chompUntilEndOr
         , chompWhile
         , deadEndsToString
+        , end
         , getChompedString
         , oneOf
         , problem
@@ -84,7 +85,7 @@ renderStory story =
                     let
                         renderedText =
                             paragraph.text
-                                |> parse
+                                |> run
 
                         -- |> renderWikiLink
                     in
@@ -433,9 +434,16 @@ paragraphText =
         ]
 
 
-parse : String -> Result (List DeadEnd) String
-parse str =
-    Parser.run paragraphText str
+parser : Parser String
+parser =
+    succeed identity
+        |= paragraphText
+        |. end
+
+
+run : String -> Result (List Parser.DeadEnd) String
+run str =
+    Parser.run parser str
 
 
 
@@ -449,32 +457,6 @@ parse str =
    https://discourse.elm-lang.org/t/elm-parser-look-ahead-without-backtrackable/3106
    https://ellie-app.com/4FmvZ49qQhGa1
 -}
-
-
-lookAhead : Parser a -> Parser ()
-lookAhead parser =
-    {- How to build interesting parsers
-       Ref: https://discourse.elm-lang.org/t/how-to-build-interesting-parsers/8786
-
-       Demystifying an Obscure LookAhead Parser
-       Ref: https://discourse.elm-lang.org/t/demystifying-an-obscure-lookahead-parser/9295
-    -}
-    Parser.oneOf
-        [ Parser.oneOf
-            [ parser
-                |> Parser.backtrackable
-                |> Parser.andThen (\_ -> Parser.commit ())
-                |> Parser.andThen (\_ -> Parser.problem "")
-            , Parser.succeed
-                (parser
-                    |> Parser.backtrackable
-                    |> Parser.map (\_ -> ())
-                )
-            ]
-            |> Parser.backtrackable
-        , Parser.succeed (Parser.succeed ())
-        ]
-        |> Parser.andThen identity
 
 
 renderWikiLink : String -> Html msg
