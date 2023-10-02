@@ -486,8 +486,8 @@ type alias WikiLink =
     }
 
 
-link : Parser String
-link =
+internalLink : Parser String
+internalLink =
     {- Links are enclosed in doubled square brackets
 
        Ref: Wikilinks (internal links) https://en.wikipedia.org/wiki/Help:Link
@@ -509,7 +509,7 @@ textParagraph : Parser String
 textParagraph =
     Pratt.expression
         { oneOf =
-            [ literal link
+            [ literal internalLink
             , literal char
 
             -- , externalLink
@@ -518,14 +518,6 @@ textParagraph =
             []
         , spaces = Parser.spaces
         }
-
-
-internalLink : Pratt.Config String -> Parser String
-internalLink config =
-    Parser.succeed identity
-        |. Parser.symbol "[["
-        |= Pratt.subExpression 0 config
-        |. Parser.symbol "]]"
 
 
 externalLink : Pratt.Config String -> Parser String
