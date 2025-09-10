@@ -1,0 +1,212 @@
+@import "theme.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    @apply text-[16px] sm:text-[20px];
+  }
+
+  body {
+    @apply bg-layout-10 font-base;
+  }
+
+  a {
+    @apply text-inherit underline decoration-primary-20 decoration-2 underline-offset-4 hover:text-primary-50;
+  }
+
+  .button {
+    @apply flex flex-row items-center justify-center rounded text-inherit;
+    @apply hover:bg-layout-50 hover:text-layout-20;
+  }
+
+  .card {
+    @apply rounded border-2 border-layout-20 bg-layout-10 px-4 py-3;
+  }
+
+  /*
+    Transitions and animations.
+  */
+
+  /* Popup. */
+
+  .popup {
+    visibility: hidden;
+    opacity: 0;
+    filter: blur(0.125rem) contrast(300%) brightness(100%);
+    transition-property:
+      visibility opacity,
+      filter;
+    transition-delay: 100ms;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out, linear;
+    transition-behavior: allow-discrete;
+  }
+  .group:hover .popup,
+  .group:focus .popup {
+    visibility: visible;
+    opacity: 1;
+    filter: none;
+  }
+
+  /* Dropdown. */
+
+  [popover] {
+    transition-timing-function: cubic-bezier(0.33, 1.56, 0.75, 1);
+    transition-property: transform;
+    transition-duration: 200ms;
+    transform-origin: top;
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(-0.5rem) scaleY(0.8);
+    }
+  }
+
+  /*
+    Post content.
+  */
+
+  .prose {
+    @apply flex flex-col gap-4;
+  }
+
+  .prose b {
+    @apply font-bold;
+  }
+
+  .prose i {
+    @apply italic;
+  }
+
+  .prose s {
+    @apply line-through;
+  }
+
+  .prose pre:not(.elmsh) {
+    @apply inline whitespace-pre-wrap rounded bg-layout-20 box-decoration-clone px-1 py-1 font-mono text-size-mono;
+  }
+
+  /* Block elements. */
+
+  .prose p {
+    @apply w-full text-base;
+  }
+
+  .prose blockquote {
+    @apply flex flex-col border-l-[1rem] border-solid border-layout-20 pl-6;
+  }
+
+  .prose hr {
+    @apply my-6 h-1 w-full border-0 bg-layout-20;
+  }
+
+  /* Headings. */
+
+  .prose section {
+    @apply mt-6 flex flex-col gap-4;
+  }
+
+  .prose h1 {
+    @apply text-3xl font-bold;
+  }
+
+  .prose section section h1 {
+    @apply text-2xl font-bold;
+  }
+
+  .prose section section section h1 {
+    @apply text-xl font-bold;
+  }
+
+  .prose section section section section h1 {
+    @apply text-lg font-bold;
+  }
+
+  .prose section section section section section h1 {
+    @apply text-lg font-bold;
+  }
+  .prose section section section section section h1::before {
+    content: "▹ ";
+  }
+
+  .prose section section section section section section h1 {
+    @apply text-lg font-bold;
+  }
+  .prose section section section section section section h1::before {
+    content: "▹▹ ";
+  }
+
+  /*
+    Code block syntax highlighting.
+  */
+
+  /* Required styles. */
+
+  pre.elmsh {
+    padding: 10px;
+    margin: 0;
+    text-align: left;
+    overflow: auto;
+  }
+  code.elmsh {
+    padding: 0;
+  }
+  .elmsh-line:before {
+    content: attr(data-elmsh-lc);
+    display: inline-block;
+    text-align: right;
+    width: 40px;
+    padding: 0 20px 0 0;
+    opacity: 0.3;
+  }
+
+  /* Customized colors. */
+
+  .elmsh {
+    @apply rounded bg-layout-20 text-xs leading-normal text-layout-90;
+  }
+  .elmsh-hl {
+    background: #fffbdd;
+  }
+  .elmsh-add {
+    background: #eaffea;
+  }
+  .elmsh-del {
+    background: #ffecec;
+  }
+  .elmsh-comm {
+    /* Comment. */
+    @apply text-primary-60;
+  }
+  .elmsh1 {
+    /* Period. */
+    @apply text-layout-40;
+  }
+  .elmsh2 {
+    /* String. */
+    @apply text-layout-50;
+  }
+  .elmsh3 {
+    /* Syntax. */
+    @apply text-layout-40;
+  }
+  .elmsh4 {
+    /* Type. Brace, bracket, comma. */
+    @apply text-layout-50;
+  }
+  .elmsh5 {
+    /* Function declaration. */
+    @apply text-primary-70;
+  }
+  .elmsh6 {
+    /* Module name. */
+    @apply text-layout-50;
+  }
+  .elmsh7 {
+    /* ? */
+    /* color: #795da3; */
+  }
+}
