@@ -1,20 +1,22 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
+import fs from 'node:fs';
+import path from 'node:path';
+import express from 'express';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Prefer built output; fall back to public/
 const roots = [
-  path.join(__dirname, '..', '..', 'dist'),   // vite/elm-pages build
-  path.join(__dirname, '..', '..', 'build'),  // alt build dir
-  path.join(__dirname, '..', '..', 'public')  // smoke/manual assets
+  path.join(__dirname, '..', '..', 'dist'),
+  path.join(__dirname, '..', '..', 'build'),
+  path.join(__dirname, '..', '..', 'public')
 ];
 const staticRoot = roots.find(p => fs.existsSync(p)) || roots[2];
 
 app.use(express.static(staticRoot));
 
-// SPA fallback if index.html exists
 app.get('*', (req, res, next) => {
   const indexFile = path.join(staticRoot, 'index.html');
   if (fs.existsSync(indexFile)) return res.sendFile(indexFile);
