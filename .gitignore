@@ -1,0 +1,31 @@
+/dist/
+/.env
+
+# Private data
+*-HIDDEN.md
+/data/posts/drafts/
+
+# elm-pages
+.elm-pages/
+/.cache/
+/functions/render/
+/functions/render/elm-pages-cli.js
+/functions/server-render/
+/gen/
+
+# elm-review
+/review/src/TailwindCss/ClassOrder.elm
+
+# Elm
+elm-stuff/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Editors
+.helix/
+.vscode/
+
+# direnv
+/.direnv/

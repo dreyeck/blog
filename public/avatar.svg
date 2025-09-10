@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 288">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00ebff;
+      }
+
+      .cls-2 {
+        fill: #f0c;
+      }
+
+      .cls-3 {
+        fill: #cfff00;
+      }
+
+      .cls-4 {
+        fill: #807f80;
+      }
+    </style>
+  </defs>
+  <g>
+    <g>
+      <g>
+        <polygon class="cls-3" points="72 72 133.5 63 144 0 72 0 72 72"/>
+        <polygon class="cls-1" points="72 72 144 72 144 0 72 72"/>
+      </g>
+      <g>
+        <polygon class="cls-3" points="0 72 61.5 63 72 0 0 0 0 72"/>
+        <polygon class="cls-1" points="0 72 72 72 72 0 0 72"/>
+      </g>
+      <g>
+        <polygon class="cls-2" points="216 72 277.5 63 288 0 216 0 216 72"/>
+        <polygon class="cls-3" points="216 72 288 72 288 0 216 72"/>
+      </g>
+      <g>
+        <polygon class="cls-2" points="144 72 205.5 63 216 0 144 0 144 72"/>
+        <polygon class="cls-3" points="144 72 216 72 216 0 144 72"/>
+      </g>
+      <g>
+        <polygon class="cls-3" points="72 144 133.5 135 144 72 72 72 72 144"/>
+        <polygon class="cls-1" points="72 144 144 144 144 72 72 144"/>
+      </g>
+      <g>
+        <polygon class="cls-3" points="0 144 61.5 135 72 72 0 72 0 144"/>
+        <polygon class="cls-1" points="0 144 72 144 72 72 0 144"/>
+      </g>
+      <g>
+        <polygon class="cls-2" points="216 144 277.5 135 288 72 216 72 216 144"/>
+        <polygon class="cls-3" points="216 144 288 144 288 72 216 144"/>
+      </g>
+      <g>
+        <polygon class="cls-2" points="144 144 205.5 135 216 72 144 72 144 144"/>
+        <polygon class="cls-3" points="144 144 216 144 216 72 144 144"/>
+      </g>
+      <g>
+        <polygon class="cls-4" points="72 216 133.5 207 144 144 72 144 72 216"/>
+        <polygon class="cls-1" points="72 216 144 216 144 144 72 216"/>
+      </g>
+      <g>
+        <polygon class="cls-4" points="0 216 61.5 207 72 144 0 144 0 216"/>
+        <polygon class="cls-1" points="0 216 72 216 72 144 0 216"/>
+      </g>
+      <g>
+        <polygon class="cls-1" points="288 216 226.5 207 216 144 288 144 288 216"/>
+        <polygon class="cls-3" points="288 216 216 216 216 144 288 216"/>
+      </g>
+      <g>
+        <polygon class="cls-1" points="216 216 154.5 207 144 144 216 144 216 216"/>
+        <polygon class="cls-3" points="216 216 144 216 144 144 216 216"/>
+      </g>
+      <g>
+        <polygon class="cls-4" points="72 288 133.5 279 144 216 72 216 72 288"/>
+        <polygon class="cls-2" points="72 288 144 288 144 216 72 288"/>
+      </g>
+      <g>
+        <polygon class="cls-4" points="0 288 61.5 279 72 216 0 216 0 288"/>
+        <polygon class="cls-2" points="0 288 72 288 72 216 0 288"/>
+      </g>
+      <g>
+        <polygon class="cls-1" points="288 288 226.5 279 216 216 288 216 288 288"/>
+        <polygon class="cls-4" points="288 288 216 288 216 216 288 288"/>
+      </g>
+      <g>
+        <polygon class="cls-1" points="216 288 154.5 279 144 216 216 216 216 288"/>
+        <polygon class="cls-4" points="216 288 144 288 144 216 216 288"/>
+      </g>
+    </g>
+  </g>
+</svg>
