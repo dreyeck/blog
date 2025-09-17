@@ -29,7 +29,7 @@
       "type": "paragraph",
       "id": "05e2fa92643677ca",
       "prompt": "Create pages about things you do on this wiki. Type a descriptive name of something you will be writing about. Enclose it in square brackets. Then press Command/ALT-S to save.",
-      "text": "[[elm-pages-3-alpha-starter]] ⇒ [[elm-pages v3]] ⇒ [http://blog.dreyeck.ch blog.dreyeck.ch]"
+      "text": "[[elm-pages-3-alpha-starter]] ⇒ [[elm-pages v3]] ⇒ [http://blog.dreyeck.ch/view/welcome-visitors blog.dreyeck.ch] (http)"
     },
     {
       "type": "paragraph",
@@ -207,6 +207,28 @@
         "text": "code.dreyeck.ch\ncode.fed.wiki\nelm.dreyeck.ch\nwiki.ralfbarkow.ch"
       },
       "date": 1693938417426
+    },
+    {
+      "type": "edit",
+      "id": "05e2fa92643677ca",
+      "item": {
+        "type": "paragraph",
+        "id": "05e2fa92643677ca",
+        "prompt": "Create pages about things you do on this wiki. Type a descriptive name of something you will be writing about. Enclose it in square brackets. Then press Command/ALT-S to save.",
+        "text": "[[elm-pages-3-alpha-starter]] ⇒ [[elm-pages v3]] ⇒ [http://blog.dreyeck.ch/view/welcome-visitors blog.dreyeck.ch]"
+      },
+      "date": 1694938009800
+    },
+    {
+      "type": "edit",
+      "id": "05e2fa92643677ca",
+      "item": {
+        "type": "paragraph",
+        "id": "05e2fa92643677ca",
+        "prompt": "Create pages about things you do on this wiki. Type a descriptive name of something you will be writing about. Enclose it in square brackets. Then press Command/ALT-S to save.",
+        "text": "[[elm-pages-3-alpha-starter]] ⇒ [[elm-pages v3]] ⇒ [http://blog.dreyeck.ch/view/welcome-visitors blog.dreyeck.ch] (http)"
+      },
+      "date": 1694938086844
     }
   ]
 }
