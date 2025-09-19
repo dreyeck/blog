@@ -1,2 +1,5 @@
 recycle/
 status/
+node_modules
+.elm-pages
+dist/
