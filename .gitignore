@@ -3,3 +3,4 @@ status/
 node_modules
 .elm-pages
 dist/
+elm-stuff/
